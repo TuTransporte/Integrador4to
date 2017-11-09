@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -151,6 +152,49 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MasterResources\assets\css\animate.min.css" />
+    <Content Include="Content\MasterResources\assets\css\bootstrap.min.css" />
+    <Content Include="Content\MasterResources\assets\css\demo.css" />
+    <Content Include="Content\MasterResources\assets\css\light-bootstrap-dashboard.css" />
+    <Content Include="Content\MasterResources\assets\css\pe-icon-7-stroke.css" />
+    <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.svg" />
+    <Content Include="Content\MasterResources\assets\img\default-avatar.png" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-0.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-1.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-2.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-3.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-4.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-5.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-6.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\face-7.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\tim_vector.jpe" />
+    <Content Include="Content\MasterResources\assets\img\favicon.ico" />
+    <Content Include="Content\MasterResources\assets\img\loading-bubbles.svg" />
+    <Content Include="Content\MasterResources\assets\img\mask.png" />
+    <Content Include="Content\MasterResources\assets\img\new_logo.png" />
+    <Content Include="Content\MasterResources\assets\img\sidebar-1.jpg" />
+    <Content Include="Content\MasterResources\assets\img\sidebar-2.jpg" />
+    <Content Include="Content\MasterResources\assets\img\sidebar-3.jpg" />
+    <Content Include="Content\MasterResources\assets\img\sidebar-4.jpg" />
+    <Content Include="Content\MasterResources\assets\img\sidebar-5.jpg" />
+    <Content Include="Content\MasterResources\assets\img\tim_80x80.png" />
+    <Content Include="Content\MasterResources\assets\js\bootstrap-checkbox-radio-switch.js" />
+    <Content Include="Content\MasterResources\assets\js\bootstrap-notify.js" />
+    <Content Include="Content\MasterResources\assets\js\bootstrap-select.js" />
+    <Content Include="Content\MasterResources\assets\js\bootstrap.min.js" />
+    <Content Include="Content\MasterResources\assets\js\chartist.min.js" />
+    <Content Include="Content\MasterResources\assets\js\demo.js" />
+    <Content Include="Content\MasterResources\assets\js\jquery-1.10.2.js" />
+    <Content Include="Content\MasterResources\assets\js\light-bootstrap-dashboard.js" />
+    <Content Include="Content\MasterResources\dashboard.html" />
+    <Content Include="Content\MasterResources\icons.html" />
+    <Content Include="Content\MasterResources\maps.html" />
+    <Content Include="Content\MasterResources\notifications.html" />
+    <Content Include="Content\MasterResources\table.html" />
+    <Content Include="Content\MasterResources\template.html" />
+    <Content Include="Content\MasterResources\typography.html" />
+    <Content Include="Content\MasterResources\upgrade.html" />
+    <Content Include="Content\MasterResources\user.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -160,6 +204,38 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.eot" />
+    <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.ttf" />
+    <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.woff" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_buttons.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_cards.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_chartist.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_icons.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_inputs.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_labels.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_morphing-buttons.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_navbars.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_social-buttons.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_tabs.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_transparency.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\mixins\_vendor-prefixes.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_alerts.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_buttons.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_cards.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_chartist.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_checkbox-radio-switch.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_dropdown.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_footers.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_inputs.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_misc.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_mixins.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_navbars.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_responsive.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_sidebar-and-main-panel.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_tables.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_typography.scss" />
+    <Content Include="Content\MasterResources\assets\sass\lbd\_variables.scss" />
+    <Content Include="Content\MasterResources\assets\sass\light-bootstrap-dashboard.scss" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -185,6 +261,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\MasterAdministracion.cshtml" />
+    <Content Include="Views\Administracion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

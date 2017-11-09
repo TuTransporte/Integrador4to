@@ -13,5 +13,15 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View();
         }
+        // Para poder visualizar la vista ControlDenuncias | Bryan
+        public ActionResult ControlDenuncias()
+        {
+            return View();
+        }
+        // Para poder visualizar la vista PerfilUsuario | Bryan
+        public ActionResult PerfilUsuario()
+        {
+            return View();
+        }
     }
 }

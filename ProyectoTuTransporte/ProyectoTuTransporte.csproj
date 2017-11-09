@@ -144,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,9 +264,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\MasterAdministracion.cshtml" />
     <Content Include="Views\Administracion\Index.cshtml" />
+    <Content Include="Views\Administracion\ControlDenuncias.cshtml" />
+    <Content Include="Views\Administracion\PerfilUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BO\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

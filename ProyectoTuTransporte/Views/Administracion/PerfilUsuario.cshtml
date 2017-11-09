@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Perfil de usuario | TuTransporte";
+    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
+}
+
+<center><h2 class="category">Perfil de usuario</h2></center>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Editar perfil</h4>
+            </div>
+            <div class="content">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Compañia</label>
+                                <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" disabled placeholder="Company" value="Puesto del empleado">
+                            </div>
+                        </div>   
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo</label>
+                                <input type="email" class="form-control" placeholder="Correo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nombre(s)</label>
+                                <input type="text" class="form-control" placeholder="Company" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" placeholder="Last Name" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input type="text" class="form-control" placeholder="Dirección de casa" value="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" class="form-control" placeholder="Ciudad" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Country</label>
+                                <input type="text" class="form-control" placeholder="Estado" value="">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Código Postal</label>
+                                <input type="number" class="form-control" placeholder="Código Postal">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <textarea rows="5" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-user">
+            <div class="image">
+                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
+            </div>
+            <div class="content">
+                <div class="author">
+                    <a href="#">
+                        <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
+                        <h4 class="title">
+                            Nuevo Usuario<br />
+                            <small>Descripción</small>
+                        </h4>
+                    </a>
+                </div>
+                <p class="description text-center">  
+                    Descripción detallada
+                </p>
+            </div>
+            <hr>
+            <div class="text-center">                
+            </div>
+        </div>
+    </div>
+</div>
+

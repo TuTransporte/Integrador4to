@@ -1,59 +1,50 @@
 ﻿
 @{
-    ViewBag.Title = "Perfil de usuario | TuTransporte";
+    ViewBag.Title = "Gestion de empleados | TuTransporte";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<center><h2 class="category">Perfil de usuario</h2></center>
+<center><h2 class="category">Gestión de empleados</h2></center>
 
 <div class="row">
     <div class="col-md-8">
         <div class="card">
-            <div class="header">
+            <div class="header 
                 <h4 class="title">Editar perfil</h4>
             </div>
             <div class="content">
                 <form>
                     <div class="row">
-
-                        @*CORREGÍ ALGUNOS CAMPOS DE ACUERDO A LA INFORMACIÓN QUE SE LE SOLICITARÁ AL USUARIO | MONTALVO*@
-
-                        @*<div class="col-md-4">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label>Compañia</label>
                                 <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
                             </div>
-                        </div>*@
-                        @*<div class="col-md-4">
-                            <div class="form-group">
-                                <label>Puesto</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="Puesto del empleado">
-                            </div>
-                        </div>*@   
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Correo</label>
-                                <input type="email" class="form-control" placeholder="Correo electrónico">
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Turno</label>
+                                <input type="email" class="form-control" placeholder="Turno de trabajo">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nombre(s)</label>
                                 <input type="text" class="form-control" placeholder="Nombre(s) del empleado">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Apellido paterno</label>
-                                <input type="text" class="form-control" placeholder="Apellido paterno">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Apellido materno</label>
-                                <input type="text" class="form-control" placeholder="Apellido materno">
+                                <label>Apellidos</label>
+                                <input type="text" class="form-control" placeholder="Apellido del empleado">
                             </div>
                         </div>
                     </div>
@@ -61,7 +52,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección del usuario">
+                                <input type="text" class="form-control" placeholder="Dirección del empleado">
                             </div>
                         </div>
                     </div>
@@ -88,7 +79,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Acerca del usuario</label>
+                                <label>Acerca de mi</label>
                                 <textarea rows="5" class="form-control" placeholder="Aquí puede estar su descripción"></textarea>
                             </div>
                         </div>
@@ -102,8 +93,9 @@
     <div class="col-md-4">
         <div class="card card-user">
             <div class="image">
-                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
+                <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
             </div>
+
             <div class="content">
                 <div class="author">
                     <a href="#">
@@ -114,14 +106,19 @@
                         </h4>
                     </a>
                 </div>
-                <p class="description text-center">  
+                <p class="description text-center">
                     Descripción detallada
                 </p>
+                <button type="submit" class="btn btn-lg btn-success">Modificar</button>
+
+                <button type="button" class="btn btn-lg btn-success"> Eliminar </button>
             </div>
+
             <hr>
-            <div class="text-center">                
+            <div class="text-center">
             </div>
         </div>
     </div>
 </div>
+
 

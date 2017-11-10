@@ -23,5 +23,10 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View();
         }
+        //Para poder visualizar la vista GestionEmpleados | Montalvo
+        public ActionResult GestionEmpleados()
+        {
+            return View();
+        }
     }
 }

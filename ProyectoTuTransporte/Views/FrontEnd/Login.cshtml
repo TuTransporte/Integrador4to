@@ -1,8 +1,13 @@
-﻿
+﻿@using ProyectoTuTransporte.BO;
+@model RegistroUsuarioBO
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/MasterLogin.cshtml";
 }
+@*@using (Html.BeginForm("RegistroUsuario", "FrontEnd", FormMethod.Post))
+
+@*************ERROR POR ARREGLAR***************@
+
 
 <div class="form">
 
@@ -17,20 +22,28 @@
 
             <form action="/" method="post">
 
-                <div class="top-row">
+                @*<div class="top-row">*@
                     <div class="field-wrap">
                         <label>
                             Nombre(s)<span class="req">*</span>
                         </label>
                         <input type="text" required autocomplete="off" />
                     </div>
-
+                @*</div>*@
+                <div class="top-row">
                     <div class="field-wrap">
                         <label>
-                            Apellidos<span class="req">*</span>
+                            Apellido Paterno<span class="req">*</span>
                         </label>
                         <input type="text" required autocomplete="off" />
                     </div>
+                    <div class="field-wrap">
+                        <label>
+                            Apellido Materno<span class="req">*</span>
+                        </label>
+                        <input type="text" required autocomplete="off" />
+                    </div>
+
                 </div>
                 <div class="field-wrap">
                     <label>
@@ -46,7 +59,22 @@
                     <input type="password" required autocomplete="off" />
                 </div>
 
-                <button type="submit" class="button button-block" />Registrarme</button>
+                <div class="field-wrap">
+                    <label>
+                        Confirmar contraseña<span class="req">*</span>
+                    </label>
+                    <input type="password" required autocomplete="off" />
+                </div>
+
+                <div class="field-wrap">
+                    <label>
+                        Teléfono<span class="req">*</span>
+                    </label>
+                    <input type="password" required autocomplete="off" />
+                </div>
+                
+
+                <button type="submit" id="btn-submit" class="button button-block" />Registrarme</button>
 
             </form>
         </div>

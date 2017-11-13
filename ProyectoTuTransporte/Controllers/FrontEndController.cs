@@ -17,14 +17,33 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
         // Para poder visualizar la vista Login | Bryan
-        public ActionResult Login()
+        public ActionResult Login(RegistroUsuarioBO UsuarioBO)
         {
-            return View();
+             //UsuarioDAO.RegistroUsuario(UsuarioBO);  
+            return PartialView("_Registro");
         }
-        public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
+
+        //public ActionResult _Registro(RegistroUsuarioBO UsuarioBO)
+        //{
+        //    UsuarioDAO.RegistroUsuario(UsuarioBO);            
+        //    return View();
+        //}
+
+        //public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
+        //{
+        //    UsuarioDAO.RegistroUsuario(UsuarioBO);
+        //    return RedirectToAction("Login");
+        //}
+        public ActionResult Iniciarsesion()
         {
-            UsuarioDAO.RegistroUsuario(UsuarioBO);
-            return Redirect("~/FrontEnd/Login");
+            if (UsuarioDAO.VerificarUsuario() == true)
+            {                            
+                return Redirect("Index");
+            }
+            else
+            {
+                return Redirect("Login");
+            }
         }
     }
 }

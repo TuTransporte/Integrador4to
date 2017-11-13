@@ -1,124 +1,12 @@
 ﻿
 @{
-    ViewBag.Title = "Gestion de empleados | TuTransporte";
+    ViewBag.Title = "GestionEmpleados";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<center><h2 class="category">Gestión de empleados</h2></center>
+<div>
 
-<div class="row">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="header 
-                <h4 class="title">Editar perfil</h4>
-            </div>
-            <div class="content">
-                <form>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Compañia</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Puesto</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Turno</label>
-                                <input type="email" class="form-control" placeholder="Turno de trabajo">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nombre(s)</label>
-                                <input type="text" class="form-control" placeholder="Nombre(s) del empleado">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Apellidos</label>
-                                <input type="text" class="form-control" placeholder="Apellido del empleado">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección del empleado">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Estado">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Acerca de mi</label>
-                                <textarea rows="5" class="form-control" placeholder="Aquí puede estar su descripción"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
-                    <div class="clearfix"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-user">
-            <div class="image">
-                <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
-            </div>
+    @RenderBody()
 
-            <div class="content">
-                <div class="author">
-                    <a href="#">
-                        <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
-                        <h4 class="title">
-                            Nuevo Usuario<br />
-                            <small>Descripción</small>
-                        </h4>
-                    </a>
-                </div>
-                <p class="description text-center">
-                    Descripción detallada
-                </p>
-                <button type="submit" class="btn btn-lg btn-success">Modificar</button>
-
-                <button type="button" class="btn btn-lg btn-success"> Eliminar </button>
-            </div>
-
-            <hr>
-            <div class="text-center">
-            </div>
-        </div>
-    </div>
 </div>
-
 

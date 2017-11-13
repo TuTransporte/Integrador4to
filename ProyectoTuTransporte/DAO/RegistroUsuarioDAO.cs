@@ -9,6 +9,11 @@ namespace ProyectoTuTransporte.DAO
 {
     public class RegistroUsuarioDAO
     {
+
+        SqlCommand comando = new SqlCommand();
+        ConexionDAO con = new ConexionDAO();
+        string sql;
+
         ConexionDAO conex = new ConexionDAO();
         SqlCommand cmd;
         string sentSQL;
@@ -24,6 +29,7 @@ namespace ProyectoTuTransporte.DAO
                 + dato.ApellidoMaterno + "', '" 
                 + dato.Telefono + "', '1')";
             return conex.ejecutarSentencia(sentSQL);
+            
         }
 
         public int RegistroUsuarioSP(object ObjR)
@@ -43,25 +49,20 @@ namespace ProyectoTuTransporte.DAO
             cmd.Parameters.Add(new SqlParameter("@Telefono", dato.Telefono));
             cmd.Parameters.Add(new SqlParameter("@Contrasena", dato.Contrasena));
 
-
-
-
-
-
-
             conex.AbrirConexion();  
             return conex.ejecutarSentencia(sentSQL);
         }
 
-
-
-
-
-
-
-
-
-
-
+        public bool VerificarUsuario()
+        {
+            RegistroUsuarioBO datos = new RegistroUsuarioBO();
+            comando.Connection = con.EstablecerConexion();
+            con.AbrirConexion();
+            sql = "Select Count(Correo_usuario) From Usuario Where Correo_usuario='" + datos.Correolog + "' And Contrasena='" + datos.Contrasenalog + "'";
+            comando.CommandText = sql;
+            var Resultado = (Int32)comando.ExecuteScalar();
+            con.CerrarConexion();
+            return (Resultado == 1) ? true : false;
+        }
     }
 }

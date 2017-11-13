@@ -13,6 +13,19 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View();
         }
+
+        public ActionResult GestionEmpleados()
+        {
+            return PartialView("_GestionEmpleados");
+        }
+
+
+
+        public ActionResult _GestionEmpleados()
+        {
+            return View();
+        }
+
         // Para poder visualizar la vista ControlDenuncias | Bryan
         public ActionResult ControlDenuncias()
         {
@@ -24,9 +37,6 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
         //Para poder visualizar la vista GestionEmpleados | Montalvo
-        public ActionResult GestionEmpleados()
-        {
-            return View();
-        }
+       
     }
 }

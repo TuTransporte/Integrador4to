@@ -11,15 +11,17 @@
         <ul class="tab-group">
             <li class="tab active"><a href="#signup">Registrarse</a></li>
             <li class="tab"><a href="#login">Iniciar Sesión</a></li>
-            @RenderBody()
         </ul>
 
         <div class="tab-content">
-
+            @Html.BeginForm("RegsitroUsuario", "FrontEnd", FormMethod.Post))
+            {
             <div id="signup">
                 <h1>Registro de nuevo usuario</h1>
 
                 <form action="/" method="post">
+
+
 
                     <div class="field-wrap">
                         <label>
@@ -70,7 +72,9 @@
                 </form>
 
             </div>
-
+            }
+            @Html.BeginForm("Iniciarsesion", "FrontEnd", FormMethod.Post))
+            {
             <div id="login">
                 <h1>¡Bienvenido de nuevo!</h1>
 
@@ -98,7 +102,7 @@
                 </form>
 
             </div>
-
+            }
         </div><!-- tab-content -->
 
     </div> <!-- /form -->

@@ -10,7 +10,7 @@ namespace ProyectoTuTransporte.Controllers
 {
     public class FrontEndController : Controller
     {
-        RegistroUsuarioDAO UsuarioDAO = new RegistroUsuarioDAO();
+        UsuarioDAO UsuarioDAO = new UsuarioDAO();
         // GET: FrontEnd        
         public ActionResult Index()
         {
@@ -19,25 +19,20 @@ namespace ProyectoTuTransporte.Controllers
         // Para poder visualizar la vista Login | Bryan
         public ActionResult Login(RegistroUsuarioBO UsuarioBO)
         {
-             //UsuarioDAO.RegistroUsuario(UsuarioBO);  
-            return PartialView("_Registro");
+            UsuarioDAO.RegistroUsuario(UsuarioBO);
+            return PartialView("Login");
+        }
+        //Ejecuta el registro
+        public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
+        {
+            UsuarioDAO.AgregarCliente(UsuarioBO);
+            return RedirectToAction("Login");
         }
 
-        //public ActionResult _Registro(RegistroUsuarioBO UsuarioBO)
-        //{
-        //    UsuarioDAO.RegistroUsuario(UsuarioBO);            
-        //    return View();
-        //}
-
-        //public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
-        //{
-        //    UsuarioDAO.RegistroUsuario(UsuarioBO);
-        //    return RedirectToAction("Login");
-        //}
         public ActionResult Iniciarsesion()
         {
             if (UsuarioDAO.VerificarUsuario() == true)
-            {                            
+            {
                 return Redirect("Index");
             }
             else

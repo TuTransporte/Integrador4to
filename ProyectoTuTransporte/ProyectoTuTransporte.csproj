@@ -399,11 +399,8 @@
     <Content Include="Views\FrontEnd\Index.cshtml" />
     <Content Include="Views\FrontEnd\Login.cshtml" />
     <Content Include="Views\Shared\MasterLogin.cshtml" />
-    <Content Include="Views\FrontEnd\Iniciarsesion.cshtml" />
     <Content Include="Views\Administracion\_GestionEmpleados.cshtml" />
     <Content Include="Views\Administracion\GestionEmpleados.cshtml" />
-    <Content Include="Views\FrontEnd\_Registro.cshtml" />
-    <Content Include="Views\FrontEnd\_Iniciarsesion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,32 +9,31 @@ namespace ProyectoTuTransporte.DAO
 {
     public class ConexionDAO
     {
-        SqlConnection Con;
+        SqlConnection con;
         SqlCommand exec;
 
-        public SqlConnection EstablecerConexion()
+        public ConexionDAO()
         {
-            string cs = "Data Source= DESKTOP-L9DKEN0\\SQLEXPRESS ;Initial Catalog=ProyectoChat;Integrated Security=True";
-            Con = new SqlConnection(cs);
-            return Con;
+            con = new SqlConnection("Data Source=LAPTOP-5B0LK3E0;Initial Catalog=Simulador de prestamos;Integrated Security=True");
+            exec = new SqlCommand();
         }
 
         public void AbrirConexion()
         {
-            Con.Open();
+            con.Open();
         }
 
         public void CerrarConexion()
         {
-            Con.Close();
+            con.Close();
         }
 
-        public int ejecutarSentencia(String strSql)
+        public int EjecutarSentencia(String strSql)
         {
             try
             {
                 this.exec.CommandText = strSql;
-                this.exec.Connection = this.Con;
+                this.exec.Connection = this.con;
                 this.AbrirConexion();
                 this.exec.ExecuteNonQuery();
                 this.CerrarConexion();
@@ -52,7 +51,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable EjecutarSentenciaBus(string strSql)
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(strSql, this.Con);
+            SqlDataAdapter adapter = new SqlDataAdapter(strSql, this.con);
             DataTable tabla = new DataTable();
             adapter.Fill(tabla);
             return tabla;

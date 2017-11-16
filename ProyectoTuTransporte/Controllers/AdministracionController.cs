@@ -19,8 +19,6 @@ namespace ProyectoTuTransporte.Controllers
             return PartialView("_GestionEmpleados");
         }
 
-
-
         public ActionResult _GestionEmpleados()
         {
             return View();

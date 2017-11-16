@@ -147,6 +147,7 @@
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

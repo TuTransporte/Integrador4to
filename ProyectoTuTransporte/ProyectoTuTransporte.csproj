@@ -402,6 +402,7 @@
     <Content Include="Views\Shared\MasterLogin.cshtml" />
     <Content Include="Views\Administracion\_GestionEmpleados.cshtml" />
     <Content Include="Views\Administracion\GestionEmpleados.cshtml" />
+    <Content Include="Views\FrontEnd\LogOK.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

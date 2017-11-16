@@ -17,7 +17,7 @@ namespace ProyectoTuTransporte.DAO
 
         public ArrayList Login(RegistroUsuarioBO obelogin)
         {
-            string comando = string.Format("SELECT Usuario.Id, Usuario.Nombres, Usuario.idtipo, Usuario.Correo_usuario FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Nombre, obelogin.Encriptar(obelogin.Contrasena));
+            string comando = string.Format("SELECT Usuario.Id, Usuario.Nombres, Usuario.Tipo_usuario, Usuario.Correo_usuario, Usuario.Contrasena FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Correo, obelogin.Contrasena);
             SqlCommand adapter = new SqlCommand(comando, establecerConexion());
             abrirConexion();
             SqlDataReader lectura;
@@ -25,11 +25,11 @@ namespace ProyectoTuTransporte.DAO
             lectura = adapter.ExecuteReader();
             while (lectura.Read())
             {
-                tipous.Add(lectura["idusuario"].ToString());
-                tipous.Add(lectura["nombre"].ToString());
-                tipous.Add(lectura["idtipo"].ToString());
-                tipous.Add(lectura["foto"].ToString());
-                tipous.Add(lectura["rol"].ToString());
+                tipous.Add(lectura["Id"].ToString());
+                tipous.Add(lectura["Nombres"].ToString());
+                tipous.Add(lectura["Tipo_usuario"].ToString());
+                tipous.Add(lectura["Correo_usuario"].ToString());
+                tipous.Add(lectura["Contrasena"].ToString());
 
             }
             cerrarconexion();
@@ -57,29 +57,7 @@ namespace ProyectoTuTransporte.DAO
 
         //}
 
-        public ArrayList TipoUsuarioA()
-        {
-            string comando = string.Format("SELECT nombre, idtipo FROM tipo WHERE idtipo = 1");
-            SqlCommand adapter = new SqlCommand(comando, establecerConexion());
-            abrirConexion();
-            SqlDataReader lectura;
-            ArrayList tipous = new ArrayList();
-            lectura = adapter.ExecuteReader();
-            while (lectura.Read())
-            {
-                tipous.Add(lectura["ID"].ToString());
-            }
-            cerrarconexion();
-            return tipous;
-
-        }
-
-        public DataTable BuscarUsuario(int id)
-        {
-            string sql = string.Format("SELECT idusuario, nombre, apellidop, apellidom, usuario, contrasenia, foto, email FROM usuario WHERE idusuario = '{0}'", id);
-            return EjercutarSentenciaBusqueda(sql);
-
-        }
+        
 
 
 

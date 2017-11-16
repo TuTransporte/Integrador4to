@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProyectoTuTransporte.DAO;
 using ProyectoTuTransporte.BO;
+using System.Collections;
 
 namespace ProyectoTuTransporte.Controllers
 {
@@ -17,10 +18,34 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View();
         }
-        // Para poder visualizar la vista Login | Bryan
-        public ActionResult Login(RegistroUsuarioBO UsuarioBO)
+
+        public  ActionResult Login()
         {
             return View();
+        }
+
+        // Para poder visualizar la vista Login | Bryan
+        public ActionResult Iniciarsesion(RegistroUsuarioBO objeus)
+        {
+            objeus.Correo = Request.Form["txtCorreo"];
+            objeus.Contrasena = Request.Form["txtContra"];
+
+            ArrayList datos = LoginDAO.Login(objeus);
+            if (datos.Count > 0)
+            {
+                Session["ID"] = datos[0].ToString();
+                Session["idtipo"] = datos[2].ToString();
+
+
+                return Redirect("~/FrontEnd/LogOK");
+
+            }
+            else
+            {
+                return Redirect("Index");
+            }
+
+            
         }
         //Ejecuta el registro de usuario
         public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
@@ -38,7 +63,7 @@ namespace ProyectoTuTransporte.Controllers
             if (UsuarioBO.Contrasena == contra2)
             {
                 UsuarioDAO.Agregar(UsuarioBO);
-                return Redirect("Login");
+                return Redirect("Index");
             }
             else
             {
@@ -46,43 +71,12 @@ namespace ProyectoTuTransporte.Controllers
             }
     
         }
-        //public ActionResult IniciarSesion(object UsuarioBO)
-        //{
-        //    //string Modulo = "";
-        //    //var r = LoginDAO.Iniciar(UsuarioBO);
-        //    //if (r != null)
-        //    //{
-        //    //    Session["log"] = true;
-        //    //    return  Redirect("Index");
-        //    //}
-        //    //else
-        //    //{
-        //    //    Session["log"] = true;
-        //    //    return Redirect("~/Administracion/Index");
-        //    //}
-        //    //if (LoginDAO.IniciarSesion(r))
-        //    //{
-        //    //    return Redirect("Index");
-        //    //}
-        //    //else
-        //    //{
-        //    //    return Redirect("Login");
-        //    //}            
 
-        //    //return Redirect("~/FrontEnd/Index");
-        //}
-
-        public ActionResult AgregarU(RegistroUsuarioBO objeus)
+       public ActionResult LogOK()
         {
-
-            UsuarioDAO.Agregar(objeus);
-            return View("~/Inicio/Inicial");
+            return View();
         }
 
-
-        //public ActionResult Iniciarsesion()
-        //{
-
-        //}
+        
     }
 }

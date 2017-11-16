@@ -22,7 +22,7 @@ namespace ProyectoTuTransporte.DAO
         {
             cmd = new SqlCommand("INSERT INTO Usuario (Correo_usuario, Contrasena, Nombres, ApellidoPaterno, ApellidoMaterno, Telefono, Tipo_usuario) values (@Correo_usuario, @Contrasena, @Nombres, @ApellidoPaterno, @ApellidoMaterno, @Telefono, @Tipo_usuario)");
             cmd.Parameters.Add("@Correo_usuario", SqlDbType.VarChar).Value = objeus.Correo;
-            cmd.Parameters.Add("@Contrasena", SqlDbType.VarChar).Value = objeus.Encriptar(objeus.Contrasena);
+            cmd.Parameters.Add("@Contrasena", SqlDbType.VarChar).Value = objeus.Contrasena;
             cmd.Parameters.Add("@Nombres", SqlDbType.VarChar).Value = objeus.Nombre;
             cmd.Parameters.Add("@ApellidoPaterno", SqlDbType.VarChar).Value = objeus.ApellidoPaterno;
             cmd.Parameters.Add("@ApellidoMaterno", SqlDbType.VarChar).Value = objeus.ApellidoMaterno;

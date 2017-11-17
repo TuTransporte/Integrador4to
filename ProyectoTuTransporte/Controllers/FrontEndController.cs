@@ -29,7 +29,6 @@ namespace ProyectoTuTransporte.Controllers
         {
             objeus.Correo = Request.Form["txtCorreo"];
             objeus.Contrasena = Request.Form["txtContra"];
-
             ArrayList datos = LoginDAO.Login(objeus);
             if (datos.Count > 0)
             {

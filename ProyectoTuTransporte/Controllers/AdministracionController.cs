@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProyectoTuTransporte.DAO;
+using ProyectoTuTransporte.BO;
+using System.Collections;
 
 namespace ProyectoTuTransporte.Controllers
 {
     public class AdministracionController : Controller
     {
+        GestionEmpleadosDAO empleadosDAO = new GestionEmpleadosDAO();
         // GET: Administracion
         public ActionResult Index()
         {
@@ -16,8 +20,19 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult GestionEmpleados()
         {
-            return PartialView("_GestionEmpleados");
+            
+            //oBO.Nombre = Request.QueryString["txtNombre"];
+            //oBO.ApellidoPaterno = Request.QueryString["txtApellidop"];
+            //oBO.ApellidoMaterno = Request.QueryString["txtApellidom"];
+            //oBO.Turno = Request.QueryString["txtTurno"];
+
+            //ArrayList datosEmp = empleadosDAO.Listar(oBO);
+
+            //return PartialView("_GestionEmpleados");
+            return PartialView("_GestionEmpleados", empleadosDAO.listar());
         }
+
+        
 
         public ActionResult _GestionEmpleados()
         {

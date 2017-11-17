@@ -181,7 +181,8 @@
     <Content Include="Content\MasterFrontEnd\images\person2.jpg" />
     <Content Include="Content\MasterFrontEnd\images\person3.jpg" />
     <Content Include="Content\MasterFrontEnd\images\person4.jpg" />
-    <Content Include="Content\MasterFrontEnd\images\work_1.png" />
+    <Content Include="Content\MasterFrontEnd\images\rutassitur.jpg" />
+    <Content Include="Content\MasterFrontEnd\images\situr_merida.jpg" />
     <Content Include="Content\MasterFrontEnd\index.html" />
     <Content Include="Content\MasterFrontEnd\js\bootstrap.min.js" />
     <Content Include="Content\MasterFrontEnd\js\google_map.js" />

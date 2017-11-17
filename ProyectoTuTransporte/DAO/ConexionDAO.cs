@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-
+using ProyectoTuTransporte.BO;
 namespace ProyectoTuTransporte.DAO
 {
     public class ConexionDAO
@@ -17,27 +17,22 @@ namespace ProyectoTuTransporte.DAO
         SqlConnection con;
         SqlCommand exec;
 
-        //public ConexionDAO()
-        //{
-        //    //Conexion Montalvo
-        //    con = new SqlConnection("Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
-        //    exec = new SqlCommand();
-        //}
-
         public SqlConnection establecerConexion()
         {
-            string cs = "Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
-            con = new SqlConnection(cs);
+            //Conexion Montalvo
+            
+            con = new SqlConnection("Data Source=.;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            exec = new SqlCommand();
             return con;
-        }
+        }        
 
-        public SqlConnection establecerConexion(string conexionstring)
-        {
-            string cs = conexionstring;
-            con = new SqlConnection(cs);
-            return con;
-
-        }
+        //public SqlConnection establecerConexion()
+        //{
+        //    string cs = "Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
+        //    con = new SqlConnection(cs);
+        //    return con;
+        //}
+        
         public void abrirConexion()
         {
             con.Open();
@@ -96,6 +91,10 @@ namespace ProyectoTuTransporte.DAO
             return tabla;
         }
 
+
+
+
+      
 
 
 

@@ -11,13 +11,13 @@ using System.Collections;
 namespace ProyectoTuTransporte.DAO
 
 {
-    public class LoginDAO: ConexionDAO
+    public class LoginDAO : ConexionDAO
     {
 
 
         public ArrayList Login(RegistroUsuarioBO obelogin)
         {
-            string comando = string.Format("SELECT Usuario.Id, Usuario.Nombres, Usuario.Tipo_usuario, Usuario.Correo_usuario, Usuario.Contrasena FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Correo, obelogin.Contrasena);
+            string comando = string.Format("Select Id,Correo_usuario,Nombres,ApellidoPaterno,ApellidoMaterno,Telefono,Tipo_usuario FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Correo, obelogin.Contrasena);
             SqlCommand adapter = new SqlCommand(comando, establecerConexion());
             abrirConexion();
             SqlDataReader lectura;
@@ -26,11 +26,12 @@ namespace ProyectoTuTransporte.DAO
             while (lectura.Read())
             {
                 tipous.Add(lectura["Id"].ToString());
-                tipous.Add(lectura["Nombres"].ToString());
-                tipous.Add(lectura["Tipo_usuario"].ToString());
                 tipous.Add(lectura["Correo_usuario"].ToString());
-                tipous.Add(lectura["Contrasena"].ToString());
-
+                tipous.Add(lectura["Nombres"].ToString());
+                tipous.Add(lectura["ApellidoPaterno"].ToString());
+                tipous.Add(lectura["ApellidoMaterno"].ToString());
+                tipous.Add(lectura["Telefono"].ToString());
+                tipous.Add(lectura["Tipo_usuario"].ToString());
             }
             cerrarconexion();
             return tipous;
@@ -57,7 +58,7 @@ namespace ProyectoTuTransporte.DAO
 
         //}
 
-        
+
 
 
 

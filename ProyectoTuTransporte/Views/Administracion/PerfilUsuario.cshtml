@@ -14,82 +14,53 @@
             </div>
             <div class="content">
                 <form>
-                    <div class="row">
+                    
 
                         @*CORREGÍ ALGUNOS CAMPOS DE ACUERDO A LA INFORMACIÓN QUE SE LE SOLICITARÁ AL USUARIO | MONTALVO*@
 
                         @*<div class="col-md-4">
-                            <div class="form-group">
-                                <label>Compañia</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
-                            </div>
-                        </div>*@
+                                <div class="form-group">
+                                    <label>Compañia</label>
+                                    <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
+                                </div>
+                            </div>*@
                         @*<div class="col-md-4">
-                            <div class="form-group">
-                                <label>Puesto</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="Puesto del empleado">
-                            </div>
-                        </div>*@   
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Correo</label>
-                                <input type="email" class="form-control" placeholder="Correo electrónico">
-                            </div>
-                        </div>
-                    </div>
+                                <div class="form-group">
+                                    <label>Puesto</label>
+                                    <input type="text" class="form-control" disabled placeholder="Company" value="Puesto del empleado">
+                                </div>
+                            </div>*@                                            
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Nombre(s)</label>
-                                <input type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                                <input type="text" class="form-control" placeholder="Nombre(s) del empleado" value="@Session["Nombres"]">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Apellido paterno</label>
-                                <input type="text" class="form-control" placeholder="Apellido paterno">
+                                <input type="text" class="form-control" placeholder="Apellido paterno" value="@Session["ApellidoPat"]">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Apellido materno</label>
-                                <input type="text" class="form-control" placeholder="Apellido materno">
+                                <input type="text" class="form-control" placeholder="Apellido materno" value="@Session["ApellidoMat"]">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección del usuario">
+                                <label for="exampleInputEmail1">Correo</label>
+                                <input type="email" class="form-control" placeholder="Correo electrónico" value="@Session["Correo"]">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Estado">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Acerca del usuario</label>
-                                <textarea rows="5" class="form-control" placeholder="Aquí puede estar su descripción"></textarea>
+                                <label>Teléfono</label>
+                                <input type="text" class="form-control" placeholder="Teléfono" value="@Session["Telefono"]">
                             </div>
                         </div>
                     </div>
@@ -114,12 +85,12 @@
                         </h4>
                     </a>
                 </div>
-                <p class="description text-center">  
+                <p class="description text-center">
                     Descripción detallada
                 </p>
             </div>
             <hr>
-            <div class="text-center">                
+            <div class="text-center">
             </div>
         </div>
     </div>

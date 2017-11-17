@@ -19,7 +19,7 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
-        public  ActionResult Login()
+        public ActionResult Login()
         {
             return View();
         }
@@ -27,24 +27,44 @@ namespace ProyectoTuTransporte.Controllers
         // Para poder visualizar la vista Login | Bryan
         public ActionResult Iniciarsesion(RegistroUsuarioBO objeus)
         {
+            string link = "Login";
             objeus.Correo = Request.Form["txtCorreo"];
             objeus.Contrasena = Request.Form["txtContra"];
             ArrayList datos = LoginDAO.Login(objeus);
             if (datos.Count > 0)
             {
-                Session["ID"] = datos[0].ToString();
-                Session["idtipo"] = datos[2].ToString();
-
-
-                return Redirect("~/FrontEnd/LogOK");
-
+                if (datos[6].ToString() == "4")
+                {
+                    link = "~/Administracion/Index";
+                }
+                else
+                {
+                    if (datos[6].ToString() == "1")
+                    {
+                        link = "~/FrontEnd/LogOk";
+                    }
+                    else
+                    {
+                        link = "Login";
+                    }
+                }
             }
-            else
+            try
             {
-                return Redirect("Index");
+                Session["Id"] = datos[0].ToString();
+                Session["Correo"] = datos[1].ToString();
+                Session["Nombres"] = datos[2].ToString();
+                Session["ApellidoPat"] = datos[3].ToString();
+                Session["ApellidoMat"] = datos[4].ToString();
+                Session["Telefono"] = datos[5].ToString();
+                Session["Tipo"] = datos[5].ToString();
             }
+            catch (Exception)
+            {
+            }
+            return Redirect(link);
 
-            
+
         }
         //Ejecuta el registro de usuario
         public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
@@ -68,14 +88,14 @@ namespace ProyectoTuTransporte.Controllers
             {
                 return View();
             }
-    
+
         }
 
-       public ActionResult LogOK()
+        public ActionResult LogOK()
         {
             return View();
         }
 
-        
+
     }
 }

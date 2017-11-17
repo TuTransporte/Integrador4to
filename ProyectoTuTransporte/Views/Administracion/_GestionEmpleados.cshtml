@@ -22,12 +22,9 @@
             @foreach (var u in Model)
             {
                 <tr>
-
                     <td>
                         <input type="text" class="form-control" disabled value="@u.Nombre">
-
                     </td>
-
                     <td>
                         <input type="text" class="form-control" disabled value="@u.ApellidoPaterno">
                     </td>
@@ -67,7 +64,7 @@
                             <div class="form-group">
                                 <label>Unidad del empleado</label>
                                 <ul>
-                                    <li class="dropdown">                                        
+                                    <li class="dropdown">
                                         <a href="#" button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
                                             <p>
                                                 Selección
@@ -77,7 +74,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a href="#">Action</a></li>
                                             <li><a href="#">Another action</a></li>
-                                            <li><a href="#">Something</a></li>                                            
+                                            <li><a href="#">Something</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -85,9 +82,10 @@
 
 
                             @*<div class="form-group">
-                                    <label>Unidad del empleado</label>
-                                    <input type="text" class="form-control" placeholder="Unidad del empleado">
+                                   <label>Unidad del empleado</label>
+                                   <input type="text" class="form-control" placeholder="Unidad del empleado">
                                 </div>*@
+
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
@@ -126,9 +124,21 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-3">
 
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success btn-fill pull-right">Agregar perfil</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-danger btn-fill pull-right">Eliminar perfil</button>
+                        </div>
+                    </div>
 
-                    <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
                     <div class="clearfix"></div>
                 </form>
             </div>
@@ -153,17 +163,12 @@
                 <p class="description text-center">
                     Descripción detallada
                 </p>
-                <button type="submit" class="btn btn-lg btn-success">Modificar</button>
-
-                <button type="button" class="btn btn-lg btn-success"> Eliminar </button>
-            </div>
-
-            <hr>
-            <div class="text-center">
+                <hr>
+                <div class="text-center">
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 

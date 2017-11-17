@@ -17,27 +17,8 @@ namespace ProyectoTuTransporte.DAO
         public List<GestionEmpleadosBO> listar()
         {
             var alumnos = new List<GestionEmpleadosBO>();
-            String strBuscar = string.Format("SELECT CH.Nombre, Ch.ApellidoPaterno, Ch.ApellidoMaterno, Ch.Turno  FROM Choferes Ch");
-            //String strBuscar = string.Format("SELECT CH.Nombre, Ch.ApellidoPaterno, Ch.ApellidoMaterno, CH.FK_Camion, CH.FK_Turno  FROM Choferes CH, Camiones C, Horarios H WHERE CH.FK_Camion = C.Id and CH.FK_Turno = H.Id");
+            String strBuscar = string.Format("SELECT  Choferes.Nombre, Choferes.ApellidoPaterno, Choferes.ApellidoMaterno, Choferes.Direccion, Camiones.Serie, Horarios.Turno FROM ((Camiones INNER JOIN Choferes ON Camiones.Id = Choferes.FK_Camion) INNER JOIN Horarios ON Horarios.Id = Choferes.FK_Turno );");
             return alumnos = clsConex.EjecutarSetencialist(strBuscar);
-
-            //string strBuscar = string.Format("SELECT CH.Nombre, Ch.ApellidoPaterno, Ch.ApellidoMaterno, Ch.Turno  FROM Choferes Ch");
-            //SqlCommand adapter = new SqlCommand(strBuscar, conex.establecerConexion());
-            //conex.abrirConexion();
-            //SqlDataReader lectura;
-
-            //ArrayList tipous = new ArrayList();
-            //lectura = adapter.ExecuteReader();
-            //while (lectura.Read())
-            //{
-            //    tipous.Add(lectura["Nombre"].ToString());
-            //    tipous.Add(lectura["ApellidoPaterno"].ToString());
-            //    tipous.Add(lectura["ApellidoMaterno"].ToString());
-            //    tipous.Add(lectura["Turno"].ToString());
-
-            //}
-            //conex.cerrarconexion();
-            //return tipous;
         }
     }
 }

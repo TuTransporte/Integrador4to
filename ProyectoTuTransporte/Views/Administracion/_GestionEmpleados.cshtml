@@ -6,70 +6,88 @@
 
 <center><h2 class="category">Gestión de empleados</h2></center>
 
-<table style="width:500px">
+<table table class="table table-hover table-striped">
     <thead>
         <tr>
-            <th style="width:150px;text-align:left;">Nombre</th>
-            <th style="width:150px;text-align:left;">Apellido Paterno</th>
-            <th style="width:150px;text-align:left;">Apellido Materno</th>
-            <th style="width:150px;text-align:left;">Turno</th>
-            <th style="width:200px;">Acciones</th>
+            <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Turno</th>
+            <th> </th>
         </tr>
     </thead>
-@using (Html.BeginForm("GestionEmpleados", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <tbody>
-        @foreach (var u in Model)
-        {
-            <tr>
+    @using (Html.BeginForm("GestionEmpleados", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <tbody>
+            @foreach (var u in Model)
+            {
+                <tr>
 
-                <td>
-                    <input class="form-control" type="text">@u.Nombre
-                </td>
-                <td>
-                    <input class="form-control" type="text">@u.ApellidoPaterno
-                </td>
-                <td>
-                    <input class="form-control" type="text">@u.ApellidoMaterno
-                </td>
-                <td>
-                    <input class="form-control" type="text">@u.Turno
-                </td>
+                    <td>
+                        <input type="text" class="form-control" disabled value="@u.Nombre">
 
-                @*<td>
-<td style="width:150px;text-align:left;"></td>
-                <td style="width:150px;text-align:left;"></td>
-                <td style="width:150px;text-align:left;"></td>
-                <td style="width:150px;text-align:left;"></td>
-                <td style="width:200px;">
-                </td>*@
-            </tr>
-        }
-    </tbody>
-}
+                    </td>
+
+                    <td>
+                        <input type="text" class="form-control" disabled value="@u.ApellidoPaterno">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" disabled value="@u.ApellidoMaterno">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" disabled value="@u.Turno">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info">Seleccionar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
 
 </table>
 
-   <div class="row">
+<div class="row">
     <div class="col-md-8">
         <div class="card">
             <div class="header">
-                <h4 class="title">Editar perfil</h4>
+                <h4 class="title">Editar perfil de empleado</h4>
             </div>
             <div class="content">
                 <form>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Compañia</label>
-                                <input type="text" class="form-control" disabled placeholder="Company" value="TuTransporte">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
                                 <label>Puesto</label>
                                 <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
                             </div>
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label>Unidad del empleado</label>
+                                <ul>
+                                    <li class="dropdown">                                        
+                                        <a href="#" button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                                            <p>
+                                                Selección
+                                                <b class="caret"></b>
+                                            </p>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something</a></li>                                            
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            @*<div class="form-group">
+                                    <label>Unidad del empleado</label>
+                                    <input type="text" class="form-control" placeholder="Unidad del empleado">
+                                </div>*@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
@@ -79,16 +97,24 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Nombre(s)</label>
                                 <input type="text" class="form-control" placeholder="Nombre(s) del empleado">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Apellidos</label>
-                                <input type="text" class="form-control" placeholder="Apellido del empleado">
+                                <label>Apellido Paterno</label>
+                                <input type="text" class="form-control" placeholder="Apellido paterno">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input type="text" class="form-control" placeholder="Apellido materno">
                             </div>
                         </div>
                     </div>
@@ -100,34 +126,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Estado</label>
-                                <input type="text" class="form-control" placeholder="Estado">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Acerca de mi</label>
-                                <textarea rows="5" class="form-control" placeholder="Aquí puede estar su descripción"></textarea>
-                            </div>
-                        </div>
-                    </div>
+
+
                     <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
                     <div class="clearfix"></div>
                 </form>

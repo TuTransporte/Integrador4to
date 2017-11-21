@@ -24,6 +24,21 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
+        public ActionResult PanelUsuario()
+        {
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
         // Para poder visualizar la vista Login | Bryan
         public ActionResult Iniciarsesion(RegistroUsuarioBO objeus)
         {
@@ -41,7 +56,7 @@ namespace ProyectoTuTransporte.Controllers
                 {
                     if (datos[6].ToString() == "1")
                     {
-                        link = "~/FrontEnd/LogOk";
+                        link = "~/FrontEnd/PanelUsuario";
                     }
                     else
                     {
@@ -51,6 +66,7 @@ namespace ProyectoTuTransporte.Controllers
             }
             try
             {
+                Session["LogOK"] = true;
                 Session["Id"] = datos[0].ToString();
                 Session["Correo"] = datos[1].ToString();
                 Session["Nombres"] = datos[2].ToString();
@@ -63,9 +79,21 @@ namespace ProyectoTuTransporte.Controllers
             {
             }
             return Redirect(link);
-
-
         }
+
+        public ActionResult Cerrarsesion()
+        {
+            Session["LogOK"] = false;
+            Session["Id"] = "";
+            Session["Correo"] = "";
+            Session["Nombres"] = "";
+            Session["ApellidoPat"] = "";
+            Session["ApellidoMat"] = "";
+            Session["Telefono"] = "";
+            Session["Tipo"] = "";
+            return Redirect("~/FrontEnd/Index");
+        }
+
         //Ejecuta el registro de usuario
         public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
         {
@@ -77,7 +105,6 @@ namespace ProyectoTuTransporte.Controllers
             UsuarioBO.Contrasena = Request.Form["txtContra"];
             UsuarioBO.Telefono = Request.Form["txttelefono"];
             string contra2 = Request.Form["txtContrase"];
-
 
             if (UsuarioBO.Contrasena == contra2)
             {
@@ -95,7 +122,5 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View();
         }
-
-
     }
 }

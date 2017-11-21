@@ -9,7 +9,7 @@ namespace ProyectoTuTransporte.DAO
 {
     public class ConexionDAO
     {
-        
+
 
         SqlCommand ComandoSQL;
         SqlDataAdapter adaptador;
@@ -19,12 +19,18 @@ namespace ProyectoTuTransporte.DAO
 
         public SqlConnection establecerConexion()
         {
+            string cadena;
             //Conexion Montalvo
-            
-            con = new SqlConnection("Data Source=.;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            //cadena =".";
+            //-----------------------------------------------------//
+            //Conexion Bryan
+            cadena = "LAPTOP-5B0LK3E0";
+            //-----------------------------------------------------//
+
+            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
             return con;
-        }        
+        }
 
         //public SqlConnection establecerConexion()
         //{
@@ -32,7 +38,7 @@ namespace ProyectoTuTransporte.DAO
         //    con = new SqlConnection(cs);
         //    return con;
         //}
-        
+
         public void abrirConexion()
         {
             con.Open();
@@ -77,8 +83,6 @@ namespace ProyectoTuTransporte.DAO
             adaptador.Fill(DataSetAdaptador);
             this.cerrarconexion();
             return DataSetAdaptador;
-
-
         }
 
 
@@ -90,13 +94,6 @@ namespace ProyectoTuTransporte.DAO
             adapter.Fill(tabla);
             return tabla;
         }
-
-
-
-
-      
-
-
 
         //public void AbrirConexion()
         //{

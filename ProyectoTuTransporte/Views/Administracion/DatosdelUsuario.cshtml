@@ -5,130 +5,114 @@
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<h2>DatosdelUsuario</h2>
-
 @foreach (DataRow row in Model.Rows)
 {
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Editar perfil de empleado</h4>
+    <center><h2 class="category">Editar perfil de @row["Nombre"]</h2></center>
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Editar perfil</h4>
+            </div>
+            <div class="content">
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Puesto</label>
+                                <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Unidad del empleado</label>
+
+                            </div>
+
+                            @*<div class="form-group">
+                                   <label>Unidad del empleado</label>
+                                   <input type="text" class="form-control" placeholder="Unidad del empleado">
+                                </div>*@
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Turno</label>
+                                <input type="email" class="form-control" placeholder="Turno de trabajo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Nombre(s)</label>
+                                <input value="@row["Nombre"]" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido Paterno</label>
+                                <input value="@row["ApellidoPaterno"]" type="text" class="form-control" placeholder="Apellido paterno">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input value="@row["ApellidoMaterno"]" type="text" class="form-control" placeholder="Apellido materno">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input value="@row["Direccion"]" type="text" class="form-control" placeholder="Dirección del empleado">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/Administracion/GestionEmpleados" class="btn btn-danger">Cancelar</a>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-danger btn-fill pull-right">Eliminar perfil</button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card card-user">
+            <div class="image">
+                <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
+            </div>
+            <div class="content">
+                <div class="author">
+                    <a href="#">
+                        <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
+                        <h4 class="title">
+                            @row["Nombre"]<br />
+                            <small>@row["ApellidoPaterno"] @row["ApellidoMaterno"]</small>
+                        </h4>
+                    </a>
                 </div>
-                <div class="content">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Puesto</label>
-                                    <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Unidad del empleado</label>
-                                    <ul>
-                                        <li class="dropdown">
-                                            <a href="#" button class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                                <p>
-                                                    Selección
-                                                    <b class="caret"></b>
-                                                </p>
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#">Action</a></li>
-                                                <li><a href="#">Another action</a></li>
-                                                <li><a href="#">Something</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                @*<div class="form-group">
-                                       <label>Unidad del empleado</label>
-                                       <input type="text" class="form-control" placeholder="Unidad del empleado">
-                                    </div>*@
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Turno</label>
-                                    <input type="email" class="form-control" placeholder="Turno de trabajo">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Nombre(s)</label>
-                                    <input value="@row["Nombre"]" type="text" class="form-control" placeholder="Nombre(s) del empleado">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellido Paterno</label>
-                                    <input value="@row["ApellidoPaterno"]" type="text" class="form-control" placeholder="Apellido paterno">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Apellido Materno</label>
-                                    <input value="@row["ApellidoMaterno"]" type="text" class="form-control" placeholder="Apellido materno">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Dirección</label>
-                                    <input value="@row["Direccion"]" type="text" class="form-control" placeholder="Dirección del empleado">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                            </div>
-                            <div class="col-md-3">
-                                <button type="submit" class="btn btn-success btn-fill pull-right">Agregar perfil</button>
-                            </div>
-                            <div class="col-md-3">
-                                <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
-                            </div>
-                            <div class="col-md-3">
-                                <button type="submit" class="btn btn-danger btn-fill pull-right">Eliminar perfil</button>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </form>
+                <p class="description text-center">
+                </p>
+                <hr>
+                <div class="text-center">
                 </div>
             </div>
         </div>
     </div>
 }
-<div class="col-md-4">
-    <div class="card card-user">
-        <div class="image">
-            <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
-        </div>
-        <div class="content">
-            <div class="author">
-                <a href="#">
-                    <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
-                    <h4 class="title">
-                        Nuevo Usuario<br />
-                        <small>Descripción</small>
-                    </h4>
-                </a>
-            </div>
-            <p class="description text-center">
-                Descripción detallada
-            </p>
-            <hr>
-            <div class="text-center">
-            </div>
-        </div>
-    </div>
-</div>

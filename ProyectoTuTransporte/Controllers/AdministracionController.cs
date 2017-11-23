@@ -11,7 +11,7 @@ namespace ProyectoTuTransporte.Controllers
 {
     public class AdministracionController : Controller
     {
-        GestionEmpleadosDAO empleadosDAO = new GestionEmpleadosDAO();
+        GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         // GET: Administracion
         public ActionResult Index()
         {
@@ -20,19 +20,8 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult GestionEmpleados()
         {
-
-            //oBO.Nombre = Request.QueryString["txtNombre"];
-            //oBO.ApellidoPaterno = Request.QueryString["txtApellidop"];
-            //oBO.ApellidoMaterno = Request.QueryString["txtApellidom"];
-            //oBO.Turno = Request.QueryString["txtTurno"];
-
-            //ArrayList datosEmp = empleadosDAO.Listar(oBO);
-
-            //return PartialView("_GestionEmpleados");
-            return PartialView("_GestionEmpleados", empleadosDAO.Listar());
+            return PartialView("_GestionEmpleados", EmpleadosDAO.ListarEmpleados());
         }
-
-
 
         public ActionResult _GestionEmpleados()
         {
@@ -53,16 +42,13 @@ namespace ProyectoTuTransporte.Controllers
         public ActionResult DatosdelUsuario(GestionEmpleadosBO objem)
         {
             int idus = objem.Id;
-            return PartialView("DatosdelUsuario", empleadosDAO.LlenarCampos(idus));
+            return PartialView("DatosdelUsuario", EmpleadosDAO.LlenarCamposBtnEmpleados(idus));
         }
 
+        //Para poder visualizar la vista Mapas | Ricardo
         public ActionResult MapaAdmin()
         {
             return View();
         }
-
     }
-
-        
-    
 }

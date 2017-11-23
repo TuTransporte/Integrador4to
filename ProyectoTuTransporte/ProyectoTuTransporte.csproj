@@ -147,7 +147,6 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAO\cls_ConexionDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
@@ -418,6 +417,7 @@
     <Content Include="Views\FrontEnd\PanelUsuario.cshtml" />
     <Content Include="Views\Administracion\MapaAdmin.cshtml" />
     <Content Include="Views\Administracion\DatosdelUsuario.cshtml" />
+    <Content Include="Views\FrontEnd\Inicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

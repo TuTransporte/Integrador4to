@@ -24,6 +24,11 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
+        public ActionResult Inicio()
+        {
+            return View();
+        }
+
         public ActionResult PanelUsuario()
         {
             string valor = "";
@@ -40,12 +45,12 @@ namespace ProyectoTuTransporte.Controllers
         }
 
         // Para poder visualizar la vista Login | Bryan
-        public ActionResult Iniciarsesion(RegistroUsuarioBO objeus)
+        public ActionResult IniciarSesion(RegistroUsuarioBO objususario)
         {
             string link = "Login";
-            objeus.Correo = Request.Form["txtCorreo"];
-            objeus.Contrasena = Request.Form["txtContra"];
-            ArrayList datos = LoginDAO.Login(objeus);
+            objususario.Correo = Request.Form["txtCorreo"];
+            objususario.Contrasena = Request.Form["txtContra"];
+            ArrayList datos = LoginDAO.Login(objususario);
             if (datos.Count > 0)
             {
                 if (datos[6].ToString() == "4")
@@ -108,19 +113,13 @@ namespace ProyectoTuTransporte.Controllers
 
             if (UsuarioBO.Contrasena == contra2)
             {
-                UsuarioDAO.Agregar(UsuarioBO);
+                UsuarioDAO.AgregarUsuarios(UsuarioBO);
                 return Redirect("Index");
             }
             else
             {
                 return View();
             }
-
-        }
-
-        public ActionResult LogOK()
-        {
-            return View();
         }
     }
 }

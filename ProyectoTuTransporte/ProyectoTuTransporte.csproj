@@ -152,6 +152,7 @@
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
+    <Compile Include="DAO\ReportesDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

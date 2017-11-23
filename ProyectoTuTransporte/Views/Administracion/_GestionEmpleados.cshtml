@@ -1,4 +1,5 @@
-﻿@model List<ProyectoTuTransporte.BO.GestionEmpleadosBO>
+﻿@using System.Data;
+@model DataTable
 @{
 
     Layout = "~/Views/Administracion/GestionEmpleados.cshtml";
@@ -19,23 +20,23 @@
     @using (Html.BeginForm("GestionEmpleados", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <tbody>
-            @foreach (var u in Model)
+            @foreach (DataRow row in Model.Rows)
             {
                 <tr>
                     <td>
-                        <input type="text" class="form-control" disabled value="@u.Nombre">
+                        <input type="text" class="form-control" disabled value="@row["Nombre"]">
                     </td>
                     <td>
-                        <input type="text" class="form-control" disabled value="@u.ApellidoPaterno">
+                        <input type="text" class="form-control" disabled value="@row["ApellidoPaterno"]">
                     </td>
                     <td>
-                        <input type="text" class="form-control" disabled value="@u.ApellidoMaterno">
+                        <input type="text" class="form-control" disabled value="@row["ApellidoMaterno"]">
                     </td>
                     <td>
-                        <input type="text" class="form-control" disabled value="@u.Turno">
+                        <input type="text" class="form-control" disabled value="@row["Turno"]">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-info">Seleccionar</button>
+                        <a href="@Url.Action("DatosdelUsuario", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Seleccionar</a>
                     </td>
                 </tr>
             }

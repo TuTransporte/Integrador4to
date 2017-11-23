@@ -17,27 +17,28 @@ namespace ProyectoTuTransporte.DAO
         SqlConnection con;
         SqlCommand exec;
 
+
+        public ConexionDAO()
+        {
+            con = new SqlConnection("Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            exec = new SqlCommand();
+        }
+
         public SqlConnection establecerConexion()
         {
-            string cadena;
             //Conexion Montalvo
-            //cadena =".";
-            //-----------------------------------------------------//
-            //Conexion Bryan
-            cadena = "LAPTOP-5B0LK3E0";
-            //-----------------------------------------------------//
 
-            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            con = new SqlConnection("Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
             return con;
         }
 
-        //public SqlConnection establecerConexion()
-        //{
-        //    string cs = "Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
-        //    con = new SqlConnection(cs);
-        //    return con;
-        //}
+        public SqlConnection establecerConexion(string conesiaohd)
+        {
+            string cs = conesiaohd;
+            con = new SqlConnection(cs);
+            return con;
+        }
 
         public void abrirConexion()
         {
@@ -83,17 +84,26 @@ namespace ProyectoTuTransporte.DAO
             adaptador.Fill(DataSetAdaptador);
             this.cerrarconexion();
             return DataSetAdaptador;
+
+
         }
 
 
         public DataTable EjercutarSentenciaBusqueda(string sql) //SELECT
         {
-            SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, this.con);
             DataTable tabla = new DataTable();
             //rellenar un objeto DataSet con los resultados del elemento SelectCommand
             adapter.Fill(tabla);
             return tabla;
         }
+
+
+
+
+
+
+
 
         //public void AbrirConexion()
         //{

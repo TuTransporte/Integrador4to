@@ -415,6 +415,8 @@
     <Content Include="Views\Administracion\GestionEmpleados.cshtml" />
     <Content Include="Views\Shared\MasterFrontLog.cshtml" />
     <Content Include="Views\FrontEnd\PanelUsuario.cshtml" />
+    <Content Include="Views\Administracion\MapaAdmin.cshtml" />
+    <Content Include="Views\Administracion\DatosdelUsuario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

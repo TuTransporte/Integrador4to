@@ -20,7 +20,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult GestionEmpleados()
         {
-            
+
             //oBO.Nombre = Request.QueryString["txtNombre"];
             //oBO.ApellidoPaterno = Request.QueryString["txtApellidop"];
             //oBO.ApellidoMaterno = Request.QueryString["txtApellidom"];
@@ -29,10 +29,10 @@ namespace ProyectoTuTransporte.Controllers
             //ArrayList datosEmp = empleadosDAO.Listar(oBO);
 
             //return PartialView("_GestionEmpleados");
-            return PartialView("_GestionEmpleados", empleadosDAO.listar());
+            return PartialView("_GestionEmpleados", empleadosDAO.Listar());
         }
 
-        
+
 
         public ActionResult _GestionEmpleados()
         {
@@ -50,6 +50,19 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
         //Para poder visualizar la vista GestionEmpleados | Montalvo
-       
+        public ActionResult DatosdelUsuario(GestionEmpleadosBO objem)
+        {
+            int idus = objem.Id;
+            return PartialView("DatosdelUsuario", empleadosDAO.LlenarCampos(idus));
+        }
+
+        public ActionResult MapaAdmin()
+        {
+            return View();
+        }
+
     }
+
+        
+    
 }

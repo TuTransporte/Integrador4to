@@ -14,15 +14,7 @@ namespace ProyectoTuTransporte.DAO
         SqlCommand exec;
         public cls_ConexionDAO()
         {
-            string cadena;
-            //Conexion Montalvo
-            //cadena =".";
-            //-----------------------------------------------------//
-            //Conexion Bryan
-            cadena = "LAPTOP-5B0LK3E0";
-            //-----------------------------------------------------//
-
-            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            con = new SqlConnection("Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             //sirve para establecer las consultas e instrucciones SQL que se ejecutarán en el servidor
             exec = new SqlCommand();
         }

@@ -143,12 +143,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BO\GestionEmpleadosBO.cs" />
+    <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
+    <Compile Include="DAO\GestionUnidadesDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="DAO\ReportesDAO.cs" />
@@ -418,6 +420,9 @@
     <Content Include="Views\Administracion\MapaAdmin.cshtml" />
     <Content Include="Views\Administracion\DatosdelUsuario.cshtml" />
     <Content Include="Views\FrontEnd\Inicio.cshtml" />
+    <Content Include="Views\Administracion\GestionUnidades.cshtml" />
+    <Content Include="Views\Administracion\_GestionUnidades.cshtml" />
+    <Content Include="Views\Administracion\DatosDeUnidades.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,9 +19,9 @@ namespace ProyectoTuTransporte.DAO
         {
             string cadena = "";
             //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            //cadena = ".";
+            cadena = ".";
             //Conexion Bryan
             //cadena = ".";
             //-----------------------------------------------//
@@ -69,7 +69,15 @@ namespace ProyectoTuTransporte.DAO
         //}
         public ConexionDAO()
         {
-            con = new SqlConnection("Data Source=DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            string cadena = "";
+            //Conexion Ricardo
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //Conexion Montalvo
+            cadena = ".";
+            //Conexion Bryan
+            //cadena = ".";
+            //-----------------------------------------------//
+            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
         }
 

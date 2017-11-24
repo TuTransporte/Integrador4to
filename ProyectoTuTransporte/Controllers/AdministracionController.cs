@@ -12,6 +12,7 @@ namespace ProyectoTuTransporte.Controllers
     public class AdministracionController : Controller
     {
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
+        GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         // GET: Administracion
         public ActionResult Index()
         {
@@ -49,6 +50,19 @@ namespace ProyectoTuTransporte.Controllers
         public ActionResult MapaAdmin()
         {
             return View();
+        }
+        public ActionResult _GestionUnidades()
+        {
+            return View();
+        }
+        public ActionResult GestionUnidades()
+        {
+            return PartialView("_GestionUnidades", UnidadesDAO.ListarUnidades());
+        }
+        public ActionResult DatosDeUnidades(GestionUnidadesBO oUnidades)
+        {
+            int idUn = oUnidades.Id;
+            return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
         }
     }
 }

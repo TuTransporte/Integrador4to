@@ -64,13 +64,12 @@
                     <a href="#">
                         <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
                         <h4 class="title">
-                            Nuevo Usuario<br />
-                            <small>Descripción</small>
+                            @Session["Nombres"]<br />
+                            <small>@Session["ApellidoPat"] @Session["ApellidoMat"]</small>
                         </h4>
                     </a>
                 </div>
-                <p class="description text-center">
-                    Descripción detallada
+                <p class="description text-center">                    
                 </p>
             </div>
             <hr>

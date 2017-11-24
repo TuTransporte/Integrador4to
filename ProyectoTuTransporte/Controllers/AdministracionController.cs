@@ -13,10 +13,11 @@ namespace ProyectoTuTransporte.Controllers
     {
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
+        GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
         // GET: Administracion
         public ActionResult Index()
         {
-            return View();
+            return View(NoticiasDAO.MostarNoticias()); ;
         }
 
         public ActionResult GestionEmpleados()

@@ -17,7 +17,7 @@ namespace ProyectoTuTransporte.Controllers
         // GET: Administracion
         public ActionResult Index()
         {
-            return View(NoticiasDAO.MostarNoticias()); ;
+            return View(NoticiasDAO.MostarNoticias());
         }
 
         public ActionResult GestionEmpleados()

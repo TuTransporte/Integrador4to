@@ -16,7 +16,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable MostarNoticias()
         {
-            String cadena = string.Format("SELECT Id, Titulo, Mensaje, Fecha FROM Noticias;");
+            String cadena = string.Format("SELECT Id, Titulo, Mensaje, Fecha FROM Noticias Order By Fecha Desc;");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

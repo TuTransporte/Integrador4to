@@ -17,12 +17,32 @@ namespace ProyectoTuTransporte.Controllers
         // GET: Administracion
         public ActionResult Index()
         {
-            return View(NoticiasDAO.MostarNoticias());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View(NoticiasDAO.MostarNoticias());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult GestionEmpleados()
         {
-            return PartialView("_GestionEmpleados", EmpleadosDAO.ListarEmpleados());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return PartialView("_GestionEmpleados", EmpleadosDAO.ListarEmpleados());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult _GestionEmpleados()
@@ -33,44 +53,99 @@ namespace ProyectoTuTransporte.Controllers
         // Para poder visualizar la vista ControlDenuncias | Bryan
         public ActionResult ControlDenuncias()
         {
-            return View();
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
+
         // Para poder visualizar la vista PerfilUsuario | Bryan
         public ActionResult PerfilUsuario()
         {
-            return View();
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
+
         //Para poder visualizar la vista GestionEmpleados | Montalvo
         public ActionResult DatosdelUsuario(GestionEmpleadosBO objem)
         {
-            int idus = objem.Id;
-            return PartialView("DatosdelUsuario", EmpleadosDAO.LlenarCamposBtnEmpleados(idus));
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                int idus = objem.Id;
+                return PartialView("DatosdelUsuario", EmpleadosDAO.LlenarCamposBtnEmpleados(idus));
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         //Para poder visualizar la vista Mapas | Ricardo
         public ActionResult MapaAdmin()
         {
-            return View();
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
+
         public ActionResult _GestionUnidades()
         {
             return View();
         }
+
         public ActionResult GestionUnidades()
         {
-            return PartialView("_GestionUnidades", UnidadesDAO.ListarUnidades());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return PartialView("_GestionUnidades", UnidadesDAO.ListarUnidades());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
+
         public ActionResult DatosDeUnidades(GestionUnidadesBO oUnidades)
         {
             int idUn = oUnidades.Id;
             return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
         }
+
         public ActionResult ModificarUnidades(GestionUnidadesBO oUnidades)
         {
             var r = oUnidades.Id > 0 ?
                    UnidadesDAO.ModificarUnidades(oUnidades) :
                    UnidadesDAO.AgregarUnidades(oUnidades);
-
             return Redirect("~/Administracion/GestionUnidades");
         }
 

@@ -73,5 +73,13 @@ namespace ProyectoTuTransporte.Controllers
 
             return Redirect("~/Administracion/GestionUnidades");
         }
+
+        public ActionResult PublicarNoticia(GestionNoticiasBO NoticiaBO)
+        {
+            NoticiaBO.Titulo = Request.Form["recipient-name"];
+            NoticiaBO.Mensaje = Request.Form["message-text"];
+            NoticiasDAO.AgregarNoticia(NoticiaBO);
+            return Redirect("~/Administracion/Index");
+        }
     }
 }

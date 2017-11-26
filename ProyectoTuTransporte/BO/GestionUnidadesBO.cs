@@ -9,6 +9,8 @@ namespace ProyectoTuTransporte.BO
     {
         public int Id { get; set; }
         public string Serie { get; set; }
+        public string Matricula { get; set; }
+        public string Comentarios { get; set; }
         public int FK_Ruta { get; set; }
     }
 }

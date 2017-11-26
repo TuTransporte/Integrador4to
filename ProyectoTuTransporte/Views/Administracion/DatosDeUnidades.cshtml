@@ -1,4 +1,6 @@
 ﻿@using System.Data;
+@using ProyectoTuTransporte.BO;
+
 @model DataTable
 
 @{
@@ -16,17 +18,17 @@
             <div class="header">
                 <h4 class="title">Editar Unidades</h4>
             </div>
-            <div class="content">   
-                <form>
+            <div class="content">
                 @using (Html.BeginForm("ModificarUnidades", "Administracion", FormMethod.Post))
                 {
-                    <input value="@row["Id"]" type="text" class="form-control" style="visibility:hidden;"/>
+                <form>               
+                    <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;"/>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Número de serie</label>
-                                <input value="@row["Serie"]" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                                <input value="@row["Serie"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Nombre(s) del empleado">
                             </div>
                         </div>
                     </div>
@@ -34,7 +36,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Matrícula</label>
-                                <input value="@row["Matricula"]" type="text" class="form-control" placeholder="Apellido paterno">
+                                <input value="@row["Matricula"]" id="txtMatricula" name="txtMatricula" type="text" class="form-control" placeholder="Apellido paterno">
                             </div>
                         </div>
 
@@ -43,7 +45,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Comentarios</label>
-                                <textarea class="form-control" placeholder="Comentarios" rows="4" cols="50" style="resize:none;">@row["Comentarios"]</textarea>
+                                <textarea class="form-control" placeholder="Comentarios" rows="4" cols="50" style="resize:none;" id="txtComentarios" name="txtComentarios">@row["Comentarios"]</textarea>
 
                             </div>
                         </div>
@@ -57,17 +59,23 @@
                         </div>
                         <div class="col-md-3">
                             <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                            @*<button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>*@
                         </div>
                         <div class="col-md-3">
-                            <!-- Button trigger modal -->
+                            <!-- Button trigger modal --> 
                             <button type="button" class="btn btn-danger btn-fill pull-right" data-toggle="modal" data-target="#myModal" onclick="Mensaje(); Cuerpo()">
                                 Eliminar perfil
-                            </button>
+                            </button>                           
                         </div>
+                        
                     </div>
                     <div class="clearfix"></div>
-                }
+
+
+                    
+
                 </form>
+                }
             </div>
         </div>
     </div>

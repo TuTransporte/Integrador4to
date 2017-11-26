@@ -67,11 +67,19 @@ namespace ProyectoTuTransporte.Controllers
         }
         public ActionResult ModificarUnidades(GestionUnidadesBO oUnidades)
         {
-            var r = oUnidades.Id > 0 ?
-                   UnidadesDAO.ModificarUnidades(oUnidades) :
-                   UnidadesDAO.AgregarUnidades(oUnidades);
+            oUnidades.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oUnidades.Serie = Request.Form["txtSerie"];
+            oUnidades.Matricula = Request.Form["txtMatricula"];
+            oUnidades.Comentarios = Request.Form["txtComentarios"];
+
+
+            //var r = oUnidades.Id > 0 ?
+            //       UnidadesDAO.ModificarUnidades(oUnidades) :
+            //       UnidadesDAO.AgregarUnidades(oUnidades);
+            UnidadesDAO.ModificarUnidades(oUnidades);
 
             return Redirect("~/Administracion/GestionUnidades");
         }
+        
     }
 }

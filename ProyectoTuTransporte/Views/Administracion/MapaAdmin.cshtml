@@ -47,6 +47,38 @@
     </div>
 </div>
 
+<input type="text" name="origin" id="origin" value="21.00052724, -89.60118771">
+<input type="text" name="destination" id="destination" value="20.98716572, -89.70135212">
+<!-- script para mostrar la ruta -->
+
+<script>
+    function displayRoute(origin, destination, service, display) {
+        service.route({
+            origin: $('#origin').val(),
+            destination: $('#destination').val(),
+            //waypoints: [{ location: 'Adelaide, SA' }, { location: 'Broken Hill, NSW' }],
+            travelMode: 'DRIVING',
+            avoidTolls: true
+        }, function (response, status) {
+            if (status === 'OK') {
+                display.setDirections(response);
+            } else {
+                alert('Could not display directions due to: ' + status);
+            }
+            });
+
+
+
+    }
+</script>
+
+
+
+
+
+
+
+
 
 
 

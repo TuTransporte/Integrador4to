@@ -67,19 +67,19 @@ namespace ProyectoTuTransporte.Controllers
         }
         public ActionResult ModificarUnidades(GestionUnidadesBO oUnidades)
         {
-            oUnidades.Id = Convert.ToInt32(Request.Form["txtId"]);
-            oUnidades.Serie = Request.Form["txtSerie"];
-            oUnidades.Matricula = Request.Form["txtMatricula"];
-            oUnidades.Comentarios = Request.Form["txtComentarios"];
-
-
-            //var r = oUnidades.Id > 0 ?
-            //       UnidadesDAO.ModificarUnidades(oUnidades) :
-            //       UnidadesDAO.AgregarUnidades(oUnidades);
-            UnidadesDAO.ModificarUnidades(oUnidades);
+            var r = oUnidades.Id > 0 ?
+                   UnidadesDAO.ModificarUnidades(oUnidades) :
+                   UnidadesDAO.AgregarUnidades(oUnidades);
 
             return Redirect("~/Administracion/GestionUnidades");
         }
-        
+
+        public ActionResult PublicarNoticia(GestionNoticiasBO NoticiaBO)
+        {
+            NoticiaBO.Titulo = Request.Form["recipient-name"];
+            NoticiaBO.Mensaje = Request.Form["message-text"];
+            NoticiasDAO.AgregarNoticia(NoticiaBO);
+            return Redirect("~/Administracion/Index");
+        }
     }
 }

@@ -225,37 +225,38 @@
             </div>
         </div>
     </div>
-
+    @using (Html.BeginForm("PublicarNoticia", "Administracion", FormMethod.Post))
+    {
     <!-- Modal agregar publicación-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="recipient-name" class="form-control-label">Recipient:</label>
-                            <input type="text" class="form-control" id="recipient-name">
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="form-control-label">Message:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nueva publicación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label" id="titulonoticia"></label>
+                                <input type="text" class="form-control" id="recipient-name" name="recipient-name">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label" id="cuerponoticia"></label>
+                                <textarea class="form-control" id="message-text" name="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Publicar noticia</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    }
 
 
     <!--   Core JS Files   -->
@@ -283,9 +284,9 @@
                 message: "Bienvedio a <b>TuTransporte</b> - un hermoso lugar para mejorar el día a día."
 
             }, {
-                type: 'info',
-                timer: 4000
-            });
+                    type: 'info',
+                    timer: 4000
+                });
 
         });
     </script>
@@ -306,12 +307,12 @@
 
             // Google has tweaked their interface somewhat - this tells the api to use that new UI
             google.maps.visualRefresh = true;
-            var Liverpool = new google.maps.LatLng(53.408841, -2.981397);
+            var Mérida = new google.maps.LatLng(20.9673702, -89.59258569999997);
 
             // These are options that set initial zoom level, where the map is centered globally to start, and the type of map to show
             var mapOptions = {
                 zoom: 14,
-                center: Liverpool,
+                center: Mérida,
                 mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
             };
 
@@ -385,21 +386,7 @@
                 directionsDisplay);
             //
             //
-            function displayRoute(origin, destination, service, display) {
-                service.route({
-                    origin: origin,
-                    destination: destination,
-                    waypoints: [{ location: 'Adelaide, SA' }, { location: 'Broken Hill, NSW' }],
-                    travelMode: 'DRIVING',
-                    avoidTolls: true
-                }, function (response, status) {
-                    if (status === 'OK') {
-                        display.setDirections(response);
-                    } else {
-                        alert('Could not display directions due to: ' + status);
-                    }
-                });
-            }
+            
 
             //
             function computeTotalDistance(result) {
@@ -414,9 +401,25 @@
             //
 
 
+
+            function changeMarkerPosition(marker) {
+                var latlng = new google.maps.LatLng(-24.397, 140.644);
+                marker.setPosition(latlng);
+            }
+
+
         }
 
     </script>
+
+
+    
+    
+
+
+
+
+
     <!--Modal confirmar cambios de rutas-->
     <script>
         $('#myModal').on('shown.bs.modal', function () {
@@ -428,16 +431,17 @@
             $('#cuerpo').html('Se eliminará el la ruta seleccionada \n ')
         }
     </script>
+
     <!--Modal agregar publicación-->
     <script>
         $('#exampleModal').on('shown.bs.modal', function () {
             $('#myInput').focus()
         })
 
-        //function Mensaje() {
-        //    $('#exampleModalLabel').html('¿Desea eliminar la ruta?')
-        //    $('#cuerpo').html('Se eliminará el la ruta seleccionada \n ')
-        //}
+        function Noticia() {
+            $('#titulonoticia').html('Título de la noticia')
+            $('#cuerponoticia').html('Mensaje de la noticia \n ')
+        }
     </script>
 
 </body>

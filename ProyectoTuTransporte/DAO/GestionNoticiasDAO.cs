@@ -26,11 +26,11 @@ namespace ProyectoTuTransporte.DAO
         //    return conex.EjercutarSentenciaBusqueda(cadena);
         //}
 
-        public int AgregarUnidades(GestionNoticiasBO oUnidades)
+        public int AgregarNoticia(GestionNoticiasBO oNoticias)
         {
-            cmd = new SqlCommand("INSERT INTO Noticias Values (@Titulo, @Mensaje,@Fecha)");
-            cmd.Parameters.Add("@Titulo", SqlDbType.VarChar).Value = oUnidades.Titulo;
-            cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar).Value = oUnidades.Mensaje;
+            cmd = new SqlCommand("Insert Into Noticias (Titulo, Mensaje, Fecha) Values (@Titulo, @Mensaje, @Fecha)");
+            cmd.Parameters.Add("@Titulo", SqlDbType.VarChar).Value = oNoticias.Titulo;
+            cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar).Value = oNoticias.Mensaje;
             cmd.Parameters.Add("@Fecha", SqlDbType.VarChar).Value = Convert.ToString(DateTime.Now);
             cmd.CommandType = CommandType.Text;
             return obj.EjecutarComando(cmd);

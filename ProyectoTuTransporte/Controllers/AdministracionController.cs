@@ -65,5 +65,13 @@ namespace ProyectoTuTransporte.Controllers
             int idUn = oUnidades.Id;
             return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
         }
+        public ActionResult ModificarUnidades(GestionUnidadesBO oUnidades)
+        {
+            var r = oUnidades.Id > 0 ?
+                   UnidadesDAO.ModificarUnidades(oUnidades) :
+                   UnidadesDAO.AgregarUnidades(oUnidades);
+
+            return Redirect("~/Administracion/GestionUnidades");
+        }
     }
 }

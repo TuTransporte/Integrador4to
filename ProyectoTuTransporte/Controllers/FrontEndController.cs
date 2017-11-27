@@ -13,6 +13,7 @@ namespace ProyectoTuTransporte.Controllers
     {
         UsuarioDAO UsuarioDAO = new UsuarioDAO();
         LoginDAO LoginDAO = new LoginDAO();
+        GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         // GET: FrontEnd        
         public ActionResult Index()
         {
@@ -121,6 +122,19 @@ namespace ProyectoTuTransporte.Controllers
             {
                 return Redirect("~/FrontEnd/Login");
             }
+        }
+
+        public ActionResult ActualizarInfoU(GestionPerfilBO PerfilBO)
+        {
+            PerfilBO.Id = Convert.ToInt32(Request.Form["txtId"]);
+            PerfilBO.Nombre = Request.Form["txtNombres"];
+            PerfilBO.ApellidoPaterno = Request.Form["txtApellidoP"];
+            PerfilBO.ApellidoMaterno = Request.Form["txtApellidoM"];
+            PerfilBO.Correo = Request.Form["txtCorreo"];
+            PerfilBO.Telefono = Request.Form["txtTelefono"];
+            PerfilDAO.ModificarPerfil(PerfilBO);
+
+            return Redirect("~/FrontEnd/PanelUsuario");
         }
     }
 }

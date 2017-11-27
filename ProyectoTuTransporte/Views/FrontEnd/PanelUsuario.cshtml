@@ -8,27 +8,30 @@
 <br />
 <br />
 <section id="fh5co-explore" data-section="explore">
+@using (Html.BeginForm("ActualizarInfoU", "FrontEnd", FormMethod.Post))
+{
     <div class="container">
         <div class="">
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="row">
+                    <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Nombre(s)</label>
-                            <input type="text" class="form-control" placeholder="Nombre(s) del empleado" value="@Session["Nombres"]">
+                            <input type="text" class="form-control" placeholder="Nombre(s) del empleado"  name="txtNombres" value="@Session["Nombres"]">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Apellido paterno</label>
-                            <input type="text" class="form-control" placeholder="Apellido paterno" value="@Session["ApellidoPat"]">
+                            <input type="text" class="form-control" placeholder="Apellido paterno" name="txtApellidoP" value="@Session["ApellidoPat"]">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Apellido materno</label>
-                            <input type="text" class="form-control" placeholder="Apellido materno" value="@Session["ApellidoMat"]">
+                            <input type="text" class="form-control" placeholder="Apellido materno" name="txtApellidoM" value="@Session["ApellidoMat"]">
                         </div>
                     </div>
                 </div>
@@ -36,13 +39,13 @@
                     <div class="col-md-6    ">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Correo</label>
-                            <input type="email" class="form-control" placeholder="Correo electrónico" value="@Session["Correo"]">
+                            <input type="email" class="form-control" placeholder="Correo electrónico" name="txtCorreo" value="@Session["Correo"]">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Teléfono</label>
-                            <input type="text" class="form-control" placeholder="Teléfono" value="@Session["Telefono"]">
+                            <input type="text" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
                         </div>
                     </div>
                 </div>
@@ -52,4 +55,5 @@
             <div class="clearfix"></div>
         </div>
     </div>
+}
 </section>

@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BO\GestionEmpleadosBO.cs" />
+    <Compile Include="BO\GestionPerfilBO.cs" />
     <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\GestionNoticiasBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
+    <Compile Include="DAO\GestionPerfilDAO.cs" />
     <Compile Include="DAO\GestionUnidadesDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />

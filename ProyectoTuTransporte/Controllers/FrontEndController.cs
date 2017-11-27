@@ -119,7 +119,7 @@ namespace ProyectoTuTransporte.Controllers
             }
             else
             {
-                return View();
+                return Redirect("~/FrontEnd/`Login");
             }
         }
     }

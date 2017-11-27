@@ -203,31 +203,31 @@
     </div>
 
 
-
     <!-- Modal -->
     @using (Html.BeginForm("EliminarUnidad", "Administracion", FormMethod.Post))
     {
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <br />
-                    <p id="cuerpo"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger btn-fill pull-right">Aceptar</button>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <br />
+                        <p id="cuerpo"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger btn-fill pull-right">Aceptar</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     }
+
     @using (Html.BeginForm("PublicarNoticia", "Administracion", FormMethod.Post))
     {
     <!-- Modal agregar publicación-->
@@ -389,7 +389,7 @@
                 directionsDisplay);
             //
             //
-            
+
 
             //
             function computeTotalDistance(result) {
@@ -416,13 +416,6 @@
     </script>
 
 
-    
-    
-
-
-
-
-
     <!--Modal confirmar cambios de rutas-->
     <script>
         $('#myModal').on('shown.bs.modal', function () {
@@ -446,6 +439,7 @@
             $('#cuerponoticia').html('Mensaje de la noticia \n ')
         }
     </script>
+
 
 </body>
 </html>

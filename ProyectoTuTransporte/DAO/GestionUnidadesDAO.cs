@@ -12,7 +12,6 @@ namespace ProyectoTuTransporte.DAO
     {
         SqlCommand cmd;
         ConexionDAO conex = new ConexionDAO();
-        
 
         public DataTable ListarUnidades()
         {
@@ -22,7 +21,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable LlenarCamposBtnUnidades(int IdUnidades)
         {
-            String cadena = "SELECT Id, Serie, Matricula, Comentarios FROM Camiones WHERE Id = '" + IdUnidades + "';";                        
+            String cadena = "SELECT Id, Serie, Matricula, Comentarios FROM Camiones WHERE Id = '" + IdUnidades + "';";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
@@ -36,7 +35,6 @@ namespace ProyectoTuTransporte.DAO
             cmd.CommandType = CommandType.Text;
             return EjecutarComando(cmd);
         }
-
 
         public int ModificarUnidades(GestionUnidadesBO oUnidades)
         {
@@ -64,6 +62,5 @@ namespace ProyectoTuTransporte.DAO
 
             return Unidades;
         }
-
     }
 }

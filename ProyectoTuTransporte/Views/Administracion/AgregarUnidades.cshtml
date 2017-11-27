@@ -6,24 +6,24 @@
 
 
 
-    <center><h2 class="category">Datos de las unidades</h2></center>
+<center><h2 class="category">Datos de las unidades</h2></center>
 
-    <div class="col-md-8">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Editar Unidades</h4>
-            </div>
-            <div class="content">
-                @using (Html.BeginForm("AgregarUnidad", "Administracion", FormMethod.Post))
-                {
-                <form>               
-                    <input id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;"/>
+<div class="col-md-8">
+    <div class="card">
+        <div class="header">
+            <h4 class="title">Editar Unidades</h4>
+        </div>
+        <div class="content">
+            @using (Html.BeginForm("AgregarUnidad", "Administracion", FormMethod.Post))
+            {
+                <form>
+                    <input id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Número de serie</label>
-                                <input  id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Número de Serie">
+                                <input id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Número de Serie">
                             </div>
                         </div>
                     </div>
@@ -57,30 +57,25 @@
                             @*<button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>*@
                         </div>
                         <div class="col-md-3">
-                            <!-- Button trigger modal --> 
-                                                  
+                            <!-- Button trigger modal -->
+
                         </div>
-                        
                     </div>
                     <div class="clearfix"></div>
-
-
-                    
-
                 </form>
-                }
-            </div>
+            }
         </div>
     </div>
+</div>
 
-    <div class="col-md-4">
-        <div class="card card-user">
-            <div class="image">
-                <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
-            </div>
-
+<div class="col-md-4">
+    <div class="card card-user">
+        <div class="image">
+            <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
         </div>
+
     </div>
+</div>
 
 
 

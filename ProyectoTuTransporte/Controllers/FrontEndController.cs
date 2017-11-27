@@ -82,6 +82,7 @@ namespace ProyectoTuTransporte.Controllers
             }
             catch (Exception)
             {
+
             }
             return Redirect(link);
         }

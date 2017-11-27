@@ -142,21 +142,31 @@ namespace ProyectoTuTransporte.Controllers
             return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
         }
 
-
         public ActionResult AgregarUnidades()
         {
-            return View();
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
-        public ActionResult AgregarUnidad (GestionUnidadesBO oUnidades)
+
+        public ActionResult AgregarUnidad(GestionUnidadesBO oUnidades)
         {
             //oUnidades.Id = Convert.ToInt32(Request.Form["txtId"]);
             oUnidades.Serie = Request.Form["txtSerie"];
             oUnidades.Matricula = Request.Form["txtMatricula"];
             oUnidades.Comentarios = Request.Form["txtComentarios"];
-
             UnidadesDAO.AgregarUnidades(oUnidades);
             return Redirect("~/Administracion/GestionUnidades");
         }
+
         //Método para modificar información de una Unidad | Montalvo
         public ActionResult ModificarUnidades(GestionUnidadesBO oUnidades)
         {
@@ -164,23 +174,16 @@ namespace ProyectoTuTransporte.Controllers
             oUnidades.Serie = Request.Form["txtSerie"];
             oUnidades.Matricula = Request.Form["txtMatricula"];
             oUnidades.Comentarios = Request.Form["txtComentarios"];
-
-
-            //var r = oUnidades.Id > 0 ?
-            //       UnidadesDAO.ModificarUnidades(oUnidades) :
-            //       UnidadesDAO.AgregarUnidades(oUnidades);
             UnidadesDAO.ModificarUnidades(oUnidades);
-
-            return Redirect("~/Administracion/GestionUnidades");            
+            return Redirect("~/Administracion/GestionUnidades");
         }
 
         //Método para eliminar información de una Unidad | Montalvo
         public ActionResult EliminarUnidad(GestionUnidadesBO oUnidades)
         {
-            
             oUnidades.Id = Convert.ToInt32(Session["Id"]);
             UnidadesDAO.EliminarUnidad(oUnidades);
-            Session["Id"]=null;
+            Session["Id"] = null;
             return Redirect("~/Administracion/GestionUnidades");
         }
 

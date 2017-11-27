@@ -21,11 +21,8 @@ namespace ProyectoTuTransporte.BO
         public string Correolog { get; set; }
         public string Contrasenalog { get; set; }
 
-
-
         public string Encriptar(string sr)
         {
-
             MD5 md5 = MD5CryptoServiceProvider.Create();
             ASCIIEncoding encoding = new ASCIIEncoding();
             byte[] stream = null;
@@ -33,13 +30,6 @@ namespace ProyectoTuTransporte.BO
             stream = md5.ComputeHash(encoding.GetBytes(sr));
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
-
-
-
-
-            //}
-
         }
-
     }
 }

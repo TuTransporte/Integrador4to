@@ -23,7 +23,7 @@ namespace ProyectoTuTransporte.DAO
             //Conexion Montalvo
             cadena = ".";
             //Conexion Bryan
-            //cadena = "LAPTOP-5B0LK3E0";
+            cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
             con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();

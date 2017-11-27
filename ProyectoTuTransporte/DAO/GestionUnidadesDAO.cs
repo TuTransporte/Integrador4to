@@ -22,17 +22,17 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable LlenarCamposBtnUnidades(int IdUnidades)
         {
-            String cadena = "SELECT Id, Serie, Matricula, Comentarios FROM Camiones WHERE Id = '" + IdUnidades + "';";
+            String cadena = "SELECT Id, Serie, Matricula, Comentarios FROM Camiones WHERE Id = '" + IdUnidades + "';";                        
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
         public int AgregarUnidades(GestionUnidadesBO oUnidades)
         {
-            cmd = new SqlCommand("INSERT INTO Camiones (Serie, Matricula, Comentarios, FK_Rutas) Values (@Serie, @Matricula, @Comentarios @FK_Rutas)");
+            cmd = new SqlCommand("INSERT INTO Camiones (Serie, Matricula, Comentarios) Values (@Serie, @Matricula, @Comentarios)");
             cmd.Parameters.Add("@Serie", SqlDbType.VarChar).Value = oUnidades.Serie;
-            cmd.Parameters.Add("@Matricula", SqlDbType.VarChar).Value = oUnidades.Serie;
-            cmd.Parameters.Add("@Comentarios", SqlDbType.VarChar).Value = oUnidades.Serie;
-            cmd.Parameters.Add("@FK_Rutas", SqlDbType.VarChar).Value = oUnidades.FK_Ruta;            
+            cmd.Parameters.Add("@Matricula", SqlDbType.VarChar).Value = oUnidades.Matricula;
+            cmd.Parameters.Add("@Comentarios", SqlDbType.VarChar).Value = oUnidades.Comentarios;
+            //cmd.Parameters.Add("@FK_Rutas", SqlDbType.VarChar).Value = 1;
             cmd.CommandType = CommandType.Text;
             return EjecutarComando(cmd);
         }
@@ -42,15 +42,27 @@ namespace ProyectoTuTransporte.DAO
         {
             cmd = new SqlCommand("UPDATE Camiones SET Serie='" + oUnidades.Serie + "', Matricula='" + oUnidades.Matricula + "', Comentarios='" + oUnidades.Comentarios + "' WHERE Id='" + oUnidades.Id + "'");
             return conex.EjecutarComando(cmd);
+        }
 
-            //cmd = new SqlCommand("UPDATE Camiones SET Serie='@Serie', Matricula='@Matricula', Comentarios='@Comentarios' WHERE Id='@Id'");
-            //cmd.Parameters.Add("@Serie", SqlDbType.VarChar).Value = oUnidades.Serie;
-            //cmd.Parameters.Add("@Matricula", SqlDbType.VarChar).Value = oUnidades.Matricula;
-            //cmd.Parameters.Add("@Comentarios", SqlDbType.VarChar).Value = oUnidades.Comentarios;
-            //cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = oUnidades.Id;
+        public int EliminarUnidad(GestionUnidadesBO oUnidades)
+        {
+            cmd = new SqlCommand("DELETE FROM Camiones WHERE id='" + oUnidades.Id + "'");
+            return conex.EjecutarComando(cmd);
+        }
 
-            //cmd.CommandType = CommandType.Text;
-            //return EjecutarComando(cmd);
+        public GestionUnidadesBO Obtener(int id)
+        {
+            var Unidades = new GestionUnidadesBO();
+            String strBuscar = string.Format("SELECT Id,Serie,Matricula,Comentarios,FK_Ruta FROM Camiones where Id=" + id);
+            DataTable datos = conex.EjercutarSentenciaBusqueda(strBuscar);
+            DataRow row = datos.Rows[0];
+            Unidades.Id = Convert.ToInt32(row["Id"]);
+            Unidades.Serie = row["Serie"].ToString();
+            Unidades.Matricula = row["Matricula"].ToString();
+            Unidades.Comentarios = row["Comentarios"].ToString();
+            Unidades.FK_Ruta = Convert.ToInt32(row["FK_Ruta"].ToString());
+
+            return Unidades;
         }
 
     }

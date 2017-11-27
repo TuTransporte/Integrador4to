@@ -205,6 +205,8 @@
 
 
     <!-- Modal -->
+    @using (Html.BeginForm("EliminarUnidad", "Administracion", FormMethod.Post))
+    {
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -220,11 +222,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-danger btn-fill pull-right">Aceptar</button>
+                    <button type="submit" class="btn btn-danger btn-fill pull-right">Aceptar</button>
                 </div>
             </div>
         </div>
     </div>
+    }
     @using (Html.BeginForm("PublicarNoticia", "Administracion", FormMethod.Post))
     {
     <!-- Modal agregar publicación-->

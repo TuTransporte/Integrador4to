@@ -11,6 +11,7 @@ namespace ProyectoTuTransporte.DAO
 {
     public class GestionEmpleadosDAO
     {
+        SqlCommand cmd;
         ConexionDAO conex = new ConexionDAO();
 
         public DataTable ListarEmpleados()
@@ -24,5 +25,28 @@ namespace ProyectoTuTransporte.DAO
             String cadena = "Select Nombre, ApellidoPaterno, ApellidoMaterno, Direccion from Choferes where Id = '" + IdEmpleados + "';";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
+
+        public int AgregarEmpleado(GestionEmpleadosBO oEmpleados)
+        {
+            cmd = new SqlCommand("INSERT INTO Choferes (Nombre, ApellidoPaterno, ApellidoMaterno, Direccion) Values ('" + oEmpleados.Nombre + "', '" + oEmpleados.ApellidoPaterno + "', '" + oEmpleados.ApellidoMaterno + "','" + oEmpleados.Direccion + "')");
+            return conex.EjecutarComando(cmd);
+        }
+
+        public int ModificarEmpleado(GestionEmpleadosBO oEmpleados)
+        {
+            cmd = new SqlCommand("UPDATE Choferes SET Nombre='" + oEmpleados.Nombre + "', ApellidoPaterno='" + oEmpleados.ApellidoPaterno + "', ApellidoMaterno='" + oEmpleados.ApellidoMaterno + "', Direccion='" + oEmpleados.Direccion + "', FK_Camion='" + oEmpleados.FK_Camion + "', FK_Turno='" + oEmpleados.FK_Turno + "' WHERE Id='" + oEmpleados.Id + "'");
+            return conex.EjecutarComando(cmd);
+        }
+
+        public int EliminarEmpleado(GestionEmpleadosBO oEmpleados)
+        {
+            cmd = new SqlCommand("DELETE FROM Choferes WHERE id='" + oEmpleados.Id + "'");
+             return conex.EjecutarComando(cmd);
+        }
+
     }
+
+
+
+
 }

@@ -162,11 +162,11 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult AgregarUnidad(GestionUnidadesBO oUnidades)
         {
-            //oUnidades.Id = Convert.ToInt32(Request.Form["txtId"]);
             oUnidades.Serie = Request.Form["txtSerie"];
             oUnidades.Matricula = Request.Form["txtMatricula"];
             oUnidades.Comentarios = Request.Form["txtComentarios"];
             UnidadesDAO.AgregarUnidades(oUnidades);
+
             return Redirect("~/Administracion/GestionUnidades");
         }
 
@@ -211,6 +211,36 @@ namespace ProyectoTuTransporte.Controllers
             Mod_Hor.Horarios = HorariosDAO.ListHor();
             return PartialView(Mod_Hor);
         }
+
+
+        ////CONTROLADORES  DE GESTION DE EMPLEADOS/////
+
+        public ActionResult AgregarEmpleado()
+        {
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
+        public ActionResult AgregarEmpleadoNVO(GestionEmpleadosBO oEmpleados)
+        {
+            oEmpleados.Nombre = Request.Form["txtNombres"];
+            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+            oEmpleados.Direccion = Request.Form["txtDireccion"];
+
+            EmpleadosDAO.AgregarEmpleado(oEmpleados);
+            return Redirect("~/Administracion/_GestionEmpleados");
+        }
+
 
     }
 }

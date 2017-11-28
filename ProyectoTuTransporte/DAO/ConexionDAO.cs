@@ -53,21 +53,7 @@ namespace ProyectoTuTransporte.DAO
             return (id != 0) ? id : 0; ;
         }
 
-        //public DataSet EjecutarSentencia(SqlCommand sqlcomando)
-        //{
-        //    // SELECT DE EMPLEADOS
-        //    ComandoSQL = new SqlCommand();
-        //    adaptador = new SqlDataAdapter();
-        //    DataSetAdaptador = new DataSet();
-        //    ComandoSQL = sqlcomando;
-        //    ComandoSQL.Connection = this.EstablecerConexion();
-        //    this.AbrirConexion();
-        //    adaptador.SelectCommand = ComandoSQL;
-        //    adaptador.Fill(DataSetAdaptador);
-        //    this.CerrarConexion();
-        //    return DataSetAdaptador;
-        //}
-
+        
         public ConexionDAO()
         {
             string cadena = "";
@@ -104,6 +90,27 @@ namespace ProyectoTuTransporte.DAO
                     var Unidad = new SelectListItem
                     {
                         Text = dr["Serie"].ToString(),
+                        Value = dr["Id"].ToString()
+                    };
+                    Unidades.Add(Unidad);
+                }
+            }
+            this.CerrarConexion();
+            return Unidades;
+        }
+        public List<SelectListItem> EjecutarSetencialistHor(String strSql)
+        {
+            var Unidades = new List<SelectListItem>();
+            this.AbrirConexion();
+            var query = new SqlCommand(strSql, this.con);
+            using (var dr = query.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+
+                    var Unidad = new SelectListItem
+                    {
+                        Text = dr["Turno"].ToString(),
                         Value = dr["Id"].ToString()
                     };
                     Unidades.Add(Unidad);

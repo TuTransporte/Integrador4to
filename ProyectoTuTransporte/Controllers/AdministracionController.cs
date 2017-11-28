@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProyectoTuTransporte.DAO;
 using ProyectoTuTransporte.BO;
+using ProyectoTuTransporte.Models;
 using System.Collections;
 
 namespace ProyectoTuTransporte.Controllers
@@ -14,6 +15,8 @@ namespace ProyectoTuTransporte.Controllers
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
+        HorariosDAO HorariosDAO = new HorariosDAO();        
+        
         // GET: Administracion
         public ActionResult Index()
         {
@@ -194,5 +197,20 @@ namespace ProyectoTuTransporte.Controllers
             NoticiasDAO.AgregarNoticia(NoticiaBO);
             return Redirect("~/Administracion/Index");
         }
+
+        public ActionResult select_unidades()
+        {
+            Mod_Unidades UniBO = new Mod_Unidades();
+            UniBO.Unidades = UnidadesDAO.ListUnid();
+            return PartialView(UniBO);
+        }
+
+        public ActionResult select_turnos()
+        {
+            Mod_Horarios Mod_Hor = new Mod_Horarios();
+            Mod_Hor.Horarios = HorariosDAO.ListHor();
+            return PartialView(Mod_Hor);
+        }
+
     }
 }

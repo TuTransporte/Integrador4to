@@ -8,6 +8,7 @@
 <center><h2 class="category">Noticias</h2></center>
 
 <div class="row">
+
     <div class="col-md-8">
         <div class="card">
             <div class="header">
@@ -16,11 +17,11 @@
             </div>
             <div class="content">
 
-
                 @using (Html.BeginForm("Index", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     foreach (DataRow row in Model.Rows)
                     {
+
                         <div class="panel panel-info">
                             <!-- Default panel contents -->
                             <div class="panel-heading">@row["Titulo"]</div>
@@ -38,6 +39,7 @@
                                 <br />
                             </div>
                         </div>
+
                     }
                 }
 

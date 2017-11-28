@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using ProyectoTuTransporte.BO;
 using System.Data.SqlClient;
 using System.Data;
@@ -59,6 +59,16 @@ namespace ProyectoTuTransporte.DAO
             Unidades.Matricula = row["Matricula"].ToString();
             Unidades.Comentarios = row["Comentarios"].ToString();
             Unidades.FK_Ruta = Convert.ToInt32(row["FK_Ruta"].ToString());
+
+            return Unidades;
+        }
+
+        public IEnumerable<SelectListItem> ListUnid()
+        {
+            var Unidad = new List<SelectListItem>();
+            String strBuscar = string.Format("SELECT Id, Serie FROM Camiones");
+            Unidad = conex.EjecutarSetencialistUni(strBuscar);
+            IEnumerable<SelectListItem> Unidades = Unidad;
 
             return Unidades;
         }

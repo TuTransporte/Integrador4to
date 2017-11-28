@@ -14,6 +14,9 @@ namespace ProyectoTuTransporte.Controllers
         UsuarioDAO UsuarioDAO = new UsuarioDAO();
         LoginDAO LoginDAO = new LoginDAO();
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
+        GestionNoticiasDAO NotiDAO = new GestionNoticiasDAO();
+
+
         // GET: FrontEnd        
         public ActionResult Index()
         {
@@ -104,7 +107,6 @@ namespace ProyectoTuTransporte.Controllers
         //Ejecuta el registro de usuario
         public ActionResult RegistroUsuario(RegistroUsuarioBO UsuarioBO)
         {
-
             UsuarioBO.Nombre = Request.Form["txtNombre"];
             UsuarioBO.ApellidoPaterno = Request.Form["txtApellidop"];
             UsuarioBO.ApellidoMaterno = Request.Form["txtApellidom"];
@@ -135,6 +137,11 @@ namespace ProyectoTuTransporte.Controllers
             PerfilDAO.ModificarPerfil(PerfilBO);
 
             return Redirect("~/FrontEnd/PanelUsuario");
+        }
+
+        public ActionResult NoticiasFE(GestionNoticiasBO NoticiaBO)
+        {
+            return View(NotiDAO.MostarNoticias()); ;
         }
     }
 }

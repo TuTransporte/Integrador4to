@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using System.Web.Mvc;
 using ProyectoTuTransporte.BO;
 namespace ProyectoTuTransporte.DAO
 {
@@ -89,6 +89,28 @@ namespace ProyectoTuTransporte.DAO
             //Rellenar un objeto DataSet con los resultados del elemento SelectCommand
             adapter.Fill(tabla);
             return tabla;
+        }
+
+        public List<SelectListItem> EjecutarSetencialistUni(String strSql)
+        {
+            var Unidades = new List<SelectListItem>();
+            this.AbrirConexion();
+            var query = new SqlCommand(strSql, this.con);
+            using (var dr = query.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+
+                    var Unidad = new SelectListItem
+                    {
+                        Text = dr["Serie"].ToString(),
+                        Value = dr["Id"].ToString()
+                    };
+                    Unidades.Add(Unidad);
+                }
+            }
+            this.CerrarConexion();
+            return Unidades;
         }
     }
 }

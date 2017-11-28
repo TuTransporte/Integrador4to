@@ -15,7 +15,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListarEmpleados()
         {
-            String cadena = string.Format("SELECT choferes.Id, Choferes.Nombre, Choferes.ApellidoPaterno, Choferes.ApellidoMaterno, Choferes.Direccion, Camiones.Serie, Horarios.Turno FROM ((Camiones INNER JOIN Choferes ON Camiones.Id = Choferes.FK_Camion) INNER JOIN Horarios ON Horarios.Id = Choferes.FK_Turno );");
+            String cadena = string.Format("SELECT choferes.Id, Choferes.Nombre, Choferes.ApellidoPaterno, Choferes.ApellidoMaterno, Choferes.Direccion, Camiones.Serie, Horarios.Turno, Choferes.FK_Camion FROM ((Camiones INNER JOIN Choferes ON Camiones.Id = Choferes.FK_Camion) INNER JOIN Horarios ON Horarios.Id = Choferes.FK_Turno );");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

@@ -146,6 +146,7 @@
     <Compile Include="BO\GestionPerfilBO.cs" />
     <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\GestionNoticiasBO.cs" />
+    <Compile Include="BO\HorariosBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
@@ -155,12 +156,15 @@
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
     <Compile Include="DAO\GestionPerfilDAO.cs" />
     <Compile Include="DAO\GestionUnidadesDAO.cs" />
+    <Compile Include="DAO\HorariosDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="DAO\ReportesDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mod_Horarios.cs" />
+    <Compile Include="Models\Mod_Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -428,10 +432,12 @@
     <Content Include="Views\Administracion\_GestionUnidades.cshtml" />
     <Content Include="Views\Administracion\DatosDeUnidades.cshtml" />
     <Content Include="Views\Administracion\AgregarUnidades.cshtml" />
+    <Content Include="Views\Administracion\select_unidades.cshtml" />
+    <Content Include="Views\Administracion\select_turnos.cshtml" />
+    <Content Include="Views\FrontEnd\NoticiasFE.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

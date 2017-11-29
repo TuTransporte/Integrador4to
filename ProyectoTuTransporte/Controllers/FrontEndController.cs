@@ -29,7 +29,17 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Inicio()
         {
-            return View();
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View();
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult PanelUsuario(RegistroUsuarioBO objususario)
@@ -161,7 +171,17 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Noticias(GestionNoticiasBO NoticiaBO)
         {
-            return View(NotiDAO.MostarNoticias()); ;
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View(NotiDAO.MostarNoticias());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
     }
 }

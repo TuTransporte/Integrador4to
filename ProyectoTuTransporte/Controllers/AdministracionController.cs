@@ -15,6 +15,7 @@ namespace ProyectoTuTransporte.Controllers
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
+        GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         HorariosDAO HorariosDAO = new HorariosDAO();
 
         // GET: Administracion
@@ -123,6 +124,22 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
+        public ActionResult ActualizarInfoU(GestionPerfilBO PerfilBO)
+        {
+            PerfilBO.Id = Convert.ToInt32(Request.Form["txtId"]);
+            PerfilBO.Nombre = Request.Form["txtNombres"];
+            PerfilBO.ApellidoPaterno = Request.Form["txtApellidoP"];
+            PerfilBO.ApellidoMaterno = Request.Form["txtApellidoM"];
+            PerfilBO.Correo = Request.Form["txtCorreo"];
+            PerfilBO.Telefono = Request.Form["txtTelefono"];
+            PerfilBO.Contraseña = Request.Form["txtContraseña"];
+            PerfilDAO.ModificarPerfil(PerfilBO);
+            Session["Correo"] = Request.Form["txtCorreo"];
+            Session["Contraseña"] = Request.Form["txtContraseña"];
+            string contrasena = Session["Contraseña"].ToString();
+            return Redirect("~/Administracion/PerfilUsuario");
+        }
+
         public ActionResult GestionUnidades()
         {
             string valor = "";
@@ -140,9 +157,19 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult DatosDeUnidades(GestionUnidadesBO oUnidades)
         {
-            int idUn = oUnidades.Id;
-            Session["Id"] = oUnidades.Id;
-            return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                int idUn = oUnidades.Id;
+                Session["Id"] = oUnidades.Id;
+                return PartialView("DatosDeUnidades", UnidadesDAO.LlenarCamposBtnUnidades(idUn));
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult AgregarUnidades()
@@ -237,5 +264,36 @@ namespace ProyectoTuTransporte.Controllers
         //oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
         //oEmpleados.Direccion = Request.Form["txtDireccion"];
         //EmpleadosDAO.AgregarEmpleado(oEmpleados);          
+        public ActionResult EliminarNoticia(GestionNoticiasBO NoticiaBO)
+        {
+            NoticiasDAO.EliminarNoticia(NoticiaBO);
+            return Redirect("~/Administracion/Index");
+        }
+
+        public ActionResult DatosDeNoticias(GestionNoticiasBO oUnidades)
+        {
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                int idUn = oUnidades.Id;
+                Session["Id"] = oUnidades.Id;
+                return View(NoticiasDAO.LlenarCamposBtnNoticias(idUn));
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
+        public ActionResult Modificarnoticia(GestionNoticiasBO NoticiaBO)
+        {
+            NoticiaBO.Id = Convert.ToInt32(Request.Form["txtId"]);
+            NoticiaBO.Titulo = Request.Form["txtSerie"];
+            NoticiaBO.Mensaje = Request.Form["txtMatricula"];
+            NoticiasDAO.ModificarNoticias(NoticiaBO);
+            return Redirect("~/Administracion/Index");
+        }
     }
 }

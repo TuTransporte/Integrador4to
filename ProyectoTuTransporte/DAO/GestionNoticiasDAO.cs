@@ -20,11 +20,11 @@ namespace ProyectoTuTransporte.DAO
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
-        //public DataTable LlenarCamposBtnUnidades(int IdUnidades)
-        //{
-        //    String cadena = "SELECT Serie, Matricula, Comentarios FROM Camiones WHERE Id = '" + IdUnidades + "';";
-        //    return conex.EjercutarSentenciaBusqueda(cadena);
-        //}
+        public DataTable LlenarCamposBtnNoticias(int IdNoticias)
+        {
+            String cadena = "SELECT Id, Titulo, Mensaje FROM Noticias WHERE Id = '" + IdNoticias + "';";
+            return conex.EjercutarSentenciaBusqueda(cadena);
+        }
 
         public int AgregarNoticia(GestionNoticiasBO oNoticias)
         {
@@ -34,6 +34,20 @@ namespace ProyectoTuTransporte.DAO
             cmd.Parameters.Add("@Fecha", SqlDbType.VarChar).Value = Convert.ToString(DateTime.Now);
             cmd.CommandType = CommandType.Text;
             return obj.EjecutarComando(cmd);
+        }
+
+        public int EliminarNoticia(GestionNoticiasBO oNoticias)
+        {
+            cmd = new SqlCommand("Delete From Noticias where Id = @Id");
+            cmd.Parameters.Add("@Id", SqlDbType.VarChar).Value = oNoticias.Id;
+            cmd.CommandType = CommandType.Text;
+            return obj.EjecutarComando(cmd);
+        }
+
+        public int ModificarNoticias(GestionNoticiasBO oNoticias)
+        {
+            cmd = new SqlCommand("UPDATE Noticias SET Titulo='" + oNoticias.Titulo + "', Mensaje='" + oNoticias.Mensaje + "', Fecha='" + Convert.ToString(DateTime.Now) + "' WHERE Id='" + oNoticias.Id + "'");
+            return conex.EjecutarComando(cmd);
         }
     }
 }

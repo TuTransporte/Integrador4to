@@ -436,6 +436,7 @@
     <Content Include="Views\Administracion\select_turnos.cshtml" />
     <Content Include="Views\FrontEnd\Noticias.cshtml" />
     <Content Include="Views\Administracion\AgregarEmpleado.cshtml" />
+    <Content Include="Views\Administracion\DatosDeNoticias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

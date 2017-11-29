@@ -1,0 +1,63 @@
+﻿@using System.Data;
+@using ProyectoTuTransporte.BO;
+@model DataTable
+@{
+    ViewBag.Title = "Editar Noticia | TuTransporte";
+    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
+}
+
+<center><h2 class="to-animate">Editar noticia</h2></center>
+
+@foreach (DataRow row in Model.Rows)
+{
+    <center><h2 class="category">Datos de la Noticia</h2></center>
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Editar Noticia</h4>
+            </div>
+            <div class="content">
+                @using (Html.BeginForm("Modificarnoticia", "Administracion", FormMethod.Post))
+                {
+                    <form>
+                        <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Número de serie</label>
+                                    <input value="@row["Titulo"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Matrícula</label>
+                                    <input value="@row["Mensaje"]" id="txtMatricula" name="txtMatricula" type="text" class="form-control" placeholder="Apellido paterno">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-3">
+                                <a href="/Administracion/Index" class="btn btn-danger">Cancelar</a>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar Información</button>
+                            </div>
+                            <div class="col-md-3">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+}

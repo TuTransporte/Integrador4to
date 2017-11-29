@@ -5,77 +5,94 @@
 }
 
 <h2 class="to-animate">Configuración de la cuenta</h2>
-
-<div class="row">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Editar perfil</h4>
-            </div>
-            <div class="content">
-                <form>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Nombre(s)</label>
-                                <input type="text" class="form-control" placeholder="Nombre(s) del empleado" value="@Session["Nombres"]">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Apellido paterno</label>
-                                <input type="text" class="form-control" placeholder="Apellido paterno" value="@Session["ApellidoPat"]">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Apellido materno</label>
-                                <input type="text" class="form-control" placeholder="Apellido materno" value="@Session["ApellidoMat"]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Correo</label>
-                                <input type="email" class="form-control" placeholder="Correo electrónico" value="@Session["Correo"]">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="text" class="form-control" placeholder="Teléfono" value="@Session["Telefono"]">
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
-                    <div class="clearfix"></div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card card-user">
-            <div class="image">
-                <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
-            </div>
-            <div class="content">
-                <div class="author">
-                    <a href="#">
-                        <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
-                        <h4 class="title">
-                            @Session["Nombres"]<br />
-                            <small>@Session["ApellidoPat"] @Session["ApellidoMat"]</small>
-                        </h4>
-                    </a>
+@using (Html.BeginForm("ActualizarInfoU", "Administracion", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Editar perfil</h4>
                 </div>
-                <p class="description text-center">
-                </p>
+                <div class="content">
+                    <form>
+                        <div class="row">
+                            <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nombre(s)</label>
+                                    <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtNombres" value="@Session["Nombres"]">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Apellido paterno</label>
+                                    <input type="text" class="form-control" placeholder="Apellido paterno" name="txtApellidoP" value="@Session["ApellidoPat"]">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Apellido materno</label>
+                                    <input type="text" class="form-control" placeholder="Apellido materno" name="txtApellidoM" value="@Session["ApellidoMat"]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Correo</label>
+                                    <input type="email" class="form-control" placeholder="Correo electrónico" name="txtCorreo" value="@Session["Correo"]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input type="text" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6    ">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Contraseña</label>
+                                    <input type="text" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Confirmar contraseña</label>
+                                    <input type="text" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]">
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
             </div>
-            <hr>
-            <div class="text-center">
+        </div>
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="image">
+                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
+                </div>
+                <div class="content">
+                    <div class="author">
+                        <a href="#">
+                            <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
+                            <h4 class="title">
+                                @Session["Nombres"]<br />
+                                <small>@Session["ApellidoPat"] @Session["ApellidoMat"]</small>
+                            </h4>
+                        </a>
+                    </div>
+                    <p class="description text-center">
+                    </p>
+                </div>
+                <hr>
+                <div class="text-center">
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 

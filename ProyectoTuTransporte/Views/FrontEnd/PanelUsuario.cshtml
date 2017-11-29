@@ -8,52 +8,66 @@
 <section id="fh5co-explore" data-section="explore">
     <center><h2 class="to-animate">Configuración de la cuenta</h2></center>
     <br />
-@using (Html.BeginForm("ActualizarInfoU", "FrontEnd", FormMethod.Post))
-{
-    <div class="container">
-        <div class="">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="row">
-                    <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Nombre(s)</label>
-                            <input type="text" class="form-control" placeholder="Nombre(s) del empleado"  name="txtNombres" value="@Session["Nombres"]">
+    @using (Html.BeginForm("ActualizarInfoU", "FrontEnd", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Nombre(s)</label>
+                                <input type="text" class="form-control" placeholder="Nombre(s) del empleado" name="txtNombres" value="@Session["Nombres"]">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Apellido paterno</label>
+                                <input type="text" class="form-control" placeholder="Apellido paterno" name="txtApellidoP" value="@Session["ApellidoPat"]">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Apellido materno</label>
+                                <input type="text" class="form-control" placeholder="Apellido materno" name="txtApellidoM" value="@Session["ApellidoMat"]">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Apellido paterno</label>
-                            <input type="text" class="form-control" placeholder="Apellido paterno" name="txtApellidoP" value="@Session["ApellidoPat"]">
+                    <div class="row">
+                        <div class="col-md-6    ">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Correo</label>
+                                <input type="email" class="form-control" placeholder="Correo electrónico" name="txtCorreo" value="@Session["Correo"]">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input type="tel" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Apellido materno</label>
-                            <input type="text" class="form-control" placeholder="Apellido materno" name="txtApellidoM" value="@Session["ApellidoMat"]">
+                    <div class="row">
+                        <div class="col-md-6    ">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Contraseña</label>
+                                <input type="text" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Confirmar contraseña</label>
+                                <input type="text" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]">
+                            </div>
                         </div>
                     </div>
+                    <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
                 </div>
-                <div class="row">
-                    <div class="col-md-6    ">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Correo</label>
-                            <input type="email" class="form-control" placeholder="Correo electrónico" name="txtCorreo" value="@Session["Correo"]">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="text" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                <div class="col-md-1"></div>
+                <div class="clearfix"></div>
             </div>
-            <div class="col-md-1"></div>
-            <div class="clearfix"></div>
         </div>
-    </div>
-}
+    }
 </section>

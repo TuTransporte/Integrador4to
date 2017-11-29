@@ -8,7 +8,6 @@
 <center><h2 class="category">Noticias</h2></center>
 <div class="container">
     <div class="row">
-
         <div class="col-md-12">
             <div class="card">
                 <div class="header">
@@ -19,14 +18,14 @@
                 </div>
                 <div class="content">
 
-                    @using (Html.BeginForm("NoticiasFE", "FrontEnd", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("Noticias", "FrontEnd", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         foreach (DataRow row in Model.Rows)
                         {
 
                             <div class="panel panel-info">
                                 <!-- Default panel contents -->
-                                <div class="panel-heading" style="text-align:center;">@row["Titulo"]</div>
+                                <div class="panel-heading">@row["Titulo"]</div>
                                 <div class="panel-body">
                                     <p>@row["Mensaje"]</p>
                                 </div>
@@ -35,14 +34,11 @@
                                 <ul class="list-group">
                                     <li class="list-group-item">Publicado el @row["Fecha"]</li>
                                 </ul>
-                                <div class="list-group">
-                                    <br />
-                                    <center><button type="button" href="#" data-toggle="modal" data-target="#exampleModal" onclick="Noticia();" class="btn btn-primary">Ver Noticia</button></center>
-                                    <br />
-                                </div>
                             </div>
+                            <br />
                         }
                     }
+
                     <div class="footer">
                         <div class="legend">
                         </div>
@@ -54,6 +50,4 @@
             </div>
         </div>
     </div>
-
 </div>
-

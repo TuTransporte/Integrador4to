@@ -33,12 +33,31 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
-        public ActionResult PanelUsuario()
+        public ActionResult PanelUsuario(RegistroUsuarioBO objususario)
         {
             string valor = "";
             bool log = Convert.ToBoolean(Session["LogOK"]);
             if (log == true)
             {
+
+                try
+                {
+                    objususario.Contrasena = Session["Contraseña"].ToString();
+                    objususario.Correo = Session["Correo"].ToString();
+                    ArrayList datos = LoginDAO.Login(objususario);
+                    Session["LogOK"] = true;
+                    Session["Id"] = datos[0].ToString();
+                    Session["Correo"] = datos[1].ToString();
+                    Session["Nombres"] = datos[2].ToString();
+                    Session["ApellidoPat"] = datos[3].ToString();
+                    Session["ApellidoMat"] = datos[4].ToString();
+                    Session["Telefono"] = datos[5].ToString();
+                    Session["Tipo"] = datos[6].ToString();
+                    Session["Contraseña"] = datos[7].ToString();
+                }
+                catch
+                {
+                }
                 return View();
             }
             else
@@ -82,7 +101,8 @@ namespace ProyectoTuTransporte.Controllers
                 Session["ApellidoPat"] = datos[3].ToString();
                 Session["ApellidoMat"] = datos[4].ToString();
                 Session["Telefono"] = datos[5].ToString();
-                Session["Tipo"] = datos[5].ToString();
+                Session["Tipo"] = datos[6].ToString();
+                Session["Contraseña"] = datos[7].ToString();
             }
             catch (Exception)
             {
@@ -101,6 +121,7 @@ namespace ProyectoTuTransporte.Controllers
             Session["ApellidoMat"] = "";
             Session["Telefono"] = "";
             Session["Tipo"] = "";
+            Session["Contraseña"] = "";
             return Redirect("~/FrontEnd/Index");
         }
 
@@ -134,12 +155,15 @@ namespace ProyectoTuTransporte.Controllers
             PerfilBO.ApellidoMaterno = Request.Form["txtApellidoM"];
             PerfilBO.Correo = Request.Form["txtCorreo"];
             PerfilBO.Telefono = Request.Form["txtTelefono"];
+            PerfilBO.Contraseña = Request.Form["txtContraseña"];
             PerfilDAO.ModificarPerfil(PerfilBO);
-
+            Session["Correo"] = Request.Form["txtCorreo"];
+            Session["Contraseña"] = Request.Form["txtContraseña"];
+            string contrasena = Session["Contraseña"].ToString();
             return Redirect("~/FrontEnd/PanelUsuario");
         }
 
-        public ActionResult NoticiasFE(GestionNoticiasBO NoticiaBO)
+        public ActionResult Noticias(GestionNoticiasBO NoticiaBO)
         {
             return View(NotiDAO.MostarNoticias()); ;
         }

@@ -15,7 +15,7 @@ namespace ProyectoTuTransporte.DAO
 
         public int ModificarPerfil(GestionPerfilBO oPerfil)
         {
-            cmd = new SqlCommand("UPDATE Usuario SET Correo_usuario = '" + oPerfil.Correo + "', Nombres = '" + oPerfil.Nombre + "', ApellidoPaterno = '" + oPerfil.ApellidoPaterno + "', ApellidoMaterno = '" + oPerfil.ApellidoMaterno + "', Telefono = '" + oPerfil.Telefono + "' WHERE Id = '" + oPerfil.Id + "'");
+            cmd = new SqlCommand("UPDATE Usuario SET Correo_usuario = '" + oPerfil.Correo + "', Nombres = '" + oPerfil.Nombre + "', ApellidoPaterno = '" + oPerfil.ApellidoPaterno + "', ApellidoMaterno = '" + oPerfil.ApellidoMaterno + "', Telefono = '" + oPerfil.Telefono + "', Contrasena = '" + oPerfil.Contraseña + "' WHERE Id = '" + oPerfil.Id + "'");                        
             return conex.EjecutarComando(cmd);
         }
     }

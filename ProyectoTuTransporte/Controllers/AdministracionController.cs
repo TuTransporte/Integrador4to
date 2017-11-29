@@ -230,16 +230,21 @@ namespace ProyectoTuTransporte.Controllers
             }
         }
 
-        public ActionResult AgregarEmpleadoNVO(GestionEmpleadosBO oEmpleados)
+        public ActionResult AgregarEmpleadoNVO(string nombre)
         {
-            oEmpleados.Nombre = Request.Form["txtNombres"];
-            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
-            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
-            oEmpleados.Direccion = Request.Form["txtDireccion"];
-
-            EmpleadosDAO.AgregarEmpleado(oEmpleados);
-            return Redirect("~/Administracion/_GestionEmpleados");
+            GestionEmpleadosBO oEmpleados = new GestionEmpleadosBO();
+            oEmpleados.Nombre = nombre;
+            return Content(nombre);
         }
+            
+            
+        /* oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+         oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+         oEmpleados.Direccion = Request.Form["txtDireccion"];
+
+         EmpleadosDAO.AgregarEmpleado(oEmpleados);
+        */
+    
 
 
     }

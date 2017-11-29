@@ -74,7 +74,7 @@
                             <a href="/Administracion/GestionEmpleados" class="btn btn-danger">Cancelar</a>
                         </div>
                         <div class="col-md-3">
-                            <button type="submit" class="btn btn-success">Agregar</button>
+                            <button type="submit" class="btn btn-success" onclick="agregar()">Agregar</button>
                         </div>
                         <div class="col-md-3">
                             
@@ -93,12 +93,21 @@
     }());
 </script>
 <script>
-    $.ajax({
+    function agregar() {
+        var nombre = $("#txtNombres").val();
+        $.ajax({
+            url: 'AgregarEmpleadoNVO',
+            data: { nombre: nombre, }
+        }).done(function () {
+            alert("hola");
+        });
+    }
+   /* $.ajax({
         url: '/Administracion/AgregarEmpleadoNVO',
         type: 'POST',
-        data: $('#formempleado').serialize(),
+        data: {},
         dataType: 'json'
-    });
+    });*/
 </script>
 
     

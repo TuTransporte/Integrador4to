@@ -41,12 +41,7 @@ namespace ProyectoTuTransporte.DAO
         public int EliminarEmpleado(GestionEmpleadosBO oEmpleados)
         {
             cmd = new SqlCommand("DELETE FROM Choferes WHERE id='" + oEmpleados.Id + "'");
-             return conex.EjecutarComando(cmd);
+            return conex.EjecutarComando(cmd);
         }
-
     }
-
-
-
-
 }

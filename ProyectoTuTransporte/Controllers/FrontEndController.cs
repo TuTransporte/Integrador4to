@@ -16,7 +16,6 @@ namespace ProyectoTuTransporte.Controllers
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         GestionNoticiasDAO NotiDAO = new GestionNoticiasDAO();
 
-
         // GET: FrontEnd        
         public ActionResult Index()
         {
@@ -39,7 +38,6 @@ namespace ProyectoTuTransporte.Controllers
             bool log = Convert.ToBoolean(Session["LogOK"]);
             if (log == true)
             {
-
                 try
                 {
                     objususario.Contrasena = Session["Contraseña"].ToString();
@@ -55,7 +53,7 @@ namespace ProyectoTuTransporte.Controllers
                     Session["Tipo"] = datos[6].ToString();
                     Session["Contraseña"] = datos[7].ToString();
                 }
-                catch
+                catch (Exception)
                 {
                 }
                 return View();
@@ -106,7 +104,6 @@ namespace ProyectoTuTransporte.Controllers
             }
             catch (Exception)
             {
-
             }
             return Redirect(link);
         }
@@ -135,7 +132,6 @@ namespace ProyectoTuTransporte.Controllers
             UsuarioBO.Contrasena = Request.Form["txtContra"];
             UsuarioBO.Telefono = Request.Form["txttelefono"];
             string contra2 = Request.Form["txtContrase"];
-
             if (UsuarioBO.Contrasena == contra2)
             {
                 UsuarioDAO.AgregarUsuarios(UsuarioBO);

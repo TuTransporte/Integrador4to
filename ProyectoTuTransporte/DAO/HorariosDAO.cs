@@ -16,7 +16,6 @@ namespace ProyectoTuTransporte.DAO
             String strBuscar = string.Format("SELECT Id, Turno FROM Horarios");
             Horario = conex.EjecutarSetencialistHor(strBuscar);
             IEnumerable<SelectListItem> Horarios = Horario;
-
             return Horarios;
         }
     }

@@ -1,13 +1,11 @@
 ﻿@using System.Data;
 @using ProyectoTuTransporte.BO;
-
 @model DataTable
 
 @{
-    ViewBag.Title = "DatosDeUnidades";
+    ViewBag.Title = "Datos de unidades | TuTransporte";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
-
 
 @foreach (DataRow row in Model.Rows)
 {
@@ -39,7 +37,6 @@
                                     <input value="@row["Matricula"]" id="txtMatricula" name="txtMatricula" type="text" class="form-control" placeholder="Apellido paterno">
                                 </div>
                             </div>
-
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -50,7 +47,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-3">
                             </div>
@@ -67,13 +63,8 @@
                                     Eliminar Unidad
                                 </button>
                             </div>
-
                         </div>
                         <div class="clearfix"></div>
-
-
-
-
                     </form>
                 }
             </div>
@@ -89,8 +80,3 @@
         </div>
     </div>
 }
-
-
-
-
-

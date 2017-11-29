@@ -15,8 +15,8 @@ namespace ProyectoTuTransporte.Controllers
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
-        HorariosDAO HorariosDAO = new HorariosDAO();        
-        
+        HorariosDAO HorariosDAO = new HorariosDAO();
+
         // GET: Administracion
         public ActionResult Index()
         {
@@ -166,7 +166,6 @@ namespace ProyectoTuTransporte.Controllers
             oUnidades.Matricula = Request.Form["txtMatricula"];
             oUnidades.Comentarios = Request.Form["txtComentarios"];
             UnidadesDAO.AgregarUnidades(oUnidades);
-
             return Redirect("~/Administracion/GestionUnidades");
         }
 
@@ -198,23 +197,21 @@ namespace ProyectoTuTransporte.Controllers
             return Redirect("~/Administracion/Index");
         }
 
-        public ActionResult select_unidades()
+        public ActionResult Select_unidades()
         {
             Mod_Unidades UniBO = new Mod_Unidades();
             UniBO.Unidades = UnidadesDAO.ListUnid();
             return PartialView(UniBO);
         }
 
-        public ActionResult select_turnos()
+        public ActionResult Select_turnos()
         {
             Mod_Horarios Mod_Hor = new Mod_Horarios();
             Mod_Hor.Horarios = HorariosDAO.ListHor();
             return PartialView(Mod_Hor);
         }
 
-
         ////CONTROLADORES  DE GESTION DE EMPLEADOS/////
-
         public ActionResult AgregarEmpleado()
         {
             string valor = "";
@@ -236,16 +233,9 @@ namespace ProyectoTuTransporte.Controllers
             oEmpleados.Nombre = nombre;
             return Content(nombre);
         }
-            
-            
-        /* oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
-         oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
-         oEmpleados.Direccion = Request.Form["txtDireccion"];
-
-         EmpleadosDAO.AgregarEmpleado(oEmpleados);
-        */
-    
-
-
+        //oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+        //oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+        //oEmpleados.Direccion = Request.Form["txtDireccion"];
+        //EmpleadosDAO.AgregarEmpleado(oEmpleados);          
     }
 }

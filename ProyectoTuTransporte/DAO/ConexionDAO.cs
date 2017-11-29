@@ -21,7 +21,7 @@ namespace ProyectoTuTransporte.DAO
             //Conexion Ricardo
             //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            cadena = ".";
+            //cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
@@ -53,14 +53,13 @@ namespace ProyectoTuTransporte.DAO
             return (id != 0) ? id : 0; ;
         }
 
-        
         public ConexionDAO()
         {
             string cadena = "";
             //Conexion Ricardo
             //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            cadena = ".";
+            //cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
@@ -86,7 +85,6 @@ namespace ProyectoTuTransporte.DAO
             {
                 while (dr.Read())
                 {
-
                     var Unidad = new SelectListItem
                     {
                         Text = dr["Serie"].ToString(),
@@ -98,6 +96,7 @@ namespace ProyectoTuTransporte.DAO
             this.CerrarConexion();
             return Unidades;
         }
+
         public List<SelectListItem> EjecutarSetencialistHor(String strSql)
         {
             var Unidades = new List<SelectListItem>();
@@ -107,7 +106,6 @@ namespace ProyectoTuTransporte.DAO
             {
                 while (dr.Read())
                 {
-
                     var Unidad = new SelectListItem
                     {
                         Text = dr["Turno"].ToString(),

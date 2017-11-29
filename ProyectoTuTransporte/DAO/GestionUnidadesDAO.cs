@@ -59,7 +59,6 @@ namespace ProyectoTuTransporte.DAO
             Unidades.Matricula = row["Matricula"].ToString();
             Unidades.Comentarios = row["Comentarios"].ToString();
             Unidades.FK_Ruta = Convert.ToInt32(row["FK_Ruta"].ToString());
-
             return Unidades;
         }
 

@@ -15,6 +15,7 @@ namespace ProyectoTuTransporte.Controllers
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
+        ChatDAO ChatDAO = new ChatDAO();
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         HorariosDAO HorariosDAO = new HorariosDAO();
 
@@ -32,6 +33,53 @@ namespace ProyectoTuTransporte.Controllers
                 valor = "/FrontEnd/Login";
                 return Redirect(valor);
             }
+        }
+
+        public ActionResult VerChat()
+        {
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                if (tipo == 4)
+                {
+                    string correo = Session["Correo"].ToString();
+                    return View(ChatDAO.MostarUsuarios(correo));
+                }
+                else
+                {
+                    return Redirect("/FrontEnd/Inicio");
+                }
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
+        public ActionResult Chat(string personaenvia)
+        {
+            if (personaenvia == null)
+            {
+                personaenvia = Session["personaenvia"].ToString();
+            }
+            else
+            {
+                Session["personaenvia"] = personaenvia;
+            }
+            return View(ChatDAO.AbrirMensaje(Session["Correo"].ToString(), Session["personaenvia"].ToString()));
+        }
+
+        public ActionResult PublicarMensaje(ChatBO oChatBO)
+        {
+            oChatBO.Mensaje = Request.Form["txtMensaje"];
+            oChatBO.PersonaEnvia = Session["Correo"].ToString();
+            oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
+            oChatBO.Correo = Session["Correo"].ToString();
+            ChatDAO.AgregarMensaje(oChatBO);
+            return Redirect("~/Administracion/Chat");
         }
 
         public ActionResult GestionEmpleados()

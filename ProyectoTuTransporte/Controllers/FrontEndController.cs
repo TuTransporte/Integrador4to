@@ -44,6 +44,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult PanelUsuario(RegistroUsuarioBO objususario)
         {
+            Session["personaenvia"] = "bryan@hotmail.com";
             string valor = "";
             bool log = Convert.ToBoolean(Session["LogOK"]);
             if (log == true)

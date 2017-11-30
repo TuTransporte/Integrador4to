@@ -142,6 +142,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BO\ChatBO.cs" />
     <Compile Include="BO\GestionEmpleadosBO.cs" />
     <Compile Include="BO\GestionPerfilBO.cs" />
     <Compile Include="BO\GestionUnidadesBO.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
@@ -171,6 +173,29 @@
     <Content Include="BDTuTransporte\BDTuTransporte.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ChatResources\css\animate.css" />
+    <Content Include="Content\ChatResources\css\bootstrap.css" />
+    <Content Include="Content\ChatResources\css\css-chat.css" />
+    <Content Include="Content\ChatResources\css\icomoon.css" />
+    <Content Include="Content\ChatResources\css\magnific-popup.css" />
+    <Content Include="Content\ChatResources\css\owl.carousel.min.css" />
+    <Content Include="Content\ChatResources\css\owl.theme.default.min.css" />
+    <Content Include="Content\ChatResources\css\simple-line-icons.css" />
+    <Content Include="Content\ChatResources\css\style.css" />
+    <Content Include="Content\ChatResources\js\bootstrap.min.js" />
+    <Content Include="Content\ChatResources\js\google_map.js" />
+    <Content Include="Content\ChatResources\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\ChatResources\js\jquery.countTo.js" />
+    <Content Include="Content\ChatResources\js\jquery.easing.1.3.js" />
+    <Content Include="Content\ChatResources\js\jquery.min.js" />
+    <Content Include="Content\ChatResources\js\jquery.stellar.min.js" />
+    <Content Include="Content\ChatResources\js\jquery.style.switcher.js" />
+    <Content Include="Content\ChatResources\js\jquery.waypoints.min.js" />
+    <Content Include="Content\ChatResources\js\js-chat.js" />
+    <Content Include="Content\ChatResources\js\main.js" />
+    <Content Include="Content\ChatResources\js\modernizr-2.6.2.min.js" />
+    <Content Include="Content\ChatResources\js\owl.carousel.min.js" />
+    <Content Include="Content\ChatResources\js\respond.min.js" />
     <Content Include="Content\LoginResources\css\style.css" />
     <Content Include="Content\LoginResources\index.html" />
     <Content Include="Content\LoginResources\js\index.js" />
@@ -437,6 +462,8 @@
     <Content Include="Views\FrontEnd\Noticias.cshtml" />
     <Content Include="Views\Administracion\AgregarEmpleado.cshtml" />
     <Content Include="Views\Administracion\DatosDeNoticias.cshtml" />
+    <Content Include="Views\Administracion\Chat.cshtml" />
+    <Content Include="Views\Administracion\VerChat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

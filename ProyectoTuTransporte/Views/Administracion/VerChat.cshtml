@@ -1,0 +1,80 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "Inicio | TuTransporte";
+    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
+}
+
+<center><h2 class="category">Denuncias</h2></center>
+
+<div class="row">
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Control de denuncias</h4>
+                <p class="category"></p>
+            </div>
+            <div class="content">
+
+                @using (Html.BeginForm("VerChat", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    foreach (DataRow row in Model.Rows)
+                    {
+                        <div class="panel panel-info">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Mensaje de @row["Nombres"]</div>
+                            @*<div class="panel-body">
+                                    <p></p>
+                                </div>*@
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item">Enviado el @row["Correo_usuario"]</li>
+                            </ul>
+                            <div class="list-group">
+                                <br />
+                                <center>
+
+                                    @Html.ActionLink("Abrir chat", "Chat", new { personaenvia = row["Correo_usuario"] })
+                                </center>
+                                <br />
+                            </div>
+                        </div>
+                    }
+                }
+
+                <div class="footer">
+                    <div class="legend">
+                    </div>
+                    <hr>
+                    <div class="stats">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        @*<div class="card">
+                <div class="header">
+                    <h4 class="title">Publica noticias</h4>
+                    <p class="category"></p>
+                    <br />
+                    Modal
+                    <center>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" onclick="Noticia();">
+                            Agregar publicación
+                        </button>
+                    </center>
+                </div>
+                <div class="content">
+                    <div class="footer">
+                        <div class="legend">
+                        </div>
+                        <hr>
+                        <div class="stats">
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>

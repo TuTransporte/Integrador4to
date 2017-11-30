@@ -1,0 +1,52 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "Noticias | Tutransporte";
+    Layout = "~/Views/Shared/MasterFrontLog.cshtml";
+}
+
+<center><h2 class="category">Noticias</h2></center>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <br /><br />
+                    <center><h2 class="title">Sección de noticias</h2></center>
+                    <br />
+                    <p class="category"></p>
+                </div>
+                <div class="content">
+
+                    @using (Html.BeginForm("Noticias", "FrontEnd", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        foreach (DataRow row in Model.Rows)
+                        {
+                            <div class="panel panel-info">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">@row["Titulo"]</div>
+                                <div class="panel-body">
+                                    <p>@row["Mensaje"]</p>
+                                </div>
+
+                                <!-- List group -->
+                                <ul class="list-group">
+                                    <li class="list-group-item">Publicado el @row["Fecha"]</li>
+                                </ul>
+                            </div>
+                            <br />
+                        }
+                    }
+
+                    <div class="footer">
+                        <div class="legend">
+                        </div>
+                        <hr>
+                        <div class="stats">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

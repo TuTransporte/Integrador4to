@@ -77,8 +77,9 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="/FrontEnd/Inicio"><span>Inicio</span></a></li>
                             <li><a href="/FrontEnd/PanelUsuario"><span>Datos del usuario</span></a></li>
-                            <li><a href="#"><span>Noticias</span></a></li>
+                            <li><a href="/FrontEnd/Noticias"><span>Noticias</span></a></li>
                             <li><a href="#"><span>Rutas</span></a></li>
+                            <li><a href="/Administracion/Chat"><span>Mensajes</span></a></li>
                             <li><button type="submit" class="button btn-link">Cerrar sesión</button></li>
                         </ul>
                     }
@@ -159,5 +160,23 @@
     <script src="/Content/MasterFrontEnd/js/google_map.js"></script>
     <!-- Main JS (Do not remove) -->
     <script src="/Content/MasterFrontEnd/js/main.js"></script>
+
+
+
+    <!--modal lectura de noticias FE-->
+    <script>
+        $('#exampleModal').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+
+        function Noticia() {
+            $('#titulonoticia').html('Título de la noticia')
+            $('#cuerponoticia').html('Mensaje de la noticia \n ')
+        }
+    </script>
 </body>
 </html>
+
+
+
+

@@ -23,7 +23,6 @@ namespace ProyectoTuTransporte.DAO
             }
             catch (Exception)
             {
-
             }
             return dt;
         }

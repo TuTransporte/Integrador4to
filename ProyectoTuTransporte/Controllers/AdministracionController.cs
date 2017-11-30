@@ -7,6 +7,10 @@ using ProyectoTuTransporte.DAO;
 using ProyectoTuTransporte.BO;
 using System.Collections;
 
+
+using System.Configuration;
+using System.Data.SqlClient;
+
 namespace ProyectoTuTransporte.Controllers
 {
     public class AdministracionController : Controller
@@ -50,6 +54,32 @@ namespace ProyectoTuTransporte.Controllers
         //Para poder visualizar la vista Mapas | Ricardo
         public ActionResult MapaAdmin()
         {
+            string markers = "[";
+            string conex = "Data Source= DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=PruebaArrays;Integrated Security=True";
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Locations");
+
+            using (SqlConnection con = new SqlConnection(conex))
+            {
+                cmd.Connection = con;
+                con.Open();
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    while (sdr.Read())
+                    {
+                        markers += "[";
+                        markers += string.Format("'{0}',", sdr["Name"]);
+                        markers += string.Format("{0},", sdr["Latitude"]);
+                        markers += string.Format("{0},", sdr["Longitude"]);
+                        markers += string.Format("{0}", sdr["Description"]);
+                        markers += "],";
+                    }
+                }
+                con.Close();
+            }
+
+            markers = markers.Remove(markers.Length - 1);
+            markers += "];";
+            ViewBag.Markers = markers;
             return View();
         }
         public ActionResult _GestionUnidades()

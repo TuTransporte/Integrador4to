@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BO\GestionEmpleadosBO.cs" />
+    <Compile Include="BO\GestionRutasBO.cs" />
     <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\GestionNoticiasBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
@@ -258,6 +259,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="json2.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

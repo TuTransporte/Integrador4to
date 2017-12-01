@@ -184,6 +184,11 @@ namespace ProyectoTuTransporte.Controllers
             return View();
         }
 
+        public ActionResult DibujaMapa()
+        {
+            return View();
+        }
+
         public ActionResult _GestionUnidades()
         {
             return View();

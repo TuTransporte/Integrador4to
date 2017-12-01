@@ -9,11 +9,12 @@
 <div class="col-md-8">
     <div class="card">
         <div class="header">
-            <h4 class="title">Editar perfil</h4>
         </div>
         <div class="content">
+@using (Html.BeginForm("AgregarEmpleadoNVO", "Administracion", FormMethod.Post))
+{
             <form id="formempleado">
-                <div class="row">
+                @*<div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Puesto</label>
@@ -32,7 +33,7 @@
                             <!--DROPDOWNFOR PARTIAL VIEW -->
                         </div>
                     </div>
-                </div>
+                </div>*@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -78,10 +79,21 @@
                 </div>
                 <div class="clearfix"></div>
             </form>
+}
         </div>
     </div>
 </div>
-<script src="/Content/MasterResources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<div class="col-md-4">
+    <div class="card card-user">
+        <div class="image">
+            <img src="http://informatyucatan.com/wp-content/uploads/unidades-situr.jpg" alt="..." />
+        </div>
+
+    </div>
+</div>
+
+<!--
+    <script src="/Content/MasterResources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script type="text/javascript">
     (function () {
         $("#contenedor").load('/Administracion/select_unidades');
@@ -89,7 +101,7 @@
     }());
 </script>
 <script>
-    function agregar() {
+    /*function agregar() {
         var nombre = $("#txtNombres").val();
         $.ajax({
             url: 'AgregarEmpleadoNVO',
@@ -98,13 +110,14 @@
             alert("hola");
         });
     }
-   /* $.ajax({
+    $.ajax({
         url: '/Administracion/AgregarEmpleadoNVO',
         type: 'POST',
         data: {},
         dataType: 'json'
     });*/
 </script>
+    -->
 
 
 

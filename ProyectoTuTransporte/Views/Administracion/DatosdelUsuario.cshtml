@@ -15,8 +15,11 @@
                 <h4 class="title">Editar perfil</h4>
             </div>
             <div class="content">
+            @using (Html.BeginForm("ModificarEmpleado", "Administracion", FormMethod.Post))
+            {
                 <form>
-                    <div class="row">
+                    <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
+                    @*@*<div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Puesto</label>
@@ -36,12 +39,12 @@
                                 <!--DROPDOWNFOR PARTIAL VIEW -->
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Nombre(s)</label>
-                                <input value="@row["Nombre"]" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                                <input value="@row["Nombre"]" id="txtNombres" name="txtNombres" type="text" class="form-control" placeholder="Nombre(s) del empleado">
                             </div>
                         </div>
                     </div>
@@ -49,13 +52,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Apellido Paterno</label>
-                                <input value="@row["ApellidoPaterno"]" type="text" class="form-control" placeholder="Apellido paterno">
+                                <input value="@row["ApellidoPaterno"]" id="txtPaterno" name="txtPaterno" type="text" class="form-control" placeholder="Apellido paterno">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Apellido Materno</label>
-                                <input value="@row["ApellidoMaterno"]" type="text" class="form-control" placeholder="Apellido materno">
+                                <input value="@row["ApellidoMaterno"]" id="txtMaterno" name="txtMaterno" type="text" class="form-control" placeholder="Apellido materno">
                             </div>
                         </div>
                     </div>
@@ -63,7 +66,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input value="@row["Direccion"]" type="text" class="form-control" placeholder="Dirección del empleado">
+                                <input value="@row["Direccion"]" id="txtDireccion" name="txtDireccion" type="text" class="form-control" placeholder="Dirección del empleado">
                             </div>
                         </div>
                     </div>
@@ -77,11 +80,12 @@
                             <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
                         </div>
                         <div class="col-md-3">
-                            <button type="submit" class="btn btn-danger btn-fill pull-right">Eliminar perfil</button>
+                            <button type="button" class="btn btn-danger btn-fill pull-right" data-toggle="modal" data-target="#ModalEmp" onclick="MensajeEmp(); CuerpoEmp()">Eliminar perfil</button>
                         </div>
                     </div>
                     <div class="clearfix"></div>
                 </form>
+                }
             </div>
         </div>
     </div>
@@ -108,11 +112,14 @@
                 </div>
             </div>
         </div>
+
+
+
+       
+
     </div>
 
-
-
-
+   
 
 }
 <script src="/Content/MasterResources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
@@ -122,3 +129,4 @@
         $("#turnosEmp").load('/Administracion/select_turnos');
     }());
 </script>
+

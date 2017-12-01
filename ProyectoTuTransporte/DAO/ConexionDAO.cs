@@ -19,9 +19,9 @@ namespace ProyectoTuTransporte.DAO
         {
             string cadena = "";
             //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            //cadena = ".";
+            cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
@@ -57,9 +57,9 @@ namespace ProyectoTuTransporte.DAO
         {
             string cadena = "";
             //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            //cadena = ".";
+            cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//

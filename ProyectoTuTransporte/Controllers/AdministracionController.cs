@@ -120,12 +120,32 @@ namespace ProyectoTuTransporte.Controllers
         }
 
         // Para poder visualizar la vista PerfilUsuario | Bryan
-        public ActionResult PerfilUsuario()
+        public ActionResult PerfilUsuario(RegistroUsuarioBO objususario)
         {
             string valor = "";
             bool log = Convert.ToBoolean(Session["LogOK"]);
             if (log == true)
             {
+                try
+                {
+                    LoginDAO LoginDAO = new LoginDAO();
+                    objususario.Contrasena = Session["Contraseña"].ToString();
+                    objususario.Correo = Session["Correo"].ToString();
+                    ArrayList datos = LoginDAO.Login(objususario);
+                    Session["LogOK"] = true;
+                    Session["Id"] = datos[0].ToString();
+                    Session["Correo"] = datos[1].ToString();
+                    Session["Nombres"] = datos[2].ToString();
+                    Session["ApellidoPat"] = datos[3].ToString();
+                    Session["ApellidoMat"] = datos[4].ToString();
+                    Session["Telefono"] = datos[5].ToString();
+                    Session["Tipo"] = datos[6].ToString();
+                    Session["Contraseña"] = datos[7].ToString();
+                }
+                catch (Exception)
+                {
+
+                }
                 return View();
             }
             else
@@ -143,6 +163,7 @@ namespace ProyectoTuTransporte.Controllers
             if (log == true)
             {
                 int idus = objem.Id;
+                Session["Id"] = objem.Id;
                 return PartialView("DatosdelUsuario", EmpleadosDAO.LlenarCamposBtnEmpleados(idus));
             }
             else
@@ -155,8 +176,18 @@ namespace ProyectoTuTransporte.Controllers
         //Para poder visualizar la vista Mapas | Ricardo
         public ActionResult MapaAdmin()
         {
+            string cadena = "";
+            //Conexion Ricardo
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //Conexion Montalvo
+            cadena = ".";
+            //Conexion Bryan
+            //cadena = "LAPTOP-5B0LK3E0";
+            //-----------------------------------------------//
+
+
             string markers = "[";
-            string conex = "Data Source= DESKTOP-L9DKEN0\\SQLEXPRESS;Initial Catalog=PruebaArrays;Integrated Security=True";
+            string conex = "Data Source= " + cadena + "\\SQLEXPRESS;Initial Catalog=PruebaArrays;Integrated Security=True";
             SqlCommand cmd = new SqlCommand("SELECT * FROM Locations");
 
             using (SqlConnection con = new SqlConnection(conex))
@@ -319,16 +350,49 @@ namespace ProyectoTuTransporte.Controllers
             }
         }
 
-        public ActionResult AgregarEmpleadoNVO(string nombre)
+        //public ActionResult AgregarEmpleadoNVO(string nombre)
+        //{
+        //    //oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+        //    //oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+        //    //oEmpleados.Direccion = Request.Form["txtDireccion"];
+        //    //EmpleadosDAO.AgregarEmpleado(oEmpleados);       
+        //    GestionEmpleadosBO oEmpleados = new GestionEmpleadosBO();
+        //    oEmpleados.Nombre = nombre;
+        //    return Content(nombre);
+        //}
+
+
+        //MÉTODOS PARA EMPLEADOS | MONTALVO
+        public ActionResult AgregarEmpleadoNVO(GestionEmpleadosBO oEmpleados)
         {
-            GestionEmpleadosBO oEmpleados = new GestionEmpleadosBO();
-            oEmpleados.Nombre = nombre;
-            return Content(nombre);
+            oEmpleados.Nombre = Request.Form["txtNombres"];
+            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+            oEmpleados.Direccion = Request.Form["txtDireccion"];
+
+            EmpleadosDAO.AgregarEmpleado(oEmpleados);
+            return Redirect("~/Administracion/GestionEmpleados");
         }
-        //oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
-        //oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
-        //oEmpleados.Direccion = Request.Form["txtDireccion"];
-        //EmpleadosDAO.AgregarEmpleado(oEmpleados);          
+
+        public ActionResult ModificarEmpleado(GestionEmpleadosBO oEmpleados)
+        {
+            oEmpleados.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oEmpleados.Nombre = Request.Form["txtNombres"];
+            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
+            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
+            oEmpleados.Direccion = Request.Form["txtDireccion"];
+            EmpleadosDAO.ModificarEmpleado(oEmpleados);
+            return Redirect("~/Administracion/GestionEmpleados");
+        }
+
+        public ActionResult EliminarEmpleado(GestionEmpleadosBO oEmpleados)
+        {
+            oEmpleados.Id = Convert.ToInt32(Session["Id"]);
+            EmpleadosDAO.EliminarEmpleado(oEmpleados);
+            Session["Id"] = null;                      
+            return Redirect("~/Administracion/GestionEmpleados");
+        }
+
         public ActionResult EliminarNoticia(GestionNoticiasBO NoticiaBO)
         {
             NoticiasDAO.EliminarNoticia(NoticiaBO);

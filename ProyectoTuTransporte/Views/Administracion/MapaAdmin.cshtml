@@ -8,6 +8,8 @@
 <!-- This css is to ensure that the google map contols (zoom bar etc) show and size correctly. -->
 <!-- This is the div that will contain the Google Map -->
 
+ <!--Script que ejecuta el mapa de manera funcional-->
+
 <body>
 
     <div class="col-md-8">
@@ -17,6 +19,9 @@
             <div class="content">
                 <center>
                     <div id="map" style="height: 500px"></div>
+                    <!--Botones de Accion-->
+                    <input type="button" id="delete-button" value="Delete Shape">
+                    <input type="button" id="clear-button" value="Clear All Shapes">
                 </center>
                 <div class="footer">
                     <div class="legend">
@@ -29,12 +34,21 @@
         </div>
     </div>
 
+   
 
     <script>
 
 
-
+//Script del mapa funcional
         function initialize() {
+            //Variables de la funcion guardado
+           
+                document.getElementById("map"),
+                document.getElementById("delete-button"),
+                document.getElementById("clear-button"),
+                document.getElementById("console");
+            //
+
             var geocoder;
         var map;
         var directionsDisplay;
@@ -42,18 +56,38 @@
         var locations = @Html.Raw(ViewBag.Markers);
             directionsDisplay = new google.maps.DirectionsRenderer();
 
-
             var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 10,
                 center: new google.maps.LatLng(20.98010396916269, -89.63291830000009),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
+
+            //Controles de dibujo
+            var drawingManager = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.MARKER,
+                drawingControl: true,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,
+                    drawingModes: ['polygon']
+                },
+                markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
+                polygonOptions: {
+                    fillColor: '#81F781',
+                    //fillOpacity: 10,
+                    strokeWeight: 2,
+                    clickable: false,
+                    editable: true,
+                    zIndex: 1
+                }
+            });
+            drawingManager.setMap(map);
+            //
             directionsDisplay.setMap(map);
             var infowindow = new google.maps.InfoWindow();
 
             var marker, i;
             var request = {
-                travelMode: google.maps.TravelMode.DRIVING
+                travelMode: google.maps.TravelMode.WALKING
             };
             for (i = 0; i < locations.length; i++) {
                 marker = new google.maps.Marker({
@@ -84,10 +118,15 @@
                 }
             });
         }
-    </script>
+        //Metodo de las funciones de guardado
+        //google.maps.event.addDomListener(window, 'load', initialize);
+        //
+</script>
 
+   <!--Aqui terminal el script funcional -->
 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&callback=initialize"></script>
+    <!--Aqui comienza el script experimental para el dibujo y guardado-->
 
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&libraries=drawing&callback=initialize" async defer></script>
 
 </body>

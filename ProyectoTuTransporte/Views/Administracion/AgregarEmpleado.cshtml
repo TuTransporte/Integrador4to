@@ -11,75 +11,75 @@
         <div class="header">
         </div>
         <div class="content">
-@using (Html.BeginForm("AgregarEmpleadoNVO", "Administracion", FormMethod.Post))
-{
-            <form id="formempleado">
-                @*<div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Puesto</label>
-                            <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
+            @using (Html.BeginForm("AgregarEmpleadoNVO", "Administracion", FormMethod.Post))
+            {
+                <form id="formempleado">
+                    @*<div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Puesto</label>
+                                    <input type="text" class="form-control" disabled placeholder="Company" value="Chofer">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Unidad del empleado</label>
+                                <div class="form-group" id="contenedor">
+                                    <!--DROPDOWNFOR PARTIAL VIEW -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Turno</label>
+                                <div class="form-group" id="turnosEmp">
+                                    <!--DROPDOWNFOR PARTIAL VIEW -->
+                                </div>
+                            </div>
+                        </div>*@
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Nombre(s)</label>
+                                <input id="txtNombres" name="txtNombres" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <label>Unidad del empleado</label>
-                        <div class="form-group" id="contenedor">
-                            <!--DROPDOWNFOR PARTIAL VIEW -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido Paterno</label>
+                                <input id="txtPaterno" name="txtPaterno" type="text" class="form-control" placeholder="Apellido paterno">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input id="txtMaterno" name="txtMaterno" type="text" class="form-control" placeholder="Apellido materno">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <label>Turno</label>
-                        <div class="form-group" id="turnosEmp">
-                            <!--DROPDOWNFOR PARTIAL VIEW -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                <input id="txtDireccion" name="txtDireccion" type="text" class="form-control" placeholder="Dirección del empleado">
+                            </div>
                         </div>
                     </div>
-                </div>*@
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Nombre(s)</label>
-                            <input id="txtNombres" name="txtNombres" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                    <div class="row">
+                        <div class="col-md-3">
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Apellido Paterno</label>
-                            <input id="txtPaterno" name="txtPaterno" type="text" class="form-control" placeholder="Apellido paterno">
+                        <div class="col-md-3">
+                            <a href="/Administracion/GestionEmpleados" class="btn btn-danger">Cancelar</a>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Apellido Materno</label>
-                            <input id="txtMaterno" name="txtMaterno" type="text" class="form-control" placeholder="Apellido materno">
+                        <div class="col-md-3">
+                            <button type="submit" class="btn btn-success" onclick="agregar()">Agregar</button>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Dirección</label>
-                            <input id="txtDireccion" name="txtDireccion" type="text" class="form-control" placeholder="Dirección del empleado">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                    </div>
-                    <div class="col-md-3">
-                        <a href="/Administracion/GestionEmpleados" class="btn btn-danger">Cancelar</a>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="submit" class="btn btn-success" onclick="agregar()">Agregar</button>
-                    </div>
-                    <div class="col-md-3">
+                        <div class="col-md-3">
 
+                        </div>
                     </div>
-                </div>
-                <div class="clearfix"></div>
-            </form>
-}
+                    <div class="clearfix"></div>
+                </form>
+            }
         </div>
     </div>
 </div>
@@ -118,6 +118,3 @@
     });*/
 </script>
     -->
-
-
-

@@ -41,7 +41,8 @@
                                 {
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
-                                            <label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>
+                                            @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
+                                            <p><em>Enviado por @row["Correo"]</em></p>
                                         </div>
                                         <div class="panel-body">
                                             <label class="panel-body" Width="60%">@row["Mensaje"]</label>

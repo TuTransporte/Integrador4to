@@ -62,25 +62,35 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Chat(string personaenvia)
         {
-            string valor = "";
-            if (personaenvia == null)
+            string link = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
             {
-                personaenvia = Session["personaenvia"].ToString();
+                string valor = "";
+                if (personaenvia == null)
+                {
+                    personaenvia = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    Session["personaenvia"] = personaenvia;
+                }
+                int tipo = Convert.ToInt32(Session["Tipo"]);
+                if (tipo == 4)
+                {
+                    valor = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    valor = Session["Correo"].ToString();
+                }
+                return View(ChatDAO.AbrirMensaje(valor));
             }
             else
             {
-                Session["personaenvia"] = personaenvia;
+                link = "/FrontEnd/Login";
+                return Redirect(link);
             }
-            int tipo = Convert.ToInt32(Session["Tipo"]);
-            if (tipo == 4)
-            {
-                valor = Session["personaenvia"].ToString();
-            }
-            else
-            {
-                valor = Session["Correo"].ToString();
-            }
-            return View(ChatDAO.AbrirMensaje(valor));
         }
 
         public ActionResult PublicarMensaje(ChatBO oChatBO)

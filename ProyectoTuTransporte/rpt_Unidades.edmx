@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProyectoTuTransporteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Camiones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Serie" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Matricula" Type="varchar" MaxLength="50" />
+          <Property Name="Comentarios" Type="varchar" MaxLength="200" />
+          <Property Name="FK_Rutas" Type="int" />
+        </EntityType>
+        <EntityType Name="Choferes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" />
+          <Property Name="Direccion" Type="varchar" MaxLength="200" />
+          <Property Name="FK_Camion" Type="int" />
+          <Property Name="FK_Turno" Type="int" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="100" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Denuncia" Type="text" Nullable="false" />
+          <Property Name="FechaHora" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FK_Ubicacion" Type="int" Nullable="false" />
+          <Property Name="FK_Usuario" Type="int" Nullable="false" />
+          <Property Name="FK_Chofer" Type="int" Nullable="false" />
+          <Property Name="FK_Camion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Correo_usuario" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telefono" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tipo_usuario" Type="int" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Camion">
+          <End Role="Camiones" Type="Self.Camiones" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Camiones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chofer">
+          <End Role="Choferes" Type="Self.Choferes" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Choferes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choferes_Camiones">
+          <End Role="Camiones" Type="Self.Camiones" Multiplicity="0..1" />
+          <End Role="Choferes" Type="Self.Choferes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camiones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Choferes">
+              <PropertyRef Name="FK_Camion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoTuTransporteModelStoreContainer">
+          <EntitySet Name="Camiones" EntityType="Self.Camiones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Choferes" EntityType="Self.Choferes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Denuncias" EntityType="Self.Denuncias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Camion" Association="Self.FK_Camion">
+            <End Role="Camiones" EntitySet="Camiones" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chofer" Association="Self.FK_Chofer">
+            <End Role="Choferes" EntitySet="Choferes" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choferes_Camiones" Association="Self.FK_Choferes_Camiones">
+            <End Role="Camiones" EntitySet="Camiones" />
+            <End Role="Choferes" EntitySet="Choferes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProyectoTuTransporteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Camiones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Serie" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Comentarios" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FK_Rutas" Type="Int32" />
+          <NavigationProperty Name="Denuncias" Relationship="Self.FK_Camion" FromRole="Camiones" ToRole="Denuncias" />
+          <NavigationProperty Name="Choferes" Relationship="Self.FK_Choferes_Camiones" FromRole="Camiones" ToRole="Choferes" />
+        </EntityType>
+        <EntityType Name="Choferes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FK_Camion" Type="Int32" />
+          <Property Name="FK_Turno" Type="Int32" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Camiones" Relationship="Self.FK_Choferes_Camiones" FromRole="Choferes" ToRole="Camiones" />
+          <NavigationProperty Name="Denuncias" Relationship="Self.FK_Chofer" FromRole="Choferes" ToRole="Denuncias" />
+        </EntityType>
+        <EntityType Name="Denuncias">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Denuncia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaHora" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FK_Ubicacion" Type="Int32" Nullable="false" />
+          <Property Name="FK_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="FK_Chofer" Type="Int32" Nullable="false" />
+          <Property Name="FK_Camion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Camiones" Relationship="Self.FK_Camion" FromRole="Denuncias" ToRole="Camiones" />
+          <NavigationProperty Name="Choferes" Relationship="Self.FK_Chofer" FromRole="Denuncias" ToRole="Choferes" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario" FromRole="Denuncias" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Correo_usuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoPaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApellidoMaterno" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Tipo_usuario" Type="Int32" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Denuncias" Relationship="Self.FK_Usuario" FromRole="Usuario" ToRole="Denuncias" />
+        </EntityType>
+        <Association Name="FK_Camion">
+          <End Role="Camiones" Type="Self.Camiones" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Camiones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choferes_Camiones">
+          <End Role="Camiones" Type="Self.Camiones" Multiplicity="0..1" />
+          <End Role="Choferes" Type="Self.Choferes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Camiones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Choferes">
+              <PropertyRef Name="FK_Camion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chofer">
+          <End Role="Choferes" Type="Self.Choferes" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Choferes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Denuncias" Type="Self.Denuncias" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Denuncias">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ProyectoTuTransporteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Camiones" EntityType="Self.Camiones" />
+          <EntitySet Name="Choferes" EntityType="Self.Choferes" />
+          <EntitySet Name="Denuncias" EntityType="Self.Denuncias" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Camion" Association="Self.FK_Camion">
+            <End Role="Camiones" EntitySet="Camiones" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choferes_Camiones" Association="Self.FK_Choferes_Camiones">
+            <End Role="Camiones" EntitySet="Camiones" />
+            <End Role="Choferes" EntitySet="Choferes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chofer" Association="Self.FK_Chofer">
+            <End Role="Choferes" EntitySet="Choferes" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario" Association="Self.FK_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Denuncias" EntitySet="Denuncias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProyectoTuTransporteModelStoreContainer" CdmEntityContainer="ProyectoTuTransporteEntities">
+          <EntitySetMapping Name="Camiones">
+            <EntityTypeMapping TypeName="ProyectoTuTransporteModel.Camiones">
+              <MappingFragment StoreEntitySet="Camiones">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+                <ScalarProperty Name="FK_Rutas" ColumnName="FK_Rutas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Choferes">
+            <EntityTypeMapping TypeName="ProyectoTuTransporteModel.Choferes">
+              <MappingFragment StoreEntitySet="Choferes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="FK_Camion" ColumnName="FK_Camion" />
+                <ScalarProperty Name="FK_Turno" ColumnName="FK_Turno" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Denuncias">
+            <EntityTypeMapping TypeName="ProyectoTuTransporteModel.Denuncias">
+              <MappingFragment StoreEntitySet="Denuncias">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Denuncia" ColumnName="Denuncia" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="FK_Ubicacion" ColumnName="FK_Ubicacion" />
+                <ScalarProperty Name="FK_Usuario" ColumnName="FK_Usuario" />
+                <ScalarProperty Name="FK_Chofer" ColumnName="FK_Chofer" />
+                <ScalarProperty Name="FK_Camion" ColumnName="FK_Camion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="ProyectoTuTransporteModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Correo_usuario" ColumnName="Correo_usuario" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApellidoPaterno" ColumnName="ApellidoPaterno" />
+                <ScalarProperty Name="ApellidoMaterno" ColumnName="ApellidoMaterno" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Tipo_usuario" ColumnName="Tipo_usuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -512,5 +512,6 @@ namespace ProyectoTuTransporte.Controllers
             NoticiasDAO.ModificarNoticias(NoticiaBO);
             return Redirect("~/Administracion/Index");
         }
+        
     }
 }

@@ -17,7 +17,7 @@ namespace ProyectoTuTransporte.BO
         public string Telefono { get; set; }
         public string Contrasena { get; set; }
         //Login
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Correolog { get; set; }
         public string Contrasenalog { get; set; }
 

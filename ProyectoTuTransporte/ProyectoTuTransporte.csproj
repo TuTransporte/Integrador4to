@@ -540,6 +540,9 @@
     <Content Include="Views\Administracion\Chat.cshtml" />
     <Content Include="Views\Administracion\VerChat.cshtml" />
     <Content Include="Views\Administracion\DibujaMapa.cshtml" />
+    <Content Include="Views\Administracion\Aprobadas.cshtml" />
+    <Content Include="Views\Administracion\Rechazadas.cshtml" />
+    <Content Include="Views\Administracion\Pendientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

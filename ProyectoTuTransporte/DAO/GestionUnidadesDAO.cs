@@ -68,7 +68,6 @@ namespace ProyectoTuTransporte.DAO
             String strBuscar = string.Format("SELECT Id, Serie FROM Camiones");
             Unidad = conex.EjecutarSetencialistUni(strBuscar);
             IEnumerable<SelectListItem> Unidades = Unidad;
-
             return Unidades;
         }
     }

@@ -206,14 +206,12 @@ namespace ProyectoTuTransporte.Controllers
         {
             string cadena = "";
             //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
             //cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
-
-
             string markers = "[";
             string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
             SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Tipo LIKE '%Punto%'");
@@ -260,7 +258,6 @@ namespace ProyectoTuTransporte.Controllers
             //    }
             //    con.Close();
             //}
-
             //markers = markers.Remove(markers.Length - 1);
             //markers += "];";
             //ViewBag.Markers = markers;
@@ -269,7 +266,6 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult DibujaMapa()
         {
-
             string cadena = "";
             //Conexion Ricardo
             cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
@@ -278,8 +274,6 @@ namespace ProyectoTuTransporte.Controllers
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
-
-
             string markers = "";
             string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
             SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Nombre LIKE'%Metro%'");
@@ -457,7 +451,6 @@ namespace ProyectoTuTransporte.Controllers
         //    return Content(nombre);
         //}
 
-
         //MÉTODOS PARA EMPLEADOS | MONTALVO
         public ActionResult AgregarEmpleadoNVO(GestionEmpleadosBO oEmpleados)
         {
@@ -465,7 +458,6 @@ namespace ProyectoTuTransporte.Controllers
             oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
             oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
             oEmpleados.Direccion = Request.Form["txtDireccion"];
-
             EmpleadosDAO.AgregarEmpleado(oEmpleados);
             return Redirect("~/Administracion/GestionEmpleados");
         }
@@ -520,8 +512,18 @@ namespace ProyectoTuTransporte.Controllers
             NoticiasDAO.ModificarNoticias(NoticiaBO);
             return Redirect("~/Administracion/Index");
         }
-        
-        public ActionResult pruebalatlong()
+
+        public ActionResult Aprobadas()
+        {
+            return View();
+        }
+
+        public ActionResult Rechazadas()
+        {
+            return View();
+        }
+
+        public ActionResult Pendientes()
         {
             return View();
         }

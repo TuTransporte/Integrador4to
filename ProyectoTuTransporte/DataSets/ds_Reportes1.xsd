@@ -14,7 +14,7 @@
   <xs:element name="ds_Reportes1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_Reportes1" msprop:Generator_UserDSName="ds_Reportes1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Camiones" msprop:Generator_TableClassName="CamionesDataTable" msprop:Generator_TableVarName="tableCamiones" msprop:Generator_TablePropName="Camiones" msprop:Generator_RowDeletingName="CamionesRowDeleting" msprop:Generator_RowChangingName="CamionesRowChanging" msprop:Generator_RowEvHandlerName="CamionesRowChangeEventHandler" msprop:Generator_RowDeletedName="CamionesRowDeleted" msprop:Generator_UserTableName="Camiones" msprop:Generator_RowChangedName="CamionesRowChanged" msprop:Generator_RowEvArgName="CamionesRowChangeEvent" msprop:Generator_RowClassName="CamionesRow">
+        <xs:element name="Camiones" msprop:Generator_TableClassName="CamionesDataTable" msprop:Generator_TableVarName="tableCamiones" msprop:Generator_RowChangedName="CamionesRowChanged" msprop:Generator_TablePropName="Camiones" msprop:Generator_RowDeletingName="CamionesRowDeleting" msprop:Generator_RowChangingName="CamionesRowChanging" msprop:Generator_RowEvHandlerName="CamionesRowChangeEventHandler" msprop:Generator_RowDeletedName="CamionesRowDeleted" msprop:Generator_RowClassName="CamionesRow" msprop:Generator_UserTableName="Camiones" msprop:Generator_RowEvArgName="CamionesRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -39,7 +39,6 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FK_Rutas" msprop:Generator_ColumnVarNameInTable="columnFK_Rutas" msprop:Generator_ColumnPropNameInRow="FK_Rutas" msprop:Generator_ColumnPropNameInTable="FK_RutasColumn" msprop:Generator_UserColumnName="FK_Rutas" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

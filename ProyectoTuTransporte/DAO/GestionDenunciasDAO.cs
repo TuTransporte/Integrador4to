@@ -21,19 +21,19 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListDenunciasApro()
         {
-            String cadena = string.Format("SELECT Denuncia, FechaHora FROM Denuncias WHERE Estado = '1'");
+            String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '1'");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
         public DataTable ListDenunciasRech()
         {
-            String cadena = string.Format("SELECT Denuncia, FechaHora FROM Denuncias WHERE Estado = '2'");
+            String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '2'");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
         public DataTable LlenarCamposBtnDen(int IdEmpleados)
         {
-            String cadena = "SELECT Denuncia, FechaHora, FK_Ubicacion, FK_Usuario, FK_Chofer, FK_Camion FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
+            String cadena = "SELECT Id, Denuncia, FechaHora, FK_Ubicacion, Estado, FK_Usuario, FK_Chofer, FK_Camion FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

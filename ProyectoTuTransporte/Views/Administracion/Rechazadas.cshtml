@@ -1,8 +1,41 @@
-﻿
+﻿@using System.Data;
+@model DataTable
 @{
     ViewBag.Title = "Rechazadas";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<h2>Rechazadas</h2>
+<center><h2 class="category">Gestión de denuncias rechazadas</h2></center>
+<br />
+<table table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Denuncia</th>
+            <th>Fecha</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginForm("Rechazadas", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <tbody>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" value="@row["Denuncia"]">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" value="@row["FechaHora"]">
+                    </td>
+                    <td>
+                        <a href="@Url.Action("RechazadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>
+
+
 

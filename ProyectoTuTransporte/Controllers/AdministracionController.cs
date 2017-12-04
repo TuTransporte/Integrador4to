@@ -15,6 +15,7 @@ namespace ProyectoTuTransporte.Controllers
     {
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
+        PuntosDAO PuntosDAO = new PuntosDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
         ChatDAO ChatDAO = new ChatDAO();
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
@@ -202,11 +203,12 @@ namespace ProyectoTuTransporte.Controllers
         }
 
         //Para poder visualizar la vista Mapas | Ricardo
+        
         public ActionResult MapaAdmin()
         {
             string cadena = "";
             //Conexion Ricardo
-            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
             //cadena = ".";
             //Conexion Bryan
@@ -264,44 +266,80 @@ namespace ProyectoTuTransporte.Controllers
             //return View();
         }
 
+        public ActionResult AgregarPunto(PuntosBO oPuntos)
+        {
+            oPuntos.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oPuntos.Nombre = Request.Form["Nombox"];
+            oPuntos.Latitud = Convert.ToDouble(Request.Form["latbox"]);
+            oPuntos.Longitud = Convert.ToDouble(Request.Form["lngbox"]);
+            oPuntos.Descripcion = Request.Form["Desbox"];
+            oPuntos.Tipo = Request.Form["Tipbox"];
+            PuntosDAO.AgregarPunto(oPuntos);
+            return Redirect("~/Administracion/MapaAdmin");
+        }
+
+        public ActionResult ModificarPuntos(PuntosBO oPuntos)
+        {
+            oPuntos.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oPuntos.Nombre = Request.Form["Nombox"];
+            oPuntos.Latitud = Convert.ToDouble(Request.Form["latbox"]);
+            oPuntos.Longitud = Convert.ToDouble(Request.Form["lngbox"]);
+            oPuntos.Descripcion = Request.Form["Desbox"];
+            oPuntos.Tipo = Request.Form["Tipbox"];
+            PuntosDAO.EliminarPunto(oPuntos);
+            return Redirect("~/Administracion/MapaAdmin");
+        }
+
+        public ActionResult EliminarPunto(PuntosBO oPuntos)
+        {
+            oPuntos.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oPuntos.Nombre = Request.Form["Nombox"];
+            oPuntos.Latitud = Convert.ToDouble(Request.Form["latbox"]);
+            oPuntos.Longitud = Convert.ToDouble(Request.Form["lngbox"]);
+            oPuntos.Descripcion = Request.Form["Desbox"];
+            oPuntos.Tipo = Request.Form["Tipbox"];
+            PuntosDAO.ModificarPuntos(oPuntos);
+            return Redirect("~/Administracion/MapaAdmin");
+        }
+
         public ActionResult DibujaMapa()
         {
-            string cadena = "";
-            //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
-            //Conexion Montalvo
-            //cadena = ".";
-            //Conexion Bryan
-            //cadena = "LAPTOP-5B0LK3E0";
-            //-----------------------------------------------//
-            string markers = "";
-            string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Nombre LIKE'%Metro%'");
+            //string cadena = "";
+            ////Conexion Ricardo
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            ////Conexion Montalvo
+            ////cadena = ".";
+            ////Conexion Bryan
+            ////cadena = "LAPTOP-5B0LK3E0";
+            ////-----------------------------------------------//
+            //string markers = "";
+            //string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
+            //SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Tipo LIKE'%Cmetro%'");
 
-            using (SqlConnection con = new SqlConnection(conex))
-            {
-                cmd.Connection = con;
-                con.Open();
-                using (SqlDataReader sdr = cmd.ExecuteReader())
-                {
-                    while (sdr.Read())
-                    {
-                        markers += "myTrip.push";
-                        markers += "(";
-                        markers += "new google.maps.LatLng";
-                        markers += "(";
-                        markers += string.Format("{0},", sdr["Latitud"]);
-                        markers += string.Format("{0},", sdr["Longitud"]);
-                        markers += ")";
-                        markers += ");";
-                    }
-                }
-                con.Close();
-            }
+            //using (SqlConnection con = new SqlConnection(conex))
+            //{
+            //    cmd.Connection = con;
+            //    con.Open();
+            //    using (SqlDataReader sdr = cmd.ExecuteReader())
+            //    {
+            //        while (sdr.Read())
+            //        {
+            //            markers += "myTrip.push";
+            //            markers += "(";
+            //            markers += "new google.maps.LatLng";
+            //            markers += "(";
+            //            markers += string.Format("{0},", sdr["Latitud"]);
+            //            markers += string.Format("{0},", sdr["Longitud"]);
+            //            markers += ")";
+            //            markers += ");";
+            //        }
+            //    }
+            //    con.Close();
+            //}
 
-            markers = markers.Remove(markers.Length - 1);
-            markers += ";";
-            ViewBag.Markers = markers;
+            //markers = markers.Remove(markers.Length - 1);
+            //markers += ";";
+            //ViewBag.Markers = markers;
             return View();
         }
 

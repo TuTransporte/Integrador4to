@@ -14,7 +14,7 @@ namespace ProyectoTuTransporte.DAO
         DataSet DataSetAdaptador;
         SqlConnection con;
         SqlCommand exec;
-        string cadena = "";
+        string cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
         //Conexion Ricardo
         //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
         //Conexion Montalvo
@@ -24,6 +24,7 @@ namespace ProyectoTuTransporte.DAO
 
         public SqlConnection EstablecerConexion()
         {
+            
             con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
             return con;

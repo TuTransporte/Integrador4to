@@ -159,6 +159,7 @@
     <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\GestionNoticiasBO.cs" />
     <Compile Include="BO\HorariosBO.cs" />
+    <Compile Include="BO\PuntosBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
     <Compile Include="Camiones.cs">
       <DependentUpon>rpt_Unidades.tt</DependentUpon>
@@ -178,6 +179,7 @@
     <Compile Include="DAO\GestionUnidadesDAO.cs" />
     <Compile Include="DAO\HorariosDAO.cs" />
     <Compile Include="DAO\LoginDAO.cs" />
+    <Compile Include="DAO\PuntosDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="DAO\ReportesDAO.cs" />
     <Compile Include="DataSets\ds_Reportes1.Designer.cs">

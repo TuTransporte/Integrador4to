@@ -263,6 +263,29 @@
         </div>
     }
 
+    @using (Html.BeginForm("EliminarPunto", "Administracion", FormMethod.Post))
+    {
+        <div class="modal fade" id="Modalmap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+
+
+                    </div>
+                    <div class="modal-body">
+                        <br />
+                        <p>Nombre: <input class="form-control" size="20" type="text" id="Nombox" name="Nombox"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-danger btn-fill pull-right">Aceptar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
 
     <!--   Core JS Files   -->
     <script src="/Content/MasterResources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
@@ -447,6 +470,16 @@
         })
 
         function MensajeEmp() {
+            $('#exampleModalLabel').html('¿Desea eliminar al empleado?')
+            $('#CuerpoEmp').html('Se eliminará el empleado seleccionado \n ')
+        }
+    </script>
+    <script>
+        $('#Modalmap').on('shown.bs.modal', function () {
+            $('#Modalmap').focus()
+        })
+
+        function Mensajemap() {
             $('#exampleModalLabel').html('¿Desea eliminar al empleado?')
             $('#CuerpoEmp').html('Se eliminará el empleado seleccionado \n ')
         }

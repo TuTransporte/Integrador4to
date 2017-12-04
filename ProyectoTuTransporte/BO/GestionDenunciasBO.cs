@@ -7,7 +7,7 @@ namespace ProyectoTuTransporte.BO
 {
     public class GestionDenunciasBO
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Denuncia { get; set; }
         public string FechaHora { get; set; }
         public int Estado { get; set; }

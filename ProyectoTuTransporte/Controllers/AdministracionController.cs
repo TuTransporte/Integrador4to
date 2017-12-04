@@ -8,6 +8,9 @@ using ProyectoTuTransporte.BO;
 using ProyectoTuTransporte.Models;
 using System.Collections;
 using System.Data.SqlClient;
+using ReportViewerForMvc;
+using Microsoft.Reporting.WebForms;
+using ProyectoTuTransporte.DataSets;
 
 namespace ProyectoTuTransporte.Controllers
 {
@@ -20,6 +23,7 @@ namespace ProyectoTuTransporte.Controllers
         ChatDAO ChatDAO = new ChatDAO();
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         HorariosDAO HorariosDAO = new HorariosDAO();
+        GestionDenunciasDAO DenunciasDAO = new GestionDenunciasDAO();
 
         // GET: Administracion
         public ActionResult Index()
@@ -553,17 +557,85 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Aprobadas()
         {
-            return View();
+
+            return View(DenunciasDAO.ListDenunciasApro());
+        }
+        public ActionResult AprobadasDatos(GestionDenunciasBO oDenuncias)
+        {
+            int idUn = oDenuncias.Id;
+            Session["Id"] = oDenuncias.Id;
+            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
         }
 
         public ActionResult Rechazadas()
         {
-            return View();
+            return View(DenunciasDAO.ListDenunciasRech());
+        }
+        public ActionResult RechazadasDatos(GestionDenunciasBO oDenuncias)
+        {
+            int idUn = oDenuncias.Id;
+            Session["Id"] = oDenuncias.Id;
+            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
         }
 
         public ActionResult Pendientes()
         {
+            return View(DenunciasDAO.ListDenunciasPend());
+        }
+        public ActionResult PendientesDatos(GestionDenunciasBO oDenuncias)
+        {
+            int idUn = oDenuncias.Id;
+            Session["Id"] = oDenuncias.Id;
+            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+        }
+        public ActionResult ApDenuncia(GestionDenunciasBO oDenuncias)
+        {
+            oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oDenuncias.Estado = Convert.ToInt32(Request.Form["txtEst"]);
+            DenunciasDAO.ModificarAprovado(oDenuncias);
+            return Redirect("~/Administracion/Pendientes");
+        }
+        public ActionResult ApDenuncia2(GestionDenunciasBO oDenuncias)
+        {
+            oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oDenuncias.Estado = Convert.ToInt32(Request.Form["txtEst"]);
+            DenunciasDAO.ModificarAprovado(oDenuncias);
+            return Redirect("~/Administracion/Rechazadas");
+        }
+
+        public ActionResult RechDenuncia(GestionDenunciasBO oDenuncias)
+        {
+            oDenuncias.Id = Convert.ToInt32(Session["Id"]);
+            DenunciasDAO.ModificarRechazado(oDenuncias);
+            Session["Id"] = null;
+            DenunciasDAO.ModificarRechazado(oDenuncias);
+            return Redirect("~/Administracion/Pendientes");
+        }
+        public ActionResult RechDenuncia2(GestionDenunciasBO oDenuncias)
+        {
+            oDenuncias.Id = Convert.ToInt32(Session["Id"]);
+            DenunciasDAO.ModificarRechazado(oDenuncias);
+            Session["Id"] = null;
+            DenunciasDAO.ModificarRechazado(oDenuncias);
+            return Redirect("~/Administracion/Aprobadas");
+        }
+
+
+        public ActionResult ReporteEmpleados()
+        {
+            ds_Reportes1 ds = new ds_Reportes1();
+            ReportViewer rp = new ReportViewer();
+            rp.ProcessingMode = ProcessingMode.Local;
+            rp.SizeToReportContent = true;
+            string sql = "Select Id, Serie, Matricula, Comentarios from Camiones";
+            ConexionDAO conex = new ConexionDAO();
+            SqlDataAdapter apap = new SqlDataAdapter(sql, conex.EstablecerConexion());
+            apap.Fill(ds, "Camiones");
+            rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/rpt_Unidades.rdlc";
+            rp.LocalReport.DataSources.Add(new ReportDataSource("ds_Reportes1", ds.Tables[0]));
+            ViewBag.ReportViewer = rp;
             return View();
         }
+
     }
 }

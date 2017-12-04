@@ -287,8 +287,6 @@ namespace ProyectoTuTransporte.DataSets {
             
             private global::System.Data.DataColumn columnComentarios;
             
-            private global::System.Data.DataColumn columnFK_Rutas;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CamionesDataTable() {
@@ -356,14 +354,6 @@ namespace ProyectoTuTransporte.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FK_RutasColumn {
-                get {
-                    return this.columnFK_Rutas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -399,14 +389,13 @@ namespace ProyectoTuTransporte.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CamionesRow AddCamionesRow(string Serie, string Matricula, string Comentarios, int FK_Rutas) {
+            public CamionesRow AddCamionesRow(string Serie, string Matricula, string Comentarios) {
                 CamionesRow rowCamionesRow = ((CamionesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Serie,
                         Matricula,
-                        Comentarios,
-                        FK_Rutas};
+                        Comentarios};
                 rowCamionesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCamionesRow);
                 return rowCamionesRow;
@@ -440,7 +429,6 @@ namespace ProyectoTuTransporte.DataSets {
                 this.columnSerie = base.Columns["Serie"];
                 this.columnMatricula = base.Columns["Matricula"];
                 this.columnComentarios = base.Columns["Comentarios"];
-                this.columnFK_Rutas = base.Columns["FK_Rutas"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -454,8 +442,6 @@ namespace ProyectoTuTransporte.DataSets {
                 base.Columns.Add(this.columnMatricula);
                 this.columnComentarios = new global::System.Data.DataColumn("Comentarios", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComentarios);
-                this.columnFK_Rutas = new global::System.Data.DataColumn("FK_Rutas", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFK_Rutas);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -664,22 +650,6 @@ namespace ProyectoTuTransporte.DataSets {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FK_Rutas {
-                get {
-                    try {
-                        return ((int)(this[this.tableCamiones.FK_RutasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FK_Rutas\' de la tabla \'Camiones\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCamiones.FK_RutasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMatriculaNull() {
                 return this.IsNull(this.tableCamiones.MatriculaColumn);
             }
@@ -700,18 +670,6 @@ namespace ProyectoTuTransporte.DataSets {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetComentariosNull() {
                 this[this.tableCamiones.ComentariosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFK_RutasNull() {
-                return this.IsNull(this.tableCamiones.FK_RutasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFK_RutasNull() {
-                this[this.tableCamiones.FK_RutasColumn] = global::System.Convert.DBNull;
             }
         }
         

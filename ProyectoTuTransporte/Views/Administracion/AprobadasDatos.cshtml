@@ -1,0 +1,63 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "Información de la denuncia | TuTransporte";
+    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
+}
+
+
+@foreach (DataRow row in Model.Rows)
+{
+    <center><h2 class="category">Gestión de denuncias aprobadas</h2></center>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Información de denuncia</h4>
+                    <p class="category"></p>
+                </div>
+
+                <div class="content">
+                    @using (Html.BeginForm("RechDenuncia2", "Administracion", FormMethod.Post))
+                    {
+                        <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
+                        <input value="@row["Estado"]" id="txtEst" name="txtEst" type="text" class="form-control" style="visibility:hidden;" />
+                        <div class="panel panel-info">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading"><label>Denuncia</label></div>
+                            <input value="@row["FechaHora"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+
+
+                            <div class="panel-body">
+                                <textarea id="txtSerie" name="txtSerie" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
+                            </div>
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item"></li>
+                            </ul>
+                            <div class="list-group">
+                                <br />
+                                <center>
+                                    <a href="/Administracion/Aprobadas" type="button" class="btn btn-default">Regresar</a>
+                                    <button type="submit" class="btn btn-danger">
+                                        Rechazar
+                                    </button>
+                                </center>
+                                <br />
+                            </div>
+                        </div>
+                        }
+                        <div class="footer">
+                            <div class="legend">
+                            </div>
+                            <hr>
+                            <div class="stats">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+

@@ -1,47 +1,38 @@
-﻿
+﻿@using System.Data;
+@model DataTable
 @{
     ViewBag.Title = "Pendientes";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<center><h2 class="category">Pendientes</h2></center>
-<div class="row">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="header">
-                <h4 class="title">Sección de denuncias</h4>
-                <p class="category"></p>
-            </div>
-            <div class="content">
-
-                <div class="panel panel-info">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading"></div>
-                    <div class="panel-body">
-                        <p></p>
-                    </div>
-                    <!-- List group -->
-                    <ul class="list-group">
-                        <li class="list-group-item"></li>
-                    </ul>
-                    <div class="list-group">
-                        <br />
-                        <center>
-                            <a href="" type="button" class="btn btn-info">Aprobar</a>
-                            <a href="" type="button" class="btn btn-danger">Rechazar</a><br />
-                        </center>
-                        <br />
-                    </div>
-                </div>
-
-                <div class="footer">
-                    <div class="legend">
-                    </div>
-                    <hr>
-                    <div class="stats">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<center><h2 class="category">Gestión de denuncias pendientes</h2></center>
+<br />
+<table table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Denuncia</th>
+            <th>Fecha</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    @using (Html.BeginForm("Pendientes", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <tbody>
+            @foreach (DataRow row in Model.Rows)
+            {
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" value="@row["Denuncia"]">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" value="@row["FechaHora"]">
+                    </td>
+                    <td>
+                        <a href="@Url.Action("PendientesDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    }
+</table>

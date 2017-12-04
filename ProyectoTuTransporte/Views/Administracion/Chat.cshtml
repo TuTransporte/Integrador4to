@@ -31,8 +31,6 @@
                             <p>Bandeja de entrada | TuTransporte</p>
                         </div>
                     </div>
-
-
                     <div>
                         <ul class="messages margen">
                             @using (Html.BeginForm("Chat", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -52,8 +50,6 @@
                             }
                         </ul>
                     </div>
-
-
                     <div class="bottom_wrapper clearfix">
                         @using (Html.BeginForm("PublicarMensaje", "Administracion", FormMethod.Post))
                         {
@@ -75,7 +71,6 @@
                             </div>
                         }
                     </div>
-
                 </div>
                 <div class="message_template">
                     <li class="message">

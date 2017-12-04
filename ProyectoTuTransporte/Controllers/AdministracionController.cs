@@ -521,5 +521,9 @@ namespace ProyectoTuTransporte.Controllers
             return Redirect("~/Administracion/Index");
         }
         
+        public ActionResult pruebalatlong()
+        {
+            return View();
+        }
     }
 }

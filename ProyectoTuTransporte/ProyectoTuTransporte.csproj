@@ -210,6 +210,7 @@
     <Content Include="Content\MasterFrontEnd\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="Content\MasterFrontEnd\fonts\icomoon\icomoon.svg" />
     <Content Include="Content\MasterFrontEnd\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="Content\MasterFrontEnd\images\Bas.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev1.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev2.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev3.jpg" />
@@ -220,9 +221,11 @@
     <Content Include="Content\MasterFrontEnd\images\logo3.png" />
     <Content Include="Content\MasterFrontEnd\images\logo4.png" />
     <Content Include="Content\MasterFrontEnd\images\logo5.png" />
+    <Content Include="Content\MasterFrontEnd\images\Mon %281%29.jpg" />
     <Content Include="Content\MasterFrontEnd\images\person2.jpg" />
     <Content Include="Content\MasterFrontEnd\images\person3.jpg" />
     <Content Include="Content\MasterFrontEnd\images\person4.jpg" />
+    <Content Include="Content\MasterFrontEnd\images\Rick.jpg" />
     <Content Include="Content\MasterFrontEnd\images\rutassitur.jpg" />
     <Content Include="Content\MasterFrontEnd\images\situr_merida.jpg" />
     <Content Include="Content\MasterFrontEnd\images\testimonio1.jpg" />

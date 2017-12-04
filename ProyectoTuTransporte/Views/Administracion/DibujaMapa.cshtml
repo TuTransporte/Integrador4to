@@ -4,56 +4,60 @@
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<h2>DibujaMapa</h2>
+<h2>Rutas</h2>
 
-<head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" charset="UTF-8" />
-    <title>Shape Save Demo</title>
-    <style type="text/css">
-        #map, html, body {
-            padding: 0;
-            margin: 0;
-            height: 100%;
-        }
-
-        #buttons {
-            position: fixed;
-            top: 5px;
-            right: 5px;
-        }
-    </style>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&libraries=drawing&callback=initialize" async defer></script>
-    <script type="text/javascript">
-function initialize() {
-    var shapesMap = new ShapesMap(
-        document.getElementById("map"),
-        document.getElementById("delete-button"),
-        document.getElementById("clear-button"),
-        document.getElementById("console"));
-}
 
-google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
-</head>
 <body>
-    <table style="width:100%;height:100%;border-style:none;border-collapse:collapse;">
-        <tr>
-            <td style="width:100%;height:80%;border-width:0px;padding:0px;">
-                <div id="map" style="height: 500px"></div>
-                <div id="buttons">
-                    <input type="button" id="delete-button" value="Delete Shape">
-                    <input type="button" id="clear-button" value="Clear All Shapes">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <input type="button" ID="btninsert" runat="server" text="Button" OnClientClick="mapRefresh(); return false;" /> 
+            </div>
+            <div class="content">
+                <center>
+                    <div id="map" style="height: 500px"></div>
+                </center>
+                <div class="footer">
+                    <div class="legend">
+                    </div>
+                    <hr>
+                    <div class="stats">
+                    </div>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <td style="width:100%;height:20%;border-width:0px;padding:0px;">
-                <textarea id="console" readonly="readonly" style="width:100%;height:100%;border:0px;margin:0px;background-color:#e0f0a0;"></textarea>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>  
+    </div>
+
 
     <script>
+        function initialize() {
+            var mapProp = {
+                center: new google.maps.LatLng(20.98010396916269, -89.63291830000009),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map"), mapProp);
+            var myTrip = new Array();
+            @Html.Raw(ViewBag.Markers);
+            //myTrip.push(new google.maps.LatLng(20.959867, -89.582616));
+            //myTrip.push(new google.maps.LatLng(20.957006, -89.570954));
+            //myTrip.push(new google.maps.LatLng(20.964634, -89.569409));
+            var flightPath = new google.maps.Polyline({
+                path: myTrip,
+                strokeColor: "#0000FF",
+                strokeOpacity: 0.8,
+                strokeWeight: 2
+            });
+            flightPath.setMap(map);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+
+    @*<script>
         function ShapesMap(_mapContainer, _deleteButton, _clearButton, _console) {
 
             // state
@@ -694,7 +698,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
             onCreate();
         }
-    </script>
+    </script>*@
 
 </body>
 

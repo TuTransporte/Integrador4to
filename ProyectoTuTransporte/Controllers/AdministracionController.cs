@@ -178,17 +178,17 @@ namespace ProyectoTuTransporte.Controllers
         {
             string cadena = "";
             //Conexion Ricardo
-            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            cadena = ".";
+            //cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
 
 
             string markers = "[";
-            string conex = "Data Source= " + cadena + "\\SQLEXPRESS;Initial Catalog=PruebaArrays;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Locations");
+            string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
+            SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Nombre LIKE '%Punto%'");
 
             using (SqlConnection con = new SqlConnection(conex))
             {
@@ -198,25 +198,88 @@ namespace ProyectoTuTransporte.Controllers
                 {
                     while (sdr.Read())
                     {
-                        markers += "[";
-                        markers += string.Format("'{0}',", sdr["Name"]);
-                        markers += string.Format("{0},", sdr["Latitude"]);
-                        markers += string.Format("{0},", sdr["Longitude"]);
-                        markers += string.Format("{0}", sdr["Description"]);
-                        markers += "],";
+                        markers += "{";
+                        markers += string.Format("'title': '{0}',", sdr["Nombre"]);
+                        markers += string.Format("'lat': '{0}',", sdr["Latitud"]);
+                        markers += string.Format("'lng': '{0}',", sdr["Longitud"]);
+                        markers += string.Format("'description': '{0}'", sdr["Descripcion"]);
+                        markers += "},";
+                    }
+                }
+                con.Close();
+            }
+
+            markers += "];";
+            ViewBag.Markers = markers;
+            return View();
+
+            //Funcion usada con la opcion de dibujo
+            //using (SqlConnection con = new SqlConnection(conex))
+            //{
+            //    cmd.Connection = con;
+            //    con.Open();
+            //    using (SqlDataReader sdr = cmd.ExecuteReader())
+            //    {
+            //        while (sdr.Read())
+            //        {
+            //            markers += "[";
+            //            markers += string.Format("'{0}',", sdr["Nombre"]);
+            //            markers += string.Format("{0},", sdr["Latitud"]);
+            //            markers += string.Format("{0},", sdr["Longitud"]);
+            //            markers += string.Format("{0}", sdr["Descripcion"]);
+            //            markers += "],";
+            //        }
+            //    }
+            //    con.Close();
+            //}
+
+            //markers = markers.Remove(markers.Length - 1);
+            //markers += "];";
+            //ViewBag.Markers = markers;
+            //return View();
+        }
+
+        public ActionResult DibujaMapa()
+        {
+
+            string cadena = "";
+            //Conexion Ricardo
+            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //Conexion Montalvo
+            //cadena = ".";
+            //Conexion Bryan
+            //cadena = "LAPTOP-5B0LK3E0";
+            //-----------------------------------------------//
+
+
+            string markers = "";
+            string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
+            SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Nombre LIKE'%Metro%'");
+
+            using (SqlConnection con = new SqlConnection(conex))
+            {
+                cmd.Connection = con;
+                con.Open();
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    while (sdr.Read())
+                    {
+                        markers += "myTrip.push";
+                        markers += "(";
+                        markers += "new google.maps.LatLng";
+                        markers += "(";
+                        markers += string.Format("{0},", sdr["Latitud"]);
+                        markers += string.Format("{0},", sdr["Longitud"]);
+                        markers += ")";
+                        markers += ");";
                     }
                 }
                 con.Close();
             }
 
             markers = markers.Remove(markers.Length - 1);
-            markers += "];";
+            markers += ";";
             ViewBag.Markers = markers;
-            return View();
-        }
-
-        public ActionResult DibujaMapa()
-        {
             return View();
         }
 

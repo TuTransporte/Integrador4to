@@ -7,11 +7,9 @@
 <h2>PruebaMapa</h2>
 <!-- This css is to ensure that the google map contols (zoom bar etc) show and size correctly. -->
 <!-- This is the div that will contain the Google Map -->
-
- <!--Script que ejecuta el mapa de manera funcional-->
+<!--Script que ejecuta el mapa de manera funcional-->
 
 <body>
-
     <div class="col-md-8">
         <div class="card">
             <div class="header">
@@ -64,92 +62,91 @@
     @*<script>
 
 
-//Script utilizado para el dibujo de ruta entre marcadores
-        function initialize() {
-            //Variables de la funcion guardado
-           
-                document.getElementById("map"),
-                document.getElementById("delete-button"),
-                document.getElementById("clear-button"),
-                document.getElementById("console");
-            //
+        //Script utilizado para el dibujo de ruta entre marcadores
+                function initialize() {
+                    //Variables de la funcion guardado
 
-            var geocoder;
-        var map;
-        var directionsDisplay;
-        var directionsService = new google.maps.DirectionsService();
-        var locations = @Html.Raw(ViewBag.Markers);
-            directionsDisplay = new google.maps.DirectionsRenderer();
+                        document.getElementById("map"),
+                        document.getElementById("delete-button"),
+                        document.getElementById("clear-button"),
+                        document.getElementById("console");
+                    //
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: new google.maps.LatLng(20.98010396916269, -89.63291830000009),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
+                    var geocoder;
+                var map;
+                var directionsDisplay;
+                var directionsService = new google.maps.DirectionsService();
+                var locations = @Html.Raw(ViewBag.Markers);
+                    directionsDisplay = new google.maps.DirectionsRenderer();
 
-            //Controles de dibujo
-            var drawingManager = new google.maps.drawing.DrawingManager({
-                drawingMode: google.maps.drawing.OverlayType.MARKER,
-                drawingControl: true,
-                drawingControlOptions: {
-                    position: google.maps.ControlPosition.TOP_CENTER,
-                    drawingModes: ['polygon']
-                },
-                markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
-                polygonOptions: {
-                    fillColor: '#81F781',
-                    //fillOpacity: 10,
-                    strokeWeight: 2,
-                    clickable: false,
-                    editable: true,
-                    zIndex: 1
-                }
-            });
-            drawingManager.setMap(map);
-            //
-            directionsDisplay.setMap(map);
-            var infowindow = new google.maps.InfoWindow();
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 10,
+                        center: new google.maps.LatLng(20.98010396916269, -89.63291830000009),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
 
-            var marker, i;
-            var request = {
-                travelMode: google.maps.TravelMode.WALKING
-            };
-            for (i = 0; i < locations.length; i++) {
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                });
+                    //Controles de dibujo
+                    var drawingManager = new google.maps.drawing.DrawingManager({
+                        drawingMode: google.maps.drawing.OverlayType.MARKER,
+                        drawingControl: true,
+                        drawingControlOptions: {
+                            position: google.maps.ControlPosition.TOP_CENTER,
+                            drawingModes: ['polygon']
+                        },
+                        markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
+                        polygonOptions: {
+                            fillColor: '#81F781',
+                            //fillOpacity: 10,
+                            strokeWeight: 2,
+                            clickable: false,
+                            editable: true,
+                            zIndex: 1
+                        }
+                    });
+                    drawingManager.setMap(map);
+                    //
+                    directionsDisplay.setMap(map);
+                    var infowindow = new google.maps.InfoWindow();
 
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        infowindow.setContent(locations[i][0]);
-                        infowindow.open(map, marker);
+                    var marker, i;
+                    var request = {
+                        travelMode: google.maps.TravelMode.WALKING
+                    };
+                    for (i = 0; i < locations.length; i++) {
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                            return function () {
+                                infowindow.setContent(locations[i][0]);
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+
+                        if (i == 0) request.origin = marker.getPosition();
+                        else if (i == locations.length - 1) request.destination = marker.getPosition();
+                        else {
+                            if (!request.waypoints) request.waypoints = [];
+                            request.waypoints.push({
+                                location: marker.getPosition(),
+                                stopover: true
+                            });
+                        }
+
                     }
-                })(marker, i));
-
-                if (i == 0) request.origin = marker.getPosition();
-                else if (i == locations.length - 1) request.destination = marker.getPosition();
-                else {
-                    if (!request.waypoints) request.waypoints = [];
-                    request.waypoints.push({
-                        location: marker.getPosition(),
-                        stopover: true
+                    directionsService.route(request, function (result, status) {
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(result);
+                        }
                     });
                 }
+                //Metodo de las funciones de guardado
+                //google.maps.event.addDomListener(window, 'load', initialize);
+                //
+        </script>*@
 
-            }
-            directionsService.route(request, function (result, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(result);
-                }
-            });
-        }
-        //Metodo de las funciones de guardado
-        //google.maps.event.addDomListener(window, 'load', initialize);
-        //
-</script>*@
-
-   <!--Aqui terminal el script funcional -->
-
+    <!--Aqui terminal el script funcional -->
     <!--Aqui comienza el script experimental para el dibujo y guardado-->
 
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&libraries=drawing&callback=initialize" async defer></script>

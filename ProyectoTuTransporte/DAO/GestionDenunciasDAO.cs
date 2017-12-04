@@ -14,8 +14,6 @@ namespace ProyectoTuTransporte.DAO
         SqlCommand cmd;
         ConexionDAO conex = new ConexionDAO();
 
-
-
         public DataTable ListDenunciasPend()
         {
             String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '0'");
@@ -37,7 +35,6 @@ namespace ProyectoTuTransporte.DAO
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
-
         public int AgregarDenuncia(GestionDenunciasBO oDenuncias)
         {
             cmd = new SqlCommand("INSERT INTO Denuncias (Denuncia, FechaHora, FK_Ubicacion, FK_Usuario, FK_Chofer, FK_Camion, Estado) VALUES ('" + oDenuncias.Denuncia + "', GETDATE(), '" + oDenuncias.FK_Ubicacion + "', '" + oDenuncias.FK_Usuario + "', '" + oDenuncias.FK_Chofer + "', '" + oDenuncias.FK_Camion + "', '0')");
@@ -53,7 +50,5 @@ namespace ProyectoTuTransporte.DAO
             cmd = new SqlCommand("UPDATE Denuncias SET Estado = 2 WHERE Id='" + oDenuncias.Id + "'");
             return conex.EjecutarComando(cmd);
         }
-
-
     }
 }

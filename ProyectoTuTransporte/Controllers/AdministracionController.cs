@@ -62,21 +62,49 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Chat(string personaenvia)
         {
-            if (personaenvia == null)
+            string link = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
             {
-                personaenvia = Session["personaenvia"].ToString();
+                string valor = "";
+                if (personaenvia == null)
+                {
+                    personaenvia = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    Session["personaenvia"] = personaenvia;
+                }
+                int tipo = Convert.ToInt32(Session["Tipo"]);
+                if (tipo == 4)
+                {
+                    valor = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    valor = Session["Correo"].ToString();
+                }
+                return View(ChatDAO.AbrirMensaje(valor));
             }
             else
             {
-                Session["personaenvia"] = personaenvia;
+                link = "/FrontEnd/Login";
+                return Redirect(link);
             }
-            return View(ChatDAO.AbrirMensaje(Session["Correo"].ToString(), Session["personaenvia"].ToString()));
         }
 
         public ActionResult PublicarMensaje(ChatBO oChatBO)
         {
             oChatBO.Mensaje = Request.Form["txtMensaje"];
-            oChatBO.PersonaEnvia = Session["Correo"].ToString();
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (tipo == 4)
+            {
+                oChatBO.PersonaEnvia = "admin@hotmail.com";
+            }
+            else
+            {
+                oChatBO.PersonaEnvia = Session["Correo"].ToString();
+            }
             oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
             oChatBO.Correo = Session["Correo"].ToString();
             ChatDAO.AgregarMensaje(oChatBO);
@@ -457,7 +485,7 @@ namespace ProyectoTuTransporte.Controllers
         {
             oEmpleados.Id = Convert.ToInt32(Session["Id"]);
             EmpleadosDAO.EliminarEmpleado(oEmpleados);
-            Session["Id"] = null;                      
+            Session["Id"] = null;
             return Redirect("~/Administracion/GestionEmpleados");
         }
 

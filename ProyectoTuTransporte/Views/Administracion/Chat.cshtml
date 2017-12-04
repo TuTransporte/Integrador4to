@@ -25,7 +25,7 @@
                             @*<div class="button close"></div>
                                 <div class="button minimize"></div>
                                 <div class="button maximize"></div>*@
-                            <a href="/Administracion/VerChat" class="alert alert-danger">Regresar</a>
+                            <a href="/Administracion/VerChat" class="alert alert-danger">Regresar a inicio</a>
                         </div>
                         <div class="title">
                             <p>Bandeja de entrada | TuTransporte</p>
@@ -39,9 +39,10 @@
                             {
                                 foreach (DataRow row in Model.Rows)
                                 {
-                                    <div class="panel panel-info">
+                                    <div class="panel panel-success">
                                         <div class="panel-heading">
-                                            <label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>
+                                            @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
+                                            <p><em>Enviado por @row["Correo"]</em></p>
                                         </div>
                                         <div class="panel-body">
                                             <label class="panel-body" Width="60%">@row["Mensaje"]</label>
@@ -65,7 +66,12 @@
                             <br />
                             <div class="">
                                 <div class="icon"></div>
-                                <center><button type="submit" class="btn btn-success">Enviar mesaje</button></center>
+                                <div class="row">
+                                    <div class="col-md-7"></div>
+                                    <div class="col-md-5">
+                                        <center><button type="submit" class="btn btn-success">Enviar mesaje</button></center>
+                                    </div>
+                                </div>
                             </div>
                         }
                     </div>

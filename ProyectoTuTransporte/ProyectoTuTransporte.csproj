@@ -46,6 +46,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -53,6 +61,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -143,17 +153,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BO\ChatBO.cs" />
+    <Compile Include="BO\GestionDenunciasBO.cs" />
     <Compile Include="BO\GestionEmpleadosBO.cs" />
     <Compile Include="BO\GestionPerfilBO.cs" />
     <Compile Include="BO\GestionUnidadesBO.cs" />
     <Compile Include="BO\GestionNoticiasBO.cs" />
     <Compile Include="BO\HorariosBO.cs" />
     <Compile Include="BO\RegistroUsuarioBO.cs" />
+    <Compile Include="Camiones.cs">
+      <DependentUpon>rpt_Unidades.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Choferes.cs">
+      <DependentUpon>rpt_Unidades.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AdministracionController.cs" />
     <Compile Include="Controllers\FrontEndController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\GestionDenunciasDAO.cs" />
     <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
     <Compile Include="DAO\GestionPerfilDAO.cs" />
@@ -162,12 +180,38 @@
     <Compile Include="DAO\LoginDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="DAO\ReportesDAO.cs" />
+    <Compile Include="DataSets\ds_Reportes1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Denuncias.cs">
+      <DependentUpon>rpt_Unidades.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Mod_Horarios.cs" />
     <Compile Include="Models\Mod_Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rpt_Unidades.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_Unidades.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_Unidades.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_Unidades.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rpt_Unidades.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_Unidades.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs">
+      <DependentUpon>rpt_Unidades.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="BDTuTransporte\BDTuTransporte.sql" />
@@ -292,6 +336,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="rpt_Unidades.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rpt_Unidades.edmx</DependentUpon>
+      <LastGenOutput>rpt_Unidades.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="rpt_Unidades.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rpt_Unidades.edmx</DependentUpon>
+      <LastGenOutput>rpt_Unidades.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -416,6 +470,24 @@
     <Content Include="Content\MasterFrontEnd\sass\_bootstrap-mincer.scss" />
     <Content Include="Content\MasterFrontEnd\sass\_bootstrap-sprockets.scss" />
     <Content Include="Content\LoginResources\scss\style.scss" />
+    <EntityDeploy Include="rpt_Unidades.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>rpt_Unidades.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="rpt_Unidades.edmx.diagram">
+      <DependentUpon>rpt_Unidades.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataSets\ds_Reportes1.xsc">
+      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\ds_Reportes1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ds_Reportes1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\ds_Reportes1.xss">
+      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -484,6 +556,12 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\rpt_Unidades.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

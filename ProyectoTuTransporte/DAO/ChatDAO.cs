@@ -16,13 +16,13 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable MostarUsuarios(string correolog)
         {
-            String cadena = string.Format("Select * From Usuario where Correo_usuario != '" + correolog + "' Order By ApellidoPaterno");
+            String cadena = string.Format("Select * From Usuario where Correo_usuario != '" + correolog + "' And Tipo_usuario != 4 Order By ApellidoPaterno");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
-        public DataTable AbrirMensaje(string PersonaEnvia, string PersonaRecibe)
+        public DataTable AbrirMensaje(string PersonaEnvia)
         {
-            String cadena = "SELECT * From Chats WHERE (PersonaEnvia='" + PersonaEnvia + "' And PersonaRecibe='" + PersonaRecibe + "') Or (PersonaRecibe='" + PersonaEnvia + "' And PersonaEnvia='" + PersonaRecibe + "')";
+            String cadena = "SELECT * From Chats WHERE (PersonaEnvia='" + PersonaEnvia + "' And PersonaRecibe='admin@hotmail.com') Or (PersonaRecibe='" + PersonaEnvia + "' And PersonaEnvia='admin@hotmail.com')";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

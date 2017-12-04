@@ -216,7 +216,7 @@ namespace ProyectoTuTransporte.Controllers
 
             string markers = "[";
             string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
-            SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Nombre LIKE '%Punto%'");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Tipo LIKE '%Punto%'");
 
             using (SqlConnection con = new SqlConnection(conex))
             {

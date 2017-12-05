@@ -102,10 +102,28 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Administracion/MapaAdmin">
+                        <a data-toggle="collapse" href="#tablesmaps">
                             <i class="pe-7s-map"></i>
-                            <p>Gestión de rutas</p>
+                            <p>
+                                Gestion de Mapas<b class="caret"></b>
+                            </p>
                         </a>
+                        <div class="collapse" id="tablesmaps">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/Administracion/MapaAdmin">
+                                        <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
+                                        <span class="sidebar-normal">Puntos de interés</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/Administracion/DibujaMapa">
+                                        <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
+                                        <span class="sidebar-normal">Rutas</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -298,7 +316,8 @@
                     </div>
                     <div class="modal-body">
                         <br />
-                        <p>Nombre: <input class="form-control" size="20" type="text" id="Nombox" name="Nombox"></p>
+                        <p>Nombre Del Punto: <input class="form-control" size="20" type="text" id="Nombox" name="Nombox"></p>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

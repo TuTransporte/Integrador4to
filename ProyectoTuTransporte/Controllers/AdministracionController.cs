@@ -8,8 +8,8 @@ using ProyectoTuTransporte.BO;
 using ProyectoTuTransporte.Models;
 using System.Collections;
 using System.Data.SqlClient;
-using ReportViewerForMvc;
-using Microsoft.Reporting.WebForms;
+//using ReportViewerForMvc;
+//using Microsoft.Reporting.WebForms;
 using ProyectoTuTransporte.DataSets;
 
 namespace ProyectoTuTransporte.Controllers
@@ -279,7 +279,7 @@ namespace ProyectoTuTransporte.Controllers
             oPuntos.Descripcion = Request.Form["Desbox"];
             oPuntos.Tipo = Request.Form["Tipbox"];
             PuntosDAO.AgregarPunto(oPuntos);
-            return Redirect("~/Administracion/MapaAdmin");
+            return View();
         }
 
         public ActionResult ModificarPuntos(PuntosBO oPuntos)
@@ -290,7 +290,7 @@ namespace ProyectoTuTransporte.Controllers
             oPuntos.Longitud = Convert.ToDouble(Request.Form["lngbox"]);
             oPuntos.Descripcion = Request.Form["Desbox"];
             oPuntos.Tipo = Request.Form["Tipbox"];
-            PuntosDAO.EliminarPunto(oPuntos);
+            PuntosDAO.ModificarPuntos(oPuntos);
             return Redirect("~/Administracion/MapaAdmin");
         }
 
@@ -302,7 +302,7 @@ namespace ProyectoTuTransporte.Controllers
             oPuntos.Longitud = Convert.ToDouble(Request.Form["lngbox"]);
             oPuntos.Descripcion = Request.Form["Desbox"];
             oPuntos.Tipo = Request.Form["Tipbox"];
-            PuntosDAO.ModificarPuntos(oPuntos);
+            PuntosDAO.EliminarPunto(oPuntos);
             return Redirect("~/Administracion/MapaAdmin");
         }
 
@@ -621,21 +621,21 @@ namespace ProyectoTuTransporte.Controllers
         }
 
 
-        public ActionResult ReporteEmpleados()
-        {
-            ds_Reportes1 ds = new ds_Reportes1();
-            ReportViewer rp = new ReportViewer();
-            rp.ProcessingMode = ProcessingMode.Local;
-            rp.SizeToReportContent = true;
-            string sql = "Select Id, Serie, Matricula, Comentarios from Camiones";
-            ConexionDAO conex = new ConexionDAO();
-            SqlDataAdapter apap = new SqlDataAdapter(sql, conex.EstablecerConexion());
-            apap.Fill(ds, "Camiones");
-            rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/rpt_Unidades.rdlc";
-            rp.LocalReport.DataSources.Add(new ReportDataSource("ds_Reportes1", ds.Tables[0]));
-            ViewBag.ReportViewer = rp;
-            return View();
-        }
+        //public ActionResult ReporteEmpleados()
+        //{
+        //    ds_Reportes1 ds = new ds_Reportes1();
+        //    ReportViewer rp = new ReportViewer();
+        //    rp.ProcessingMode = ProcessingMode.Local;
+        //    rp.SizeToReportContent = true;
+        //    string sql = "Select Id, Serie, Matricula, Comentarios from Camiones";
+        //    ConexionDAO conex = new ConexionDAO();
+        //    SqlDataAdapter apap = new SqlDataAdapter(sql, conex.EstablecerConexion());
+        //    apap.Fill(ds, "Camiones");
+        //    rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/rpt_Unidades.rdlc";
+        //    rp.LocalReport.DataSources.Add(new ReportDataSource("ds_Reportes1", ds.Tables[0]));
+        //    ViewBag.ReportViewer = rp;
+        //    return View();
+        //}
 
     }
 }

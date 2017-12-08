@@ -8,14 +8,17 @@ using ProyectoTuTransporte.BO;
 using ProyectoTuTransporte.Models;
 using System.Collections;
 using System.Data.SqlClient;
-//using ReportViewerForMvc;
-//using Microsoft.Reporting.WebForms;
-using ProyectoTuTransporte.DataSets;
+using ReportViewerForMvc;
+using System.Web.UI.WebControls;
+using Microsoft.Reporting.WebForms;
+using ProyectoTuTransporte.Reportes;
+
 
 namespace ProyectoTuTransporte.Controllers
 {
     public class AdministracionController : Controller
     {
+        ConexionDAO conex = new ConexionDAO();
         GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         PuntosDAO PuntosDAO = new PuntosDAO();
@@ -24,6 +27,9 @@ namespace ProyectoTuTransporte.Controllers
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         HorariosDAO HorariosDAO = new HorariosDAO();
         GestionDenunciasDAO DenunciasDAO = new GestionDenunciasDAO();
+        ds_Reports1 ds = new ds_Reports1();
+
+
 
         // GET: Administracion
         public ActionResult Index()
@@ -621,21 +627,34 @@ namespace ProyectoTuTransporte.Controllers
         }
 
 
-        //public ActionResult ReporteEmpleados()
-        //{
-        //    ds_Reportes1 ds = new ds_Reportes1();
-        //    ReportViewer rp = new ReportViewer();
-        //    rp.ProcessingMode = ProcessingMode.Local;
-        //    rp.SizeToReportContent = true;
-        //    string sql = "Select Id, Serie, Matricula, Comentarios from Camiones";
-        //    ConexionDAO conex = new ConexionDAO();
-        //    SqlDataAdapter apap = new SqlDataAdapter(sql, conex.EstablecerConexion());
-        //    apap.Fill(ds, "Camiones");
-        //    rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/rpt_Unidades.rdlc";
-        //    rp.LocalReport.DataSources.Add(new ReportDataSource("ds_Reportes1", ds.Tables[0]));
-        //    ViewBag.ReportViewer = rp;
-        //    return View();
-        //}
+        public ActionResult ReporteEmpleados()
+        {
+            ReportViewer rp = new ReportViewer();
+            rp.ProcessingMode = ProcessingMode.Local;
+            rp.SizeToReportContent = true;
+            string sql = "SELECT Id, Serie, Matricula, Comentarios FROM Camiones";
+            SqlDataAdapter adp = new SqlDataAdapter(sql, conex.EstablecerConexion());
+            adp.Fill(ds, "Unidades");
+            rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/Report1.rdlc";
+            rp.LocalReport.DataSources.Add(new ReportDataSource("Unidades", ds.Tables[0]));
+            ViewBag.ReportViewer = rp;
+            return View();
+        }
+
+        public ActionResult ReportesEmp()
+        {
+            ReportViewer rp = new ReportViewer();
+            rp.ProcessingMode = ProcessingMode.Local;
+            rp.SizeToReportContent = true;
+            string sql = "SELECT Id, Nombre, Direccion, ApellidoPaterno, ApellidoMaterno FROM  Choferes";
+            SqlDataAdapter adp = new SqlDataAdapter(sql, conex.EstablecerConexion());
+            adp.Fill(ds, "Empleado");
+            rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/ReporteEmpleados.rdlc";
+            rp.LocalReport.DataSources.Add(new ReportDataSource("Empleado", ds.Tables[0]));
+            ViewBag.ReportViewer = rp;
+            return View();
+        }
+
 
     }
 }

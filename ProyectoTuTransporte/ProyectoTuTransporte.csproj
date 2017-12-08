@@ -70,12 +70,17 @@
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReportViewerForMvc.1.1.1\lib\net45\ReportViewerForMvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -198,11 +203,6 @@
     <Compile Include="DAO\PuntosDAO.cs" />
     <Compile Include="DAO\RegistroUsuarioDAO.cs" />
     <Compile Include="DAO\ReportesDAO.cs" />
-    <Compile Include="DataSets\ds_Reportes1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Denuncias.cs">
       <DependentUpon>rpt_Unidades.tt</DependentUpon>
     </Compile>
@@ -212,6 +212,11 @@
     <Compile Include="Models\Mod_Horarios.cs" />
     <Compile Include="Models\Mod_Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\ds_Reports1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ds_Reports1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="rpt_Unidades.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -227,6 +232,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rpt_Unidades.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuario.cs">
       <DependentUpon>rpt_Unidades.tt</DependentUpon>
     </Compile>
@@ -496,16 +502,16 @@
     <Content Include="rpt_Unidades.edmx.diagram">
       <DependentUpon>rpt_Unidades.edmx</DependentUpon>
     </Content>
-    <Content Include="DataSets\ds_Reportes1.xsc">
-      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
+    <Content Include="Reportes\ds_Reports1.xsc">
+      <DependentUpon>ds_Reports1.xsd</DependentUpon>
     </Content>
-    <None Include="DataSets\ds_Reportes1.xsd">
+    <None Include="Reportes\ds_Reports1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ds_Reportes1.Designer.cs</LastGenOutput>
+      <LastGenOutput>ds_Reports1.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSets\ds_Reportes1.xss">
-      <DependentUpon>ds_Reportes1.xsd</DependentUpon>
+    <Content Include="Reportes\ds_Reports1.xss">
+      <DependentUpon>ds_Reports1.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -518,6 +524,19 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -566,6 +585,7 @@
     <Content Include="Views\Administracion\PendientesDatos.cshtml" />
     <Content Include="Views\Administracion\AprobadasDatos.cshtml" />
     <Content Include="Views\Administracion\RechazadasDatos.cshtml" />
+    <Content Include="Views\Administracion\ReportesEmp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -584,7 +604,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\rpt_Unidades.rdlc" />
+    <EmbeddedResource Include="Reportes\Report1.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteEmpleados.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

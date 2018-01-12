@@ -15,16 +15,20 @@ namespace ProyectoTuTransporte.DAO
         SqlConnection con;
         SqlCommand exec;
         string cadena = "";
-        //Conexion Ricardo
-        //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
-        //Conexion Montalvo
-        //cadena = ".";
-        //Conexion Bryan
-        //cadena = "LAPTOP-5B0LK3E0";        
+
+        public void Conexiones()
+        {
+            //Conexion Ricardo
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //Conexion Montalvo
+            //cadena = ".";
+            //Conexion Bryan
+            //cadena = "LAPTOP-5B0LK3E0";
+        }
 
         public SqlConnection EstablecerConexion()
         {
-            cadena = ".";
+            Conexiones();
             con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
             return con;
@@ -55,7 +59,7 @@ namespace ProyectoTuTransporte.DAO
 
         public ConexionDAO()
         {
-            cadena = ".";
+            Conexiones();
             con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
         }

@@ -84,6 +84,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -231,6 +232,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rpt_Unidades.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReferenceTuTransporte\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ServiceTuTransporte.asmx.cs">
+      <DependentUpon>ServiceTuTransporte.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuario.cs">
@@ -505,6 +515,7 @@
     <Content Include="Reportes\ds_Reports1.xsc">
       <DependentUpon>ds_Reports1.xsd</DependentUpon>
     </Content>
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <None Include="Reportes\ds_Reports1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -524,6 +535,14 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <None Include="Service References\ServiceReferenceTuTransporte\ServiceTuTransporte.disco" />
+    <None Include="Service References\ServiceReferenceTuTransporte\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReferenceTuTransporte\configuration.svcinfo" />
+    <None Include="Service References\ServiceReferenceTuTransporte\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Services\ServiceTuTransporte.asmx" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -586,6 +605,7 @@
     <Content Include="Views\Administracion\AprobadasDatos.cshtml" />
     <Content Include="Views\Administracion\RechazadasDatos.cshtml" />
     <Content Include="Views\Administracion\ReportesEmp.cshtml" />
+    <None Include="Service References\ServiceReferenceTuTransporte\ServiceTuTransporte.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -609,6 +629,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReferenceTuTransporte\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

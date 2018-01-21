@@ -26,7 +26,7 @@ namespace ProyectoTuTransporte.Reportes {
         
         private UnidadesDataTable tableUnidades;
         
-        private EmpleadoDataTable tableEmpleado;
+        private ChoferesDataTable tableChoferes;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -59,8 +59,8 @@ namespace ProyectoTuTransporte.Reportes {
                 if ((ds.Tables["Unidades"] != null)) {
                     base.Tables.Add(new UnidadesDataTable(ds.Tables["Unidades"]));
                 }
-                if ((ds.Tables["Empleado"] != null)) {
-                    base.Tables.Add(new EmpleadoDataTable(ds.Tables["Empleado"]));
+                if ((ds.Tables["Choferes"] != null)) {
+                    base.Tables.Add(new ChoferesDataTable(ds.Tables["Choferes"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -94,9 +94,9 @@ namespace ProyectoTuTransporte.Reportes {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public EmpleadoDataTable Empleado {
+        public ChoferesDataTable Choferes {
             get {
-                return this.tableEmpleado;
+                return this.tableChoferes;
             }
         }
         
@@ -170,8 +170,8 @@ namespace ProyectoTuTransporte.Reportes {
                 if ((ds.Tables["Unidades"] != null)) {
                     base.Tables.Add(new UnidadesDataTable(ds.Tables["Unidades"]));
                 }
-                if ((ds.Tables["Empleado"] != null)) {
-                    base.Tables.Add(new EmpleadoDataTable(ds.Tables["Empleado"]));
+                if ((ds.Tables["Choferes"] != null)) {
+                    base.Tables.Add(new ChoferesDataTable(ds.Tables["Choferes"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -212,10 +212,10 @@ namespace ProyectoTuTransporte.Reportes {
                     this.tableUnidades.InitVars();
                 }
             }
-            this.tableEmpleado = ((EmpleadoDataTable)(base.Tables["Empleado"]));
+            this.tableChoferes = ((ChoferesDataTable)(base.Tables["Choferes"]));
             if ((initTable == true)) {
-                if ((this.tableEmpleado != null)) {
-                    this.tableEmpleado.InitVars();
+                if ((this.tableChoferes != null)) {
+                    this.tableChoferes.InitVars();
                 }
             }
         }
@@ -230,8 +230,8 @@ namespace ProyectoTuTransporte.Reportes {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableUnidades = new UnidadesDataTable();
             base.Tables.Add(this.tableUnidades);
-            this.tableEmpleado = new EmpleadoDataTable();
-            base.Tables.Add(this.tableEmpleado);
+            this.tableChoferes = new ChoferesDataTable();
+            base.Tables.Add(this.tableChoferes);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -242,7 +242,7 @@ namespace ProyectoTuTransporte.Reportes {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeEmpleado() {
+        private bool ShouldSerializeChoferes() {
             return false;
         }
         
@@ -305,7 +305,7 @@ namespace ProyectoTuTransporte.Reportes {
         public delegate void UnidadesRowChangeEventHandler(object sender, UnidadesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void EmpleadoRowChangeEventHandler(object sender, EmpleadoRowChangeEvent e);
+        public delegate void ChoferesRowChangeEventHandler(object sender, ChoferesRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -615,24 +615,22 @@ namespace ProyectoTuTransporte.Reportes {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class EmpleadoDataTable : global::System.Data.TypedTableBase<EmpleadoRow> {
+        public partial class ChoferesDataTable : global::System.Data.TypedTableBase<ChoferesRow> {
             
             private global::System.Data.DataColumn columnId;
             
-            private global::System.Data.DataColumn columnCorreo_Usuario;
-            
-            private global::System.Data.DataColumn columnNombres;
+            private global::System.Data.DataColumn columnNombre;
             
             private global::System.Data.DataColumn columnApellidoPaterno;
             
             private global::System.Data.DataColumn columnApellidoMaterno;
             
-            private global::System.Data.DataColumn columnTelefono;
+            private global::System.Data.DataColumn columnDireccion;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoDataTable() {
-                this.TableName = "Empleado";
+            public ChoferesDataTable() {
+                this.TableName = "Choferes";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -640,7 +638,7 @@ namespace ProyectoTuTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EmpleadoDataTable(global::System.Data.DataTable table) {
+            internal ChoferesDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -657,7 +655,7 @@ namespace ProyectoTuTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected EmpleadoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ChoferesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -672,17 +670,9 @@ namespace ProyectoTuTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Correo_UsuarioColumn {
+            public global::System.Data.DataColumn NombreColumn {
                 get {
-                    return this.columnCorreo_Usuario;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NombresColumn {
-                get {
-                    return this.columnNombres;
+                    return this.columnNombre;
                 }
             }
             
@@ -704,9 +694,9 @@ namespace ProyectoTuTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TelefonoColumn {
+            public global::System.Data.DataColumn DireccionColumn {
                 get {
-                    return this.columnTelefono;
+                    return this.columnDireccion;
                 }
             }
             
@@ -721,50 +711,49 @@ namespace ProyectoTuTransporte.Reportes {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoRow this[int index] {
+            public ChoferesRow this[int index] {
                 get {
-                    return ((EmpleadoRow)(this.Rows[index]));
+                    return ((ChoferesRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EmpleadoRowChangeEventHandler EmpleadoRowChanging;
+            public event ChoferesRowChangeEventHandler ChoferesRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EmpleadoRowChangeEventHandler EmpleadoRowChanged;
+            public event ChoferesRowChangeEventHandler ChoferesRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EmpleadoRowChangeEventHandler EmpleadoRowDeleting;
+            public event ChoferesRowChangeEventHandler ChoferesRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event EmpleadoRowChangeEventHandler EmpleadoRowDeleted;
+            public event ChoferesRowChangeEventHandler ChoferesRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddEmpleadoRow(EmpleadoRow row) {
+            public void AddChoferesRow(ChoferesRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoRow AddEmpleadoRow(string Id, string Correo_Usuario, string Nombres, string ApellidoPaterno, string ApellidoMaterno, string Telefono) {
-                EmpleadoRow rowEmpleadoRow = ((EmpleadoRow)(this.NewRow()));
+            public ChoferesRow AddChoferesRow(string Id, string Nombre, string ApellidoPaterno, string ApellidoMaterno, string Direccion) {
+                ChoferesRow rowChoferesRow = ((ChoferesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Id,
-                        Correo_Usuario,
-                        Nombres,
+                        Nombre,
                         ApellidoPaterno,
                         ApellidoMaterno,
-                        Telefono};
-                rowEmpleadoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowEmpleadoRow);
-                return rowEmpleadoRow;
+                        Direccion};
+                rowChoferesRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowChoferesRow);
+                return rowChoferesRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                EmpleadoDataTable cln = ((EmpleadoDataTable)(base.Clone()));
+                ChoferesDataTable cln = ((ChoferesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -772,18 +761,17 @@ namespace ProyectoTuTransporte.Reportes {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new EmpleadoDataTable();
+                return new ChoferesDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
-                this.columnCorreo_Usuario = base.Columns["Correo_Usuario"];
-                this.columnNombres = base.Columns["Nombres"];
+                this.columnNombre = base.Columns["Nombre"];
                 this.columnApellidoPaterno = base.Columns["ApellidoPaterno"];
                 this.columnApellidoMaterno = base.Columns["ApellidoMaterno"];
-                this.columnTelefono = base.Columns["Telefono"];
+                this.columnDireccion = base.Columns["Direccion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -791,42 +779,40 @@ namespace ProyectoTuTransporte.Reportes {
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
-                this.columnCorreo_Usuario = new global::System.Data.DataColumn("Correo_Usuario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCorreo_Usuario);
-                this.columnNombres = new global::System.Data.DataColumn("Nombres", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombres);
+                this.columnNombre = new global::System.Data.DataColumn("Nombre", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNombre);
                 this.columnApellidoPaterno = new global::System.Data.DataColumn("ApellidoPaterno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnApellidoPaterno);
                 this.columnApellidoMaterno = new global::System.Data.DataColumn("ApellidoMaterno", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnApellidoMaterno);
-                this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTelefono);
+                this.columnDireccion = new global::System.Data.DataColumn("Direccion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDireccion);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoRow NewEmpleadoRow() {
-                return ((EmpleadoRow)(this.NewRow()));
+            public ChoferesRow NewChoferesRow() {
+                return ((ChoferesRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new EmpleadoRow(builder);
+                return new ChoferesRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(EmpleadoRow);
+                return typeof(ChoferesRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.EmpleadoRowChanged != null)) {
-                    this.EmpleadoRowChanged(this, new EmpleadoRowChangeEvent(((EmpleadoRow)(e.Row)), e.Action));
+                if ((this.ChoferesRowChanged != null)) {
+                    this.ChoferesRowChanged(this, new ChoferesRowChangeEvent(((ChoferesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -834,8 +820,8 @@ namespace ProyectoTuTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.EmpleadoRowChanging != null)) {
-                    this.EmpleadoRowChanging(this, new EmpleadoRowChangeEvent(((EmpleadoRow)(e.Row)), e.Action));
+                if ((this.ChoferesRowChanging != null)) {
+                    this.ChoferesRowChanging(this, new ChoferesRowChangeEvent(((ChoferesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -843,8 +829,8 @@ namespace ProyectoTuTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.EmpleadoRowDeleted != null)) {
-                    this.EmpleadoRowDeleted(this, new EmpleadoRowChangeEvent(((EmpleadoRow)(e.Row)), e.Action));
+                if ((this.ChoferesRowDeleted != null)) {
+                    this.ChoferesRowDeleted(this, new ChoferesRowChangeEvent(((ChoferesRow)(e.Row)), e.Action));
                 }
             }
             
@@ -852,14 +838,14 @@ namespace ProyectoTuTransporte.Reportes {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.EmpleadoRowDeleting != null)) {
-                    this.EmpleadoRowDeleting(this, new EmpleadoRowChangeEvent(((EmpleadoRow)(e.Row)), e.Action));
+                if ((this.ChoferesRowDeleting != null)) {
+                    this.ChoferesRowDeleting(this, new ChoferesRowChangeEvent(((ChoferesRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveEmpleadoRow(EmpleadoRow row) {
+            public void RemoveChoferesRow(ChoferesRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -886,7 +872,7 @@ namespace ProyectoTuTransporte.Reportes {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "EmpleadoDataTable";
+                attribute2.FixedValue = "ChoferesDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1085,15 +1071,15 @@ namespace ProyectoTuTransporte.Reportes {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class EmpleadoRow : global::System.Data.DataRow {
+        public partial class ChoferesRow : global::System.Data.DataRow {
             
-            private EmpleadoDataTable tableEmpleado;
+            private ChoferesDataTable tableChoferes;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal EmpleadoRow(global::System.Data.DataRowBuilder rb) : 
+            internal ChoferesRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableEmpleado = ((EmpleadoDataTable)(this.Table));
+                this.tableChoferes = ((ChoferesDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1101,46 +1087,30 @@ namespace ProyectoTuTransporte.Reportes {
             public string Id {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpleado.IdColumn]));
+                        return ((string)(this[this.tableChoferes.IdColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'Empleado\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Id\' de la tabla \'Choferes\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEmpleado.IdColumn] = value;
+                    this[this.tableChoferes.IdColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Correo_Usuario {
+            public string Nombre {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpleado.Correo_UsuarioColumn]));
+                        return ((string)(this[this.tableChoferes.NombreColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Correo_Usuario\' de la tabla \'Empleado\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Nombre\' de la tabla \'Choferes\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEmpleado.Correo_UsuarioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nombres {
-                get {
-                    try {
-                        return ((string)(this[this.tableEmpleado.NombresColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Nombres\' de la tabla \'Empleado\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableEmpleado.NombresColumn] = value;
+                    this[this.tableChoferes.NombreColumn] = value;
                 }
             }
             
@@ -1149,14 +1119,14 @@ namespace ProyectoTuTransporte.Reportes {
             public string ApellidoPaterno {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpleado.ApellidoPaternoColumn]));
+                        return ((string)(this[this.tableChoferes.ApellidoPaternoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoPaterno\' de la tabla \'Empleado\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoPaterno\' de la tabla \'Choferes\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEmpleado.ApellidoPaternoColumn] = value;
+                    this[this.tableChoferes.ApellidoPaternoColumn] = value;
                 }
             }
             
@@ -1165,103 +1135,91 @@ namespace ProyectoTuTransporte.Reportes {
             public string ApellidoMaterno {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpleado.ApellidoMaternoColumn]));
+                        return ((string)(this[this.tableChoferes.ApellidoMaternoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoMaterno\' de la tabla \'Empleado\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoMaterno\' de la tabla \'Choferes\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEmpleado.ApellidoMaternoColumn] = value;
+                    this[this.tableChoferes.ApellidoMaternoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Telefono {
+            public string Direccion {
                 get {
                     try {
-                        return ((string)(this[this.tableEmpleado.TelefonoColumn]));
+                        return ((string)(this[this.tableChoferes.DireccionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Telefono\' de la tabla \'Empleado\' es DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Direccion\' de la tabla \'Choferes\' es DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableEmpleado.TelefonoColumn] = value;
+                    this[this.tableChoferes.DireccionColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdNull() {
-                return this.IsNull(this.tableEmpleado.IdColumn);
+                return this.IsNull(this.tableChoferes.IdColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIdNull() {
-                this[this.tableEmpleado.IdColumn] = global::System.Convert.DBNull;
+                this[this.tableChoferes.IdColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsCorreo_UsuarioNull() {
-                return this.IsNull(this.tableEmpleado.Correo_UsuarioColumn);
+            public bool IsNombreNull() {
+                return this.IsNull(this.tableChoferes.NombreColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetCorreo_UsuarioNull() {
-                this[this.tableEmpleado.Correo_UsuarioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNombresNull() {
-                return this.IsNull(this.tableEmpleado.NombresColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNombresNull() {
-                this[this.tableEmpleado.NombresColumn] = global::System.Convert.DBNull;
+            public void SetNombreNull() {
+                this[this.tableChoferes.NombreColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsApellidoPaternoNull() {
-                return this.IsNull(this.tableEmpleado.ApellidoPaternoColumn);
+                return this.IsNull(this.tableChoferes.ApellidoPaternoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetApellidoPaternoNull() {
-                this[this.tableEmpleado.ApellidoPaternoColumn] = global::System.Convert.DBNull;
+                this[this.tableChoferes.ApellidoPaternoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsApellidoMaternoNull() {
-                return this.IsNull(this.tableEmpleado.ApellidoMaternoColumn);
+                return this.IsNull(this.tableChoferes.ApellidoMaternoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetApellidoMaternoNull() {
-                this[this.tableEmpleado.ApellidoMaternoColumn] = global::System.Convert.DBNull;
+                this[this.tableChoferes.ApellidoMaternoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTelefonoNull() {
-                return this.IsNull(this.tableEmpleado.TelefonoColumn);
+            public bool IsDireccionNull() {
+                return this.IsNull(this.tableChoferes.DireccionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTelefonoNull() {
-                this[this.tableEmpleado.TelefonoColumn] = global::System.Convert.DBNull;
+            public void SetDireccionNull() {
+                this[this.tableChoferes.DireccionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1303,22 +1261,22 @@ namespace ProyectoTuTransporte.Reportes {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class EmpleadoRowChangeEvent : global::System.EventArgs {
+        public class ChoferesRowChangeEvent : global::System.EventArgs {
             
-            private EmpleadoRow eventRow;
+            private ChoferesRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoRowChangeEvent(EmpleadoRow row, global::System.Data.DataRowAction action) {
+            public ChoferesRowChangeEvent(ChoferesRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EmpleadoRow Row {
+            public ChoferesRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -218,9 +218,9 @@ namespace ProyectoTuTransporte.Controllers
         {
             string cadena = "";
             //Conexion Ricardo
-            cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
+            //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            //cadena = ".";
+            cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
             //-----------------------------------------------//
@@ -646,12 +646,12 @@ namespace ProyectoTuTransporte.Controllers
             ReportViewer rp = new ReportViewer();
             rp.ProcessingMode = ProcessingMode.Local;
             rp.SizeToReportContent = true;
-            string sql = "SELECT Id, Nombre, Direccion, ApellidoPaterno, ApellidoMaterno FROM  Choferes";
+            string sql = "  SELECT Id, Nombre, ApellidoPaterno, ApellidoMaterno, Direccion FROM  Choferes";
             SqlDataAdapter adp = new SqlDataAdapter(sql, conex.EstablecerConexion());
             adp.Fill(ds, "Empleado");
             rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/ReporteEmpleados.rdlc";
             rp.LocalReport.DataSources.Add(new ReportDataSource("Empleado", ds.Tables[0]));
-            ViewBag.ReportViewer = rp;
+            ViewBag.ReporteEmps = rp;
             return View();
         }
 

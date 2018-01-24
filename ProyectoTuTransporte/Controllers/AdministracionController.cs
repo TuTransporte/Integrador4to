@@ -29,8 +29,6 @@ namespace ProyectoTuTransporte.Controllers
         GestionDenunciasDAO DenunciasDAO = new GestionDenunciasDAO();
         ds_Reports1 ds = new ds_Reports1();
 
-
-
         // GET: Administracion
         public ActionResult Index()
         {
@@ -213,7 +211,7 @@ namespace ProyectoTuTransporte.Controllers
         }
 
         //Para poder visualizar la vista Mapas | Ricardo
-        
+
         public ActionResult MapaAdmin()
         {
             string cadena = "";
@@ -566,6 +564,7 @@ namespace ProyectoTuTransporte.Controllers
 
             return View(DenunciasDAO.ListDenunciasApro());
         }
+
         public ActionResult AprobadasDatos(GestionDenunciasBO oDenuncias)
         {
             int idUn = oDenuncias.Id;
@@ -577,6 +576,7 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View(DenunciasDAO.ListDenunciasRech());
         }
+
         public ActionResult RechazadasDatos(GestionDenunciasBO oDenuncias)
         {
             int idUn = oDenuncias.Id;
@@ -588,12 +588,14 @@ namespace ProyectoTuTransporte.Controllers
         {
             return View(DenunciasDAO.ListDenunciasPend());
         }
+
         public ActionResult PendientesDatos(GestionDenunciasBO oDenuncias)
         {
             int idUn = oDenuncias.Id;
             Session["Id"] = oDenuncias.Id;
             return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
         }
+
         public ActionResult ApDenuncia(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
@@ -601,6 +603,7 @@ namespace ProyectoTuTransporte.Controllers
             DenunciasDAO.ModificarAprovado(oDenuncias);
             return Redirect("~/Administracion/Pendientes");
         }
+
         public ActionResult ApDenuncia2(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
@@ -617,6 +620,7 @@ namespace ProyectoTuTransporte.Controllers
             DenunciasDAO.ModificarRechazado(oDenuncias);
             return Redirect("~/Administracion/Pendientes");
         }
+
         public ActionResult RechDenuncia2(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Session["Id"]);
@@ -625,7 +629,6 @@ namespace ProyectoTuTransporte.Controllers
             DenunciasDAO.ModificarRechazado(oDenuncias);
             return Redirect("~/Administracion/Aprobadas");
         }
-
 
         public ActionResult ReporteEmpleados()
         {
@@ -654,7 +657,5 @@ namespace ProyectoTuTransporte.Controllers
             ViewBag.ReporteEmps = rp;
             return View();
         }
-
-
     }
 }

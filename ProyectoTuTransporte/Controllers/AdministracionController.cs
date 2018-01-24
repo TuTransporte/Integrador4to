@@ -43,7 +43,7 @@ namespace ProyectoTuTransporte.Controllers
             else
             {
                 valor = "/FrontEnd/Login";
-                return Redirect(valor);
+                return Json(valor, JsonRequestBehavior.AllowGet);
             }
         }
 

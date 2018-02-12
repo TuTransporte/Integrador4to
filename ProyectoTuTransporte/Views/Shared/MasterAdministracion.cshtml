@@ -92,10 +92,10 @@
                     <li>
                         <a href="/Administracion/GestionEmpleados">
                             <i class="pe-7s-id"></i>
-                            <p>Gestión de empleados</p>
+                            <p>Gestión concesionarias</p>
                         </a>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="/Administracion/GestionUnidades">
                             <i class="pe-7s-car"></i>
                             <p>Gestión de unidades</p>
@@ -124,7 +124,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li>*@
                 </ul>
             </div>
         </div>
@@ -354,9 +354,9 @@
                 message: "Bienvedio a <b>TuTransporte</b> - un hermoso lugar para mejorar el día a día."
 
             }, {
-                    type: 'info',
-                    timer: 4000
-                });
+                type: 'info',
+                timer: 4000
+            });
 
         });
     </script>
@@ -513,7 +513,7 @@
 
         function MensajeEmp() {
             $('#exampleModalLabel').html('¿Desea eliminar al empleado?')
-            $('#CuerpoEmp').html('Se eliminará el empleado seleccionado \n ')
+            $('#CuerpoEmp').html('Se eliminará la concesionaria seleccionada \n ')
         }
     </script>
     <script>
@@ -537,7 +537,25 @@
         }
     </script>
 
-
+    
+    <script>
+        //Validar contraseñas
+        document.getElementById("txtContraseña").onblur = function () { myFunction() };
+        document.getElementById("txtContrasena").onblur = function () { myFunction() };
+        function myFunction() {
+            var clave1 = txtContrasena.value;
+            var clave2 = txtContraseña.value;
+            if (clave1 != clave2) {
+                txtContrasena.style.border = "1px solid red";
+                txtContraseña.style.border = "1px solid red";
+                $('#btnenviar').attr("disabled", true);
+            } else {
+                txtContrasena.style.border = "";
+                txtContraseña.style.border = "";
+                $('#btnenviar').attr("disabled", false);
+            }
+        }
+    </script>
 
 </body>
 </html>

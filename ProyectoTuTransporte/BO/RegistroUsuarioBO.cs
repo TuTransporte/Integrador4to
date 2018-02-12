@@ -16,6 +16,10 @@ namespace ProyectoTuTransporte.BO
         public string ApellidoMaterno { get; set; }
         public string Telefono { get; set; }
         public string Contrasena { get; set; }
+        public string Direccion { get; set; }
+        public string RFC { get; set; }
+        public string Horario { get; set; }
+        public string RazonSocial { get; set; }
         //Login
         public int Id { get; set; }
         public string Correolog { get; set; }

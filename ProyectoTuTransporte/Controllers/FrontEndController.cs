@@ -63,6 +63,10 @@ namespace ProyectoTuTransporte.Controllers
                     Session["Telefono"] = datos[5].ToString();
                     Session["Tipo"] = datos[6].ToString();
                     Session["Contraseña"] = datos[7].ToString();
+                    Session["Direccion"] = datos[8].ToString();
+                    Session["Horario"] = datos[9].ToString();
+                    Session["RFC"] = datos[10].ToString();
+                    Session["Razon"] = datos[11].ToString();
                 }
                 catch (Exception)
                 {
@@ -112,6 +116,10 @@ namespace ProyectoTuTransporte.Controllers
                 Session["Telefono"] = datos[5].ToString();
                 Session["Tipo"] = datos[6].ToString();
                 Session["Contraseña"] = datos[7].ToString();
+                Session["Direccion"] = datos[8].ToString();
+                Session["Horario"] = datos[9].ToString();
+                Session["RFC"] = datos[10].ToString();
+                Session["Razon"] = datos[11].ToString();
             }
             catch (Exception)
             {
@@ -163,9 +171,13 @@ namespace ProyectoTuTransporte.Controllers
             PerfilBO.Correo = Request.Form["txtCorreo"];
             PerfilBO.Telefono = Request.Form["txtTelefono"];
             PerfilBO.Contraseña = Request.Form["txtContraseña"];
-            PerfilDAO.ModificarPerfil(PerfilBO);
+            PerfilBO.Direccion = Request.Form["txtDireccion"];
+            PerfilBO.RFC = Request.Form["txtRFC"];
+            PerfilBO.Horario = Request.Form["txtHorario"];
+            PerfilBO.RazonSocial = Request.Form["txtRazon"];
+            PerfilDAO.ModificarPerfilConcesionaria(PerfilBO);
             Session["Correo"] = Request.Form["txtCorreo"];
-            Session["Contraseña"] = Request.Form["txtContraseña"];
+            Session["Contraseña"] = Request.Form["txtContraseña"];            
             string contrasena = Session["Contraseña"].ToString();
             return Redirect("~/FrontEnd/PanelUsuario");
         }

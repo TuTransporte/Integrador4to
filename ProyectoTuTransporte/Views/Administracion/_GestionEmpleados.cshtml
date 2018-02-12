@@ -14,10 +14,10 @@
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Apellido Paterno</th>
-            <th>Apellido Materno</th>
-            <th>Turno</th>
-            <th> </th>
+            <th>Teléfono</th>
+            <th>Horario</th>
+            <th></th>
+            <th></th>
         </tr>
     </thead>
     @using (Html.BeginForm("GestionEmpleados", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -27,13 +27,13 @@
             {
                 <tr>
                     <td>
-                        <input type="text" class="form-control" value="@row["Nombre"]">
+                        <input type="text" class="form-control" value="@row["Nombres"]">
                     </td>
                     <td>
-                        <input type="text" class="form-control" value="@row["ApellidoPaterno"]">
+                        <input type="text" class="form-control" value="@row["Telefono"]">
                     </td>
                     <td>
-                        <input type="text" class="form-control" value="@row["ApellidoMaterno"]">
+                        <input type="text" class="form-control" value="@row["Horario"]">
                     </td>
                     @*<td>
                             <input type="text" class="form-control" disabled value="@row["Turno"]">

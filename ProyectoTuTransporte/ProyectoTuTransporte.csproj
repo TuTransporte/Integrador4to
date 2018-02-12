@@ -190,8 +190,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\GestionConcesionarias.cs" />
     <Compile Include="DAO\GestionDenunciasDAO.cs" />
-    <Compile Include="DAO\GestionEmpleadosDAO.cs" />
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
     <Compile Include="DAO\GestionPerfilDAO.cs" />
     <Compile Include="DAO\GestionUnidadesDAO.cs" />

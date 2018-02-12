@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<h2 class="to-animate">Agregar Nuevo Empleado</h2>
+<h2 class="to-animate">Agregar Nueva Concesionaria</h2>
 <div class="col-md-8">
     <div class="card">
         <div class="header">
         </div>
         <div class="content">
-            @using (Html.BeginForm("AgregarEmpleadoNVO", "Administracion", FormMethod.Post))
+            @using (Html.BeginForm("AgregarConcesionariaNVO", "Administracion", FormMethod.Post))
             {
                 <form id="formempleado">
                     @*<div class="row">
@@ -36,22 +36,22 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Nombre(s)</label>
-                                <input id="txtNombres" name="txtNombres" type="text" class="form-control" placeholder="Nombre(s) del empleado">
+                                <label>Nombre</label>
+                                <input id="txtNombres" name="txtNombres" type="text" class="form-control" placeholder="Nombre de la concesionaria" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Apellido Paterno</label>
-                                <input id="txtPaterno" name="txtPaterno" type="text" class="form-control" placeholder="Apellido paterno">
+                                <label>Horario</label>
+                                <input id="txtHorario" name="txtHorario" type="text" class="form-control" placeholder="Horario" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Apellido Materno</label>
-                                <input id="txtMaterno" name="txtMaterno" type="text" class="form-control" placeholder="Apellido materno">
+                                <label>Teléfono</label>
+                                <input id="txtTelefono" name="txtTelefono" type="tel" class="form-control" placeholder="Teléfono" required>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,37 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input id="txtDireccion" name="txtDireccion" type="text" class="form-control" placeholder="Dirección del empleado">
+                                <input id="txtDireccion" name="txtDireccion" type="text" class="form-control" placeholder="Dirección del empleado" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Razón Social</label>
+                                <textarea id="txtRazon" name="txtRazon" type="text" class="form-control" placeholder="Razón social" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>RFC</label>
+                                <input id="txtRFC" name="txtRFC" type="text" class="form-control" placeholder="RFC" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Correo</label>
+                                <input id="txtCorreo" name="txtCorreo" type="email" class="form-control" placeholder="Correo" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <input id="txtContrasena" name="txtContrasena" type="password" class="form-control" placeholder="txtContrasena" required>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -3920,6 +3920,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
   color: #337ab7;
   font-weight: normal;
   border-radius: 0;
+  margin-top: 10px;
 }
 .btn-link, .btn-link:active, .btn-link.active, .btn-link[disabled], fieldset[disabled] .btn-link {
   background-color: transparent;

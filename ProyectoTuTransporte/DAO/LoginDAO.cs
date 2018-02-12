@@ -15,7 +15,7 @@ namespace ProyectoTuTransporte.DAO
 
         public ArrayList Login(RegistroUsuarioBO obelogin)
         {
-            string comando = string.Format("Select Id,Correo_usuario,Nombres,ApellidoPaterno,ApellidoMaterno,Telefono,Tipo_usuario,Contrasena FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Correo, obelogin.Contrasena);
+            string comando = string.Format("Select * FROM Usuario WHERE Correo_usuario = '{0}' and Contrasena = '{1}'", obelogin.Correo, obelogin.Contrasena);
             SqlCommand adapter = new SqlCommand(comando, EstablecerConexion());
             AbrirConexion();
             SqlDataReader lectura;
@@ -30,7 +30,11 @@ namespace ProyectoTuTransporte.DAO
                 tipous.Add(lectura["ApellidoMaterno"].ToString());
                 tipous.Add(lectura["Telefono"].ToString());
                 tipous.Add(lectura["Tipo_usuario"].ToString());
-                tipous.Add(lectura["Contrasena"].ToString());
+                tipous.Add(lectura["Contrasena"].ToString());            
+                tipous.Add(lectura["Direccion"].ToString());
+                tipous.Add(lectura["RFC"].ToString());
+                tipous.Add(lectura["Horario"].ToString());
+                tipous.Add(lectura["RazonSocial"].ToString());
             }
             CerrarConexion();
             return tipous;

@@ -54,17 +54,17 @@
                             <div class="col-md-6    ">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Contraseña</label>
-                                    <input type="text" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]">
+                                    <input type="password" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]" id="txtContrasena">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Confirmar contraseña</label>
-                                    <input type="text" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]">
+                                    <input type="password" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]" id="txtContraseña">
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-info btn-fill pull-right">Actualizar perfil</button>
+                        <button type="submit" class="btn btn-info btn-fill pull-right" id="btnenviar">Actualizar perfil</button>
                         <div class="clearfix"></div>
                     </form>
                 </div>

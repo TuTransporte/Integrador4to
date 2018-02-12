@@ -2298,7 +2298,7 @@ fieldset[disabled] .btn-info.active {
   font-weight: normal;
   color: #428bca;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 0;  
 }
 
 .btn-link,

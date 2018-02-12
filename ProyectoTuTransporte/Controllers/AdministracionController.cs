@@ -19,7 +19,7 @@ namespace ProyectoTuTransporte.Controllers
     public class AdministracionController : Controller
     {
         ConexionDAO conex = new ConexionDAO();
-        GestionEmpleadosDAO EmpleadosDAO = new GestionEmpleadosDAO();
+        GestionConcesionarias ConcesionariasDAO = new GestionConcesionarias();
         GestionUnidadesDAO UnidadesDAO = new GestionUnidadesDAO();
         PuntosDAO PuntosDAO = new PuntosDAO();
         GestionNoticiasDAO NoticiasDAO = new GestionNoticiasDAO();
@@ -126,7 +126,7 @@ namespace ProyectoTuTransporte.Controllers
             bool log = Convert.ToBoolean(Session["LogOK"]);
             if (log == true)
             {
-                return PartialView("_GestionEmpleados", EmpleadosDAO.ListarEmpleados());
+                return PartialView("_GestionEmpleados", ConcesionariasDAO.ListarConcesionarias());
             }
             else
             {
@@ -201,7 +201,7 @@ namespace ProyectoTuTransporte.Controllers
             {
                 int idus = objem.Id;
                 Session["Id"] = objem.Id;
-                return PartialView("DatosdelUsuario", EmpleadosDAO.LlenarCamposBtnEmpleados(idus));
+                return PartialView("DatosdelUsuario", ConcesionariasDAO.LlenarCamposBtnConcesionarias(idus));
             }
             else
             {
@@ -498,31 +498,39 @@ namespace ProyectoTuTransporte.Controllers
         //}
 
         //MÉTODOS PARA EMPLEADOS | MONTALVO
-        public ActionResult AgregarEmpleadoNVO(GestionEmpleadosBO oEmpleados)
+        public ActionResult AgregarConcesionariaNVO(RegistroUsuarioBO oConcesionarias)
         {
-            oEmpleados.Nombre = Request.Form["txtNombres"];
-            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
-            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
-            oEmpleados.Direccion = Request.Form["txtDireccion"];
-            EmpleadosDAO.AgregarEmpleado(oEmpleados);
+            oConcesionarias.Nombre = Request.Form["txtNombres"];
+            oConcesionarias.Horario = Request.Form["txtHorario"];
+            oConcesionarias.Telefono = Request.Form["txtTelefono"];
+            oConcesionarias.Direccion = Request.Form["txtDireccion"];
+            oConcesionarias.RazonSocial = Request.Form["txtRazon"];
+            oConcesionarias.RFC = Request.Form["txtRFC"];
+            oConcesionarias.Correo = Request.Form["txtCorreo"];
+            oConcesionarias.Contrasena = Request.Form["txtContrasena"];
+            ConcesionariasDAO.AgregarConcesionarias(oConcesionarias);
             return Redirect("~/Administracion/GestionEmpleados");
         }
 
-        public ActionResult ModificarEmpleado(GestionEmpleadosBO oEmpleados)
+        public ActionResult ModificarEmpleado(RegistroUsuarioBO oConcesionarias)
         {
-            oEmpleados.Id = Convert.ToInt32(Request.Form["txtId"]);
-            oEmpleados.Nombre = Request.Form["txtNombres"];
-            oEmpleados.ApellidoPaterno = Request.Form["txtPaterno"];
-            oEmpleados.ApellidoMaterno = Request.Form["txtMaterno"];
-            oEmpleados.Direccion = Request.Form["txtDireccion"];
-            EmpleadosDAO.ModificarEmpleado(oEmpleados);
+            oConcesionarias.Id = Convert.ToInt32(Request.Form["txtId"]);
+            oConcesionarias.Nombre = Request.Form["txtNombres"];
+            oConcesionarias.Horario = Request.Form["txtHorario"];
+            oConcesionarias.Telefono = Request.Form["txtTelefono"];
+            oConcesionarias.Direccion = Request.Form["txtDireccion"];
+            oConcesionarias.RazonSocial = Request.Form["txtRazon"];
+            oConcesionarias.RFC = Request.Form["txtRFC"];
+            oConcesionarias.Correo = Request.Form["txtCorreo"];
+            oConcesionarias.Contrasena = Request.Form["txtContrasena"];
+            ConcesionariasDAO.ModificarConcesionaria(oConcesionarias);
             return Redirect("~/Administracion/GestionEmpleados");
         }
 
-        public ActionResult EliminarEmpleado(GestionEmpleadosBO oEmpleados)
+        public ActionResult EliminarEmpleado(RegistroUsuarioBO oConcesionarias)
         {
-            oEmpleados.Id = Convert.ToInt32(Session["Id"]);
-            EmpleadosDAO.EliminarEmpleado(oEmpleados);
+            oConcesionarias.Id = Convert.ToInt32(Session["Id"]);
+            ConcesionariasDAO.EliminarConcesionaria(oConcesionarias);
             Session["Id"] = null;
             return Redirect("~/Administracion/GestionEmpleados");
         }

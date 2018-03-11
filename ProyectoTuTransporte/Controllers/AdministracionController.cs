@@ -657,11 +657,11 @@ namespace ProyectoTuTransporte.Controllers
             ReportViewer rp = new ReportViewer();
             rp.ProcessingMode = ProcessingMode.Local;
             rp.SizeToReportContent = true;
-            string sql = "  SELECT Id, Nombre, ApellidoPaterno, ApellidoMaterno, Direccion FROM  Choferes";
+            string sql = "SELECT Id, Correo_usuario, Nombres, Telefono, Direccion, RFC, Horario, RazonSocial FROM  Usuario Where Tipo_usuario = 1";
             SqlDataAdapter adp = new SqlDataAdapter(sql, conex.EstablecerConexion());
-            adp.Fill(ds, "Empleado");
+            adp.Fill(ds, "Concesionarias");
             rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/ReporteEmpleados.rdlc";
-            rp.LocalReport.DataSources.Add(new ReportDataSource("Empleado", ds.Tables[0]));
+            rp.LocalReport.DataSources.Add(new ReportDataSource("Concesionarias", ds.Tables[0]));            
             ViewBag.ReporteEmps = rp;
             return View();
         }

@@ -10,7 +10,7 @@
 <table table class="table table-hover table-striped">
     <thead>
         <tr>
-            <th>Denuncia</th>
+            <th>Motivo</th>
             <th>Fecha</th>
             <th></th>
             <th></th>
@@ -23,11 +23,11 @@
             {
                 <tr>
                     <td>
-                        <input type="text" class="form-control" value="@row["Denuncia"]">
+                        <input type="text" class="form-control" value="@row["Motivo"]">
                     </td>
                     <td>
                         <input type="text" class="form-control" value="@row["FechaHora"]">
-                    </td>
+                    </td>                    
                     <td>
                         <a href="@Url.Action("PendientesDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
                     </td>

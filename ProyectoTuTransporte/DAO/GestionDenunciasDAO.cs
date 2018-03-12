@@ -33,7 +33,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable LlenarCamposBtnDen(int IdEmpleados)
         {
-            String cadena = "SELECT Id, Denuncia, FechaHora, FK_Ubicacion, Estado, FK_Usuario, FK_Chofer, FK_Camion FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
+            String cadena = "SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

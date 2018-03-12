@@ -21,7 +21,7 @@ namespace ProyectoTuTransporte.DAO
             //Conexion Ricardo
             //cadena = "DESKTOP-L9DKEN0\\SQLEXPRESS";
             //Conexion Montalvo
-            //cadena = ".";
+            cadena = ".";
             //Conexion Bryan
             //cadena = "LAPTOP-5B0LK3E0";
         }

@@ -351,7 +351,9 @@
     <Content Include="Content\MasterResources\assets\js\bootstrap.min.js" />
     <Content Include="Content\MasterResources\assets\js\chartist.min.js" />
     <Content Include="Content\MasterResources\assets\js\demo.js" />
+    <Content Include="Content\MasterResources\assets\js\html2canvas.js" />
     <Content Include="Content\MasterResources\assets\js\jquery-1.10.2.js" />
+    <Content Include="Content\MasterResources\assets\js\jspdf.min.js" />
     <Content Include="Content\MasterResources\assets\js\light-bootstrap-dashboard.js" />
     <Content Include="Content\MasterResources\dashboard.html" />
     <Content Include="Content\MasterResources\icons.html" />

@@ -4,10 +4,11 @@
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<h2 class="to-animate">Configuración de la cuenta</h2>
+<center><h2 class="to-animate">Perfil de usuario</h2></center>
 @using (Html.BeginForm("ActualizarInfoU", "Administracion", FormMethod.Post))
 {
     <div class="row">
+        <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="card">
                 <div class="header">
@@ -53,7 +54,7 @@
                         <div class="row">
                             <div class="col-md-6    ">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Contraseña</label>
+                                    <label>Contraseña</label>
                                     <input type="password" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]" id="txtContrasena">
                                 </div>
                             </div>
@@ -70,28 +71,29 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-user">
-                <div class="image">
-                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
-                </div>
-                <div class="content">
-                    <div class="author">
-                        <a href="#">
-                            <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
-                            <h4 class="title">
-                                @Session["Nombres"]<br />
-                                <small>@Session["ApellidoPat"] @Session["ApellidoMat"]</small>
-                            </h4>
-                        </a>
+        <div class="col-md-2"></div>
+        @*<div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..." />
                     </div>
-                    <p class="description text-center">
-                    </p>
+                    <div class="content">
+                        <div class="author">
+                            <a href="#">
+                                <img class="avatar border-gray" src="/Content/MasterResources/assets/img/faces/face-3.jpg" alt="..." />
+                                <h4 class="title">
+                                    @Session["Nombres"]<br />
+                                    <small>@Session["ApellidoPat"] @Session["ApellidoMat"]</small>
+                                </h4>
+                            </a>
+                        </div>
+                        <p class="description text-center">
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                    </div>
                 </div>
-                <hr>
-                <div class="text-center">
-                </div>
-            </div>
-        </div>
+            </div>*@
     </div>
 }

@@ -15,7 +15,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListDenunciasPend()
         {
-            String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '0'");
+            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = '0'");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
@@ -33,7 +33,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable LlenarCamposBtnDen(int IdEmpleados)
         {
-            String cadena = "SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
+            String cadena = "SELECT * FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

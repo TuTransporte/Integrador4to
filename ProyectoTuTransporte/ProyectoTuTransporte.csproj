@@ -209,6 +209,9 @@
     <Compile Include="Models\Mod_Horarios.cs" />
     <Compile Include="Models\Mod_Unidades.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\ds_Reports1.cs">
+      <DependentUpon>ds_Reports1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ds_Reports1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -234,11 +237,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\ServiceTuTransporte.asmx.cs">
-      <DependentUpon>ServiceTuTransporte.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuario.cs">
       <DependentUpon>rpt_Unidades.tt</DependentUpon>
     </Compile>
@@ -284,7 +282,9 @@
     <Content Include="Content\MasterFrontEnd\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="Content\MasterFrontEnd\fonts\icomoon\icomoon.svg" />
     <Content Include="Content\MasterFrontEnd\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="Content\MasterFrontEnd\images\app.png" />
     <Content Include="Content\MasterFrontEnd\images\Bas.jpg" />
+    <Content Include="Content\MasterFrontEnd\images\camiones.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev1.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev2.jpg" />
     <Content Include="Content\MasterFrontEnd\images\dev3.jpg" />
@@ -325,6 +325,7 @@
     <Content Include="Content\MasterResources\assets\css\pe-icon-7-stroke.css" />
     <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Content\MasterResources\assets\img\default-avatar.png" />
+    <Content Include="Content\MasterResources\assets\img\faces\default.jpg" />
     <Content Include="Content\MasterResources\assets\img\faces\face-0.jpg" />
     <Content Include="Content\MasterResources\assets\img\faces\face-1.jpg" />
     <Content Include="Content\MasterResources\assets\img\faces\face-2.jpg" />
@@ -514,7 +515,6 @@
       <DependentUpon>ds_Reports1.xsd</DependentUpon>
     </Content>
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
-    <None Include="Properties\PublishProfiles\TuTransporte.pubxml" />
     <None Include="Reportes\ds_Reports1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -541,20 +541,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Services\ServiceTuTransporte.asmx" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -608,6 +594,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

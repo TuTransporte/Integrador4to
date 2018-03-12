@@ -29,7 +29,8 @@ namespace ProyectoTuTransporte.DAO
         public SqlConnection EstablecerConexion()
         {
             Conexiones();
-            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            con = new SqlConnection("Data Source=SQL5035.site4now.net;Initial Catalog=DB_A3402F_TuTransporte;User Id=DB_A3402F_TuTransporte_admin;Password=baba131998.13;");
+            //con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
             return con;
         }
@@ -60,7 +61,8 @@ namespace ProyectoTuTransporte.DAO
         public ConexionDAO()
         {
             Conexiones();
-            con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
+            con = new SqlConnection("Data Source=SQL5035.site4now.net;Initial Catalog=DB_A3402F_TuTransporte;User Id=DB_A3402F_TuTransporte_admin;Password=baba131998.13;");
+            //con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
         }
 

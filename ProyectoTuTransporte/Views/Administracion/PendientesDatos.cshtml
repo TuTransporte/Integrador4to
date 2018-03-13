@@ -94,6 +94,23 @@
         </div>
         <div class="col-md-1"></div>
     </div>
+
+    <script type="text/javascript">
+        function genPDF() {
+            html2canvas(document.getElementById("pdfdiv")).then(function (canvas) {
+                var img = canvas.toDataURL('image/png');
+                var imgData = 'data:image/jpeg;base64,/9j/4AAQSkZJ';
+                var doc = new jsPDF();
+
+                doc.setFontSize(20);
+                doc.text(35, 25, 'TuTransporte');
+                doc.addImage(img, 'JPEG', 20, 40);                
+                doc.save('test.pdf');
+            });
+        }
+        
+
+    </script>
 }
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&libraries=drawing&callback=initialize" async defer></script>

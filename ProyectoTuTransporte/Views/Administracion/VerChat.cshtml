@@ -29,12 +29,11 @@
                                 </div>*@
                             <!-- List group -->
                             <ul class="list-group">
-                                <li class="list-group-item">Enviado el @row["Correo_usuario"]</li>
+                                <li class="list-group-item">Enviado por @row["Correo_usuario"]</li>
                             </ul>
                             <div class="list-group">
                                 <br />
                                 <center>
-
                                     @Html.ActionLink("Abrir chat", "Chat", new { personaenvia = row["Correo_usuario"] })
                                 </center>
                                 <br />

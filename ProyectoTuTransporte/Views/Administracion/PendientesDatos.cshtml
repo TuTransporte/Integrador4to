@@ -17,7 +17,7 @@
                     <h4 class="title">Información de denuncia</h4>
                     <p class="category"></p>
                 </div>
-                <div class="content">
+                <div class="content" id="pdfdiv">
                     @using (Html.BeginForm("ApDenuncia", "Administracion", FormMethod.Post))
                     {
 
@@ -33,22 +33,20 @@
                                 <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
                                         <h5>Fecha y hora</h5>
-                                        <input value="@row["FechaHora"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Fecha y hora">
+                                        <input value="@row["FechaHora"]" id="txtFechaHora" name="txtFechaHora" type="text" class="form-control" placeholder="Fecha y hora">
                                         <h5>Descripción</h5>
-                                        <textarea id="txtSerie" name="txtSerie" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
+                                        <textarea id="txtSerie" name="txtDescripcion" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
                                         <h5>Operador</h5>
-                                        <input value="@row["Operador"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Operador">
+                                        <input value="@row["Operador"]" id="txtOperador" name="txtOperador" type="text" class="form-control" placeholder="Operador">
                                         <h5>Unidad</h5>
-                                        <input value="@row["Unidad"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Unidad">
+                                        <input value="@row["Unidad"]" id="txtUnidad" name="txtUnidad" type="text" class="form-control" placeholder="Unidad">
                                         <h5>Motivo</h5>
-                                        <input value="@row["Motivo"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Motivo">
+                                        <input value="@row["Motivo"]" id="txtMotivo" name="txtMotivo" type="text" class="form-control" placeholder="Motivo">
                                         <h5>Ruta</h5>
-                                        <input value="@row["Ruta"]" id="txtSerie" name="txtSerie" type="text" class="form-control" placeholder="Ruta">
+                                        <input value="@row["Ruta"]" id="txtRuta" name="txtRuta" type="text" class="form-control" placeholder="Ruta">
 
                                         <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
                                         <input value="@row["Estado"]" id="txtEst" name="txtEst" type="text" class="form-control" style="visibility:hidden;" />
-                                        <input value="@row["Latitud"]" id="txtLatitud" name="txtLatitud" type="text" class="form-control" style="visibility:hidden;" />
-                                        <input value="@row["Longitud"]" id="txtLongitud" name="txtLongitud" type="text" class="form-control" style="visibility:hidden;" />
                                     </div>
                                 </div>
                             </div>
@@ -62,7 +60,9 @@
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                     <div class="panel-body">
+                                        <input value="@row["Latitud"]" id="txtLatitud" name="txtLatitud" type="text" class="form-control" style="visibility:hidden;" />
                                         <div id="map" style="height: 500px"></div>
+                                        <input value="@row["Longitud"]" id="txtLongitud" name="txtLongitud" type="text" class="form-control" style="visibility:hidden;" />
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,19 @@
                             </div>
                         </div>
                     }
+
+                    @using (Html.BeginForm("VerChatDenuncia", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="panel panel-info">
+                            <br />
+                            <center>
+                                @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Ruta"] })
+                            </center>
+                            <br />
+                        </div>
+                    }
                     <div class="footer">
+                        <center><a id="hide1" class="btn-link" href="javascript:genPDF()" role="button">Descargar PDF</a></center>
                         <div class="legend">
                         </div>
                         <hr>
@@ -99,17 +111,14 @@
         function genPDF() {
             html2canvas(document.getElementById("pdfdiv")).then(function (canvas) {
                 var img = canvas.toDataURL('image/png');
-                var imgData = 'data:image/jpeg;base64,/9j/4AAQSkZJ';
-                var doc = new jsPDF();
-
+                //var imgData = 'data:image/jpeg;base64,/9j/4AAQSkZJ';
+                var doc = new jsPDF('p', 'px', [792, 612]);
                 doc.setFontSize(20);
-                doc.text(35, 25, 'TuTransporte');
-                doc.addImage(img, 'JPEG', 20, 40);                
+                doc.text(35, 55, 'TuTransporte');
+                doc.addImage(img, 'JPEG', 60, 100);
                 doc.save('test.pdf');
             });
         }
-        
-
     </script>
 }
 
@@ -122,54 +131,53 @@
         var long = txtLongitud.value;
         var mapProp = {
             center: new google.maps.LatLng(lat, long),
-                zoom: 15,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-            var map = new google.maps.Map(document.getElementById("map"), mapProp);
-            var myTrip = new Array();
-            @Html.Raw(ViewBag.Markers);
-            //myTrip.push(new google.maps.LatLng(20.959867, -89.582616));
-            //myTrip.push(new google.maps.LatLng(20.957006, -89.570954));
-            //myTrip.push(new google.maps.LatLng(20.964634, -89.569409));
-            var flightPath = new google.maps.Polyline({
-                path: myTrip,
-                strokeColor: "#0000FF",
-                strokeOpacity: 0.8,
-                strokeWeight: 2
-            });
-            flightPath.setMap(map);
-            //Estos metodos colocan latitud y longitud del marcador en los cuadros de texto, asi como sus nuevas ubicaciones si son movidos.
+        var map = new google.maps.Map(document.getElementById("map"), mapProp);
+        var myTrip = new Array();
+        //myTrip.push(new google.maps.LatLng(20.959867, -89.582616));
+        //myTrip.push(new google.maps.LatLng(20.957006, -89.570954));
+        //myTrip.push(new google.maps.LatLng(20.964634, -89.569409));
+        var flightPath = new google.maps.Polyline({
+            path: myTrip,
+            strokeColor: "#0000FF",
+            strokeOpacity: 0.8,
+            strokeWeight: 2
+        });
+        flightPath.setMap(map);
+        //Estos metodos colocan latitud y longitud del marcador en los cuadros de texto, asi como sus nuevas ubicaciones si son movidos.
 
-            var markerA = new google.maps.Marker({
-                map: map,
-                position: new google.maps.LatLng(lat, long),
-                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-                draggable: true,
-                customInfo: "Marker A"
-            });
+        var markerA = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(lat, long),
+            icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+            draggable: true,
+            customInfo: "Marker A"
+        });
 
-            google.maps.event.addListener(markerA, 'click', function (overlay, point) {
-                document.getElementById("latbox").value = lat();
-                document.getElementById("lngbox").value = lng();
-            });
-            google.maps.event.addListener(markerA, 'click', function (event) {
-                document.getElementById("latbox").value = event.latLng.lat();
-                document.getElementById("lngbox").value = event.latLng.lng();
-            });
+        google.maps.event.addListener(markerA, 'click', function (overlay, point) {
+            document.getElementById("latbox").value = lat();
+            document.getElementById("lngbox").value = lng();
+        });
+        google.maps.event.addListener(markerA, 'click', function (event) {
+            document.getElementById("latbox").value = event.latLng.lat();
+            document.getElementById("lngbox").value = event.latLng.lng();
+        });
 
-            google.maps.event.addListener(markerA, 'click', function (event) {
-                document.getElementById("latbox").value = this.getPosition().lat();
-                document.getElementById("lngbox").value = this.getPosition().lng();
-            });
+        google.maps.event.addListener(markerA, 'click', function (event) {
+            document.getElementById("latbox").value = this.getPosition().lat();
+            document.getElementById("lngbox").value = this.getPosition().lng();
+        });
 
-            google.maps.event.addListener(markerA, 'dragend', function (event) {
-                document.getElementById("latbox").value = this.getPosition().lat();
-                document.getElementById("lngbox").value = this.getPosition().lng();
-            });
+        google.maps.event.addListener(markerA, 'dragend', function (event) {
+            document.getElementById("latbox").value = this.getPosition().lat();
+            document.getElementById("lngbox").value = this.getPosition().lng();
+        });
 
-            //Fin Metodo
+        //Fin Metodo
 
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>

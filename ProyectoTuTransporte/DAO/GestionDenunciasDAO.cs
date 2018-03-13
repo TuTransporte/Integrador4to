@@ -15,13 +15,13 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListDenunciasPend()
         {
-            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = '0'");
+            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = '0' Order By FechaHora Asc");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 
         public DataTable ListDenunciasApro()
         {
-            String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '1'");
+            String cadena = string.Format("SELECT Id, Denuncia, FechaHora FROM Denuncias WHERE Estado = '1' Order By FechaHora Asc");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

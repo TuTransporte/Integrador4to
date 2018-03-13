@@ -37,5 +37,24 @@ namespace ProyectoTuTransporte.DAO
             cmd.CommandType = CommandType.Text;
             return obj.EjecutarComando(cmd);
         }
+
+        public DataTable AbrirMensajeDenuncia(string PersonaEnvia, int IdDenuncia)
+        {
+            String cadena = "SELECT * From ChatsDenuncia WHERE (PersonaEnvia='" + PersonaEnvia + "' And PersonaRecibe='admin@hotmail.com') Or (PersonaRecibe='" + PersonaEnvia + "' And PersonaEnvia='admin@hotmail.com') And IdDenuncia = '" + IdDenuncia + "'";
+            return conex.EjercutarSentenciaBusqueda(cadena);
+        }
+
+        public int AgregarMensajeDenuncia(ChatBO oChat)
+        {
+            cmd = new SqlCommand("Insert ChatsDenuncia (Correo,Mensaje,PersonaEnvia,PersonaRecibe,Fecha, IdDenuncia) Values (@Correo, @Mensaje, @PersonaEnvia, @PersonaRecibe,@Fecha, @IdDenuncia)");
+            cmd.Parameters.Add("@Correo", SqlDbType.VarChar).Value = oChat.Correo;
+            cmd.Parameters.Add("@Mensaje", SqlDbType.VarChar).Value = oChat.Mensaje;
+            cmd.Parameters.Add("@PersonaEnvia", SqlDbType.VarChar).Value = oChat.PersonaEnvia;
+            cmd.Parameters.Add("@PersonaRecibe", SqlDbType.VarChar).Value = oChat.PersonaRecibe;
+            cmd.Parameters.Add("@Fecha", SqlDbType.VarChar).Value = Convert.ToString(DateTime.Now);
+            cmd.Parameters.Add("@IdDenuncia", SqlDbType.Int).Value = oChat.PersonaEnvia;
+            cmd.CommandType = CommandType.Text;
+            return obj.EjecutarComando(cmd);
+        }
     }
 }

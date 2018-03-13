@@ -13,5 +13,6 @@ namespace ProyectoTuTransporte.BO
         public string PersonaRecibe { get; set; }
         public string Fecha { get; set; }
         public string Correo { get; set; }
+        public int IdDenuncia { get; set; }
     }
 }

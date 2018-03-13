@@ -41,7 +41,7 @@ namespace ProyectoTuTransporte.Controllers
             else
             {
                 valor = "/FrontEnd/Login";
-                return Json(valor, JsonRequestBehavior.AllowGet);
+                return Redirect(valor);
             }
         }
 
@@ -67,6 +67,24 @@ namespace ProyectoTuTransporte.Controllers
                 valor = "/FrontEnd/Login";
                 return Redirect(valor);
             }
+        }
+
+        public ActionResult PublicarMensaje(ChatBO oChatBO)
+        {
+            oChatBO.Mensaje = Request.Form["txtMensaje"];
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (tipo == 4)
+            {
+                oChatBO.PersonaEnvia = "admin@hotmail.com";
+            }
+            else
+            {
+                oChatBO.PersonaEnvia = Session["Correo"].ToString();
+            }
+            oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
+            oChatBO.Correo = Session["Correo"].ToString();
+            ChatDAO.AgregarMensaje(oChatBO);
+            return Redirect("~/Administracion/Chat");
         }
 
         public ActionResult Chat(string personaenvia)
@@ -102,10 +120,11 @@ namespace ProyectoTuTransporte.Controllers
             }
         }
 
-        public ActionResult PublicarMensaje(ChatBO oChatBO)
+        public ActionResult PublicarMensajeDenuncia(ChatBO oChatBO)
         {
             oChatBO.Mensaje = Request.Form["txtMensaje"];
             int tipo = Convert.ToInt32(Session["Tipo"]);
+            int IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
             if (tipo == 4)
             {
                 oChatBO.PersonaEnvia = "admin@hotmail.com";
@@ -116,8 +135,42 @@ namespace ProyectoTuTransporte.Controllers
             }
             oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
             oChatBO.Correo = Session["Correo"].ToString();
-            ChatDAO.AgregarMensaje(oChatBO);
-            return Redirect("~/Administracion/Chat");
+            oChatBO.IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
+            ChatDAO.AgregarMensajeDenuncia(oChatBO);
+            return Redirect("~/Administracion/ChatDenuncia");
+        }
+
+        public ActionResult ChatDenuncia(string Ruta, int Id)
+        {
+            string link = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                string valor = "";
+                if (Ruta == null)
+                {
+                    Ruta = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    Session["personaenvia"] = Ruta;
+                }
+                int tipo = Convert.ToInt32(Session["Tipo"]);
+                if (tipo == 4)
+                {
+                    valor = Session["personaenvia"].ToString();
+                }
+                else
+                {
+                    valor = Session["Correo"].ToString();
+                }
+                return View(ChatDAO.AbrirMensajeDenuncia(valor, Convert.ToInt32(Request.QueryString["Id"])));
+            }
+            else
+            {
+                link = "/FrontEnd/Login";
+                return Redirect(link);
+            }
         }
 
         public ActionResult GestionEmpleados()
@@ -601,7 +654,26 @@ namespace ProyectoTuTransporte.Controllers
         {
             int idUn = oDenuncias.Id;
             Session["Id"] = oDenuncias.Id;
-            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                if (tipo == 4)
+                {
+                    string correo = Session["Correo"].ToString();
+                    return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+                }
+                else
+                {
+                    return Redirect("/FrontEnd/Inicio");
+                }
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult ApDenuncia(GestionDenunciasBO oDenuncias)
@@ -661,7 +733,7 @@ namespace ProyectoTuTransporte.Controllers
             SqlDataAdapter adp = new SqlDataAdapter(sql, conex.EstablecerConexion());
             adp.Fill(ds, "Concesionarias");
             rp.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes/ReporteEmpleados.rdlc";
-            rp.LocalReport.DataSources.Add(new ReportDataSource("Concesionarias", ds.Tables[0]));            
+            rp.LocalReport.DataSources.Add(new ReportDataSource("Concesionarias", ds.Tables[0]));
             ViewBag.ReporteEmps = rp;
             return View();
         }

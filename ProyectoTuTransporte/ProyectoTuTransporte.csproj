@@ -591,6 +591,7 @@
     <Content Include="Views\Administracion\RechazadasDatos.cshtml" />
     <Content Include="Views\Administracion\ReportesEmp.cshtml" />
     <None Include="Service References\ServiceReferenceTuTransporte\ServiceTuTransporte.wsdl" />
+    <Content Include="Views\Administracion\ChatDenuncia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

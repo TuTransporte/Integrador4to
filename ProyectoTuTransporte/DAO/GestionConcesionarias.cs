@@ -29,7 +29,7 @@ namespace ProyectoTuTransporte.DAO
         public int AgregarConcesionarias(RegistroUsuarioBO oConcesionarias)
         {
             //1 Concesionarias --- 0 Mortal --- 4 Admin
-            cmd = new SqlCommand("INSERT INTO Usuario (Nombres, Telefono, Direccion, RFC, Horario, RazonSocial, Correo_usuario, Contrasena, Tipo_usuario) Values ('" + oConcesionarias.Nombre + "', '" + oConcesionarias.Telefono + "', '" + oConcesionarias.Direccion + "','" + oConcesionarias.RFC + "', '" + oConcesionarias.Horario + "', '" + oConcesionarias.RazonSocial + "', '" + oConcesionarias.Correo + "', '" + oConcesionarias.Contrasena + "', 1)");
+            cmd = new SqlCommand("INSERT INTO Usuario (Nombres, Telefono, Direccion, RFC, Horario, RazonSocial, Correo_usuario, Contrasena, Tipo_usuario) Values ('" + oConcesionarias.Nombre + "', '" + oConcesionarias.Telefono + "', '" + oConcesionarias.Direccion + "','" + oConcesionarias.RFC + "', '" + oConcesionarias.Horario + "', '" + oConcesionarias.RazonSocial + "', '" + oConcesionarias.Correo + "', '" + oConcesionarias.Contrasena + "', 2)");
             return conex.EjecutarComando(cmd);
         }
 

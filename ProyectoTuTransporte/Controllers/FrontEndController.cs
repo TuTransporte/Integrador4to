@@ -95,7 +95,7 @@ namespace ProyectoTuTransporte.Controllers
                 }
                 else
                 {
-                    if (datos[6].ToString() == "1")
+                    if (datos[6].ToString() == "2")
                     {
                         link = "~/FrontEnd/PanelUsuario";
                     }

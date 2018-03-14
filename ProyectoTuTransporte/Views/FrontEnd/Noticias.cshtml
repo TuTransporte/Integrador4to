@@ -18,24 +18,21 @@
                 </div>
                 <div class="content">
 
-                    @using (Html.BeginForm("Noticias", "FrontEnd", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    @foreach (DataRow row in Model.Rows)
                     {
-                        foreach (DataRow row in Model.Rows)
-                        {
-                            <div class="panel panel-info">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading">@row["Titulo"]</div>
-                                <div class="panel-body">
-                                    <p>@row["Mensaje"]</p>
-                                </div>
-
-                                <!-- List group -->
-                                <ul class="list-group">
-                                    <li class="list-group-item">Publicado el @row["Fecha"]</li>
-                                </ul>
+                        <div class="panel panel-info">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">@row["Titulo"]</div>
+                            <div class="panel-body">
+                                <p>@row["Mensaje"]</p>
                             </div>
-                            <br />
-                        }
+
+                            <!-- List group -->
+                            <ul class="list-group">
+                                <li class="list-group-item">Publicado el @row["Fecha"]</li>
+                            </ul>
+                        </div>
+                        <br />
                     }
 
                     <div class="footer">

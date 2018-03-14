@@ -5,7 +5,7 @@
     Layout = "~/Views/Administracion/GestionEmpleados.cshtml";
 }
 
-<center><h2 class="category">Gestión de empleados</h2></center>
+<center><h2 class="category">Gestión de concesionarias</h2></center>
 <a href="~/Administracion/AgregarEmpleado" type="button" class="btn btn-link">Agregar Nuevo</a>
 <a></a>
 <a href="~/Administracion/ReportesEmp" type="button" class="btn btn-link">Reporte de concesionarias</a>
@@ -20,29 +20,26 @@
             <th></th>
         </tr>
     </thead>
-    @using (Html.BeginForm("GestionEmpleados", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <tbody>
-            @foreach (DataRow row in Model.Rows)
-            {
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Nombres"]">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Telefono"]">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Horario"]">
-                    </td>
-                    @*<td>
-                            <input type="text" class="form-control" disabled value="@row["Turno"]">
-                        </td>*@
-                    <td>
-                        <a href="@Url.Action("DatosdelUsuario", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Seleccionar</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    }
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>
+                    <input type="text" class="form-control" value="@row["Nombres"]">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="@row["Telefono"]">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="@row["Horario"]">
+                </td>
+                @*<td>
+                        <input type="text" class="form-control" disabled value="@row["Turno"]">
+                    </td>*@
+                <td>
+                    <a href="@Url.Action("DatosdelUsuario", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Seleccionar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

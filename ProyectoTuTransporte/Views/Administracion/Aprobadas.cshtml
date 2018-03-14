@@ -16,23 +16,20 @@
             <th></th>
         </tr>
     </thead>
-    @using (Html.BeginForm("Aprobadas", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <tbody>
-            @foreach (DataRow row in Model.Rows)
-            {
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Denuncia"]">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" value="@row["FechaHora"]">
-                    </td>
-                    <td>
-                        <a href="@Url.Action("AprobadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    }
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>
+                    <input type="text" class="form-control" value="@row["Denuncia"]">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="@row["FechaHora"]">
+                </td>
+                <td>
+                    <a href="@Url.Action("AprobadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

@@ -54,5 +54,17 @@ namespace ProyectoTuTransporte.DAO
             cmd = new SqlCommand("UPDATE Denuncias SET Estado = 2 WHERE Id='" + oDenuncias.Id + "'");
             return conex.EjecutarComando(cmd);
         }
+
+        public DataTable ListDenunciasPendConcesionaria(string Concesionaria)
+        {
+            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = '0' And Ruta = '" + Concesionaria + "' Order By FechaHora Asc");
+            return conex.EjercutarSentenciaBusqueda(cadena);
+        }
+
+        public DataTable LlenarCamposBtnDenConcesionaria(int IdEmpleados)
+        {
+            String cadena = "SELECT * FROM Denuncias WHERE Id = '" + IdEmpleados + "';";
+            return conex.EjercutarSentenciaBusqueda(cadena);
+        }
     }
 }

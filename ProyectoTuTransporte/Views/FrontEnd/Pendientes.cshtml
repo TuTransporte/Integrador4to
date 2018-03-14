@@ -1,0 +1,56 @@
+﻿@using System.Data;
+@model DataTable
+@{
+    ViewBag.Title = "Pendientes | TuTransporte";
+    Layout = "~/Views/Shared/MasterFrontLog.cshtml";
+}
+
+<center><h2 class="category">Noticias</h2></center>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="header">
+                    <br /><br />
+                    <center><h2 class="title">Sección de denuncias</h2></center>
+                    <br />
+                    <p class="category"></p>
+                </div>
+                <div class="content">
+
+                    <table table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Motivo</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" value="@row["Motivo"]">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="@row["FechaHora"]">
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("PendientesDatos", "FrontEnd")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="legend">
+                        </div>
+                        <hr>
+                        <div class="stats">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

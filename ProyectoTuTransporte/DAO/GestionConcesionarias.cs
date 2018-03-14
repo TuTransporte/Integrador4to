@@ -15,7 +15,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListarConcesionarias()
         {
-            String cadena = string.Format("Select * From Usuario where Tipo_usuario = 1");
+            String cadena = string.Format("Select * From Usuario where Tipo_usuario = 2");
             //String cadena = string.Format("SELECT choferes.Id, Choferes.Nombre, Choferes.ApellidoPaterno, Choferes.ApellidoMaterno, Choferes.Direccion, Camiones.Serie, Horarios.Turno, Choferes.FK_Camion FROM ((Camiones INNER JOIN Choferes ON Camiones.Id = Choferes.FK_Camion) INNER JOIN Horarios ON Horarios.Id = Choferes.FK_Turno );");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }

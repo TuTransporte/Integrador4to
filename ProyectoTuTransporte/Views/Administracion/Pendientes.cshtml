@@ -1,11 +1,11 @@
 ﻿@using System.Data;
 @model DataTable
 @{
-    ViewBag.Title = "Pendientes";
+    ViewBag.Title = "Pendientes | TuTransporte";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<center><h2 class="category">Gestión de denuncias pendientes</h2></center>
+<center><h2 class="to-animate">Gestión de denuncias pendientes</h2></center>
 <br />
 <table table class="table table-hover table-striped">
     <thead>
@@ -16,23 +16,20 @@
             <th></th>
         </tr>
     </thead>
-    @using (Html.BeginForm("Pendientes", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <tbody>
-            @foreach (DataRow row in Model.Rows)
-            {
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Motivo"]">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" value="@row["FechaHora"]">
-                    </td>
-                    <td>
-                        <a href="@Url.Action("PendientesDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    }
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>
+                    <input type="text" class="form-control" value="@row["Motivo"]">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="@row["FechaHora"]">
+                </td>
+                <td>
+                    <a href="@Url.Action("PendientesDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

@@ -19,23 +19,20 @@
             <th></th>
         </tr>
     </thead>
-    @using (Html.BeginForm("GestionUnidades", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <tbody>
-            @foreach (DataRow row in Model.Rows)
-            {
-                <tr>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Serie"]">
-                    </td>
-                    <td>
-                        <input type="text" class="form-control" value="@row["Matricula"]">
-                    </td>
-                    <td>
-                        <a href="@Url.Action("DatosDeUnidades", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Seleccionar</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    }
+    <tbody>
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>
+                    <input type="text" class="form-control" value="@row["Serie"]">
+                </td>
+                <td>
+                    <input type="text" class="form-control" value="@row["Matricula"]">
+                </td>
+                <td>
+                    <a href="@Url.Action("DatosDeUnidades", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Seleccionar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

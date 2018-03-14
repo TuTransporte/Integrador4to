@@ -71,20 +71,30 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult PublicarMensaje(ChatBO oChatBO)
         {
-            oChatBO.Mensaje = Request.Form["txtMensaje"];
-            int tipo = Convert.ToInt32(Session["Tipo"]);
-            if (tipo == 4)
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
             {
-                oChatBO.PersonaEnvia = "admin@hotmail.com";
+                oChatBO.Mensaje = Request.Form["txtMensaje"];
+                int tipo = Convert.ToInt32(Session["Tipo"]);
+                if (tipo == 4)
+                {
+                    oChatBO.PersonaEnvia = "admin@hotmail.com";
+                }
+                else
+                {
+                    oChatBO.PersonaEnvia = Session["Correo"].ToString();
+                }
+                oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
+                oChatBO.Correo = Session["Correo"].ToString();
+                ChatDAO.AgregarMensaje(oChatBO);
+                return Redirect("~/Administracion/Chat");
             }
             else
             {
-                oChatBO.PersonaEnvia = Session["Correo"].ToString();
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
             }
-            oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
-            oChatBO.Correo = Session["Correo"].ToString();
-            ChatDAO.AgregarMensaje(oChatBO);
-            return Redirect("~/Administracion/Chat");
         }
 
         public ActionResult Chat(string personaenvia)
@@ -122,22 +132,32 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult PublicarMensajeDenuncia(ChatBO oChatBO)
         {
-            oChatBO.Mensaje = Request.Form["txtMensaje"];
-            int tipo = Convert.ToInt32(Session["Tipo"]);
-            int IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
-            if (tipo == 4)
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
             {
-                oChatBO.PersonaEnvia = "admin@hotmail.com";
+                oChatBO.Mensaje = Request.Form["txtMensaje"];
+                int tipo = Convert.ToInt32(Session["Tipo"]);
+                int IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
+                if (tipo == 4)
+                {
+                    oChatBO.PersonaEnvia = "admin@hotmail.com";
+                }
+                else
+                {
+                    oChatBO.PersonaEnvia = Session["Correo"].ToString();
+                }
+                oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
+                oChatBO.Correo = Session["Correo"].ToString();
+                oChatBO.IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
+                ChatDAO.AgregarMensajeDenuncia(oChatBO);
+                return Redirect("~/Administracion/ChatDenuncia");
             }
             else
             {
-                oChatBO.PersonaEnvia = Session["Correo"].ToString();
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
             }
-            oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
-            oChatBO.Correo = Session["Correo"].ToString();
-            oChatBO.IdDenuncia = Convert.ToInt32(Request.QueryString["Id"]);
-            ChatDAO.AgregarMensajeDenuncia(oChatBO);
-            return Redirect("~/Administracion/ChatDenuncia");
         }
 
         public ActionResult ChatDenuncia(string Ruta, int Id)
@@ -278,7 +298,6 @@ namespace ProyectoTuTransporte.Controllers
             string markers = "[";
             string conex = "Data Source= " + cadena + ";Initial Catalog=ProyectoTuTransporte;Integrated Security=True";
             SqlCommand cmd = new SqlCommand("SELECT * FROM PuntoReferencia WHERE Tipo LIKE '%Punto%'");
-
             using (SqlConnection con = new SqlConnection(conex))
             {
                 cmd.Connection = con;
@@ -297,7 +316,6 @@ namespace ProyectoTuTransporte.Controllers
                 }
                 con.Close();
             }
-
             markers += "];";
             ViewBag.Markers = markers;
             return View();
@@ -622,7 +640,6 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Aprobadas()
         {
-
             return View(DenunciasDAO.ListDenunciasApro());
         }
 
@@ -647,7 +664,17 @@ namespace ProyectoTuTransporte.Controllers
 
         public ActionResult Pendientes()
         {
-            return View(DenunciasDAO.ListDenunciasPend());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View(DenunciasDAO.ListDenunciasPend());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult PendientesDatos(GestionDenunciasBO oDenuncias)
@@ -659,15 +686,8 @@ namespace ProyectoTuTransporte.Controllers
             int tipo = Convert.ToInt32(Session["Tipo"]);
             if (log == true)
             {
-                if (tipo == 4)
-                {
-                    string correo = Session["Correo"].ToString();
-                    return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
-                }
-                else
-                {
-                    return Redirect("/FrontEnd/Inicio");
-                }
+                //string correo = Session["Correo"].ToString();
+                return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
             }
             else
             {

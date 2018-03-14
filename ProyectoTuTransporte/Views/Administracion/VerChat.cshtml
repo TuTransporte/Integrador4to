@@ -17,30 +17,28 @@
             </div>
             <div class="content">
 
-                @using (Html.BeginForm("VerChat", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @foreach (DataRow row in Model.Rows)
                 {
-                    foreach (DataRow row in Model.Rows)
-                    {
-                        <div class="panel panel-info">
-                            <!-- Default panel contents -->
-                            <div class="panel-heading">Mensaje de @row["Nombres"]</div>
-                            @*<div class="panel-body">
-                                    <p></p>
-                                </div>*@
-                            <!-- List group -->
-                            <ul class="list-group">
-                                <li class="list-group-item">Enviado por @row["Correo_usuario"]</li>
-                            </ul>
-                            <div class="list-group">
-                                <br />
-                                <center>
-                                    @Html.ActionLink("Abrir chat", "Chat", new { personaenvia = row["Correo_usuario"] })
-                                </center>
-                                <br />
-                            </div>
+                    <div class="panel panel-info">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Mensaje de @row["Nombres"]</div>
+                        @*<div class="panel-body">
+                                <p></p>
+                            </div>*@
+                        <!-- List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Enviado por @row["Correo_usuario"]</li>
+                        </ul>
+                        <div class="list-group">
+                            <br />
+                            <center>
+                                @Html.ActionLink("Abrir chat", "Chat", new { personaenvia = row["Correo_usuario"] })
+                            </center>
+                            <br />
                         </div>
-                    }
+                    </div>
                 }
+
                 <div class="footer">
                     <div class="legend">
                     </div>

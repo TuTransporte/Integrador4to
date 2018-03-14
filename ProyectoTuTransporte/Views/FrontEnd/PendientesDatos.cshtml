@@ -2,7 +2,7 @@
 @model DataTable
 @{
     ViewBag.Title = "PendientesDatos";
-    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
+    Layout = "~/Views/Shared/MasterFrontLog.cshtml";
 }
 
 @foreach (DataRow row in Model.Rows)
@@ -82,14 +82,15 @@
                             </div>
                         </div>
                     }
-                   
-                        <div class="panel panel-info">
-                            <br />
-                            <center>
-                                @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Ruta"] })
-                            </center>
-                            <br />
-                        </div>                    
+
+                    <div class="panel panel-info">
+                        <br />
+                        <center>
+                            @Html.ActionLink("Abrir seguimiento de disputa", "Administracion/ChatDenuncia", new { Id = row["Id"], Ruta = row["Ruta"] })
+                        </center>
+                        <br />
+                    </div>
+
                     <div class="footer">
                         <center><a id="hide1" class="btn-link" href="javascript:genPDF()" role="button">Descargar PDF</a></center>
                         <div class="legend">

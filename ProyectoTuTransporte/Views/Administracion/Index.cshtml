@@ -15,30 +15,27 @@
             </div>
             <div class="content">
 
-                @using (Html.BeginForm("Index", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @foreach (DataRow row in Model.Rows)
                 {
-                    foreach (DataRow row in Model.Rows)
-                    {
-                        <div class="panel panel-info">
-                            <!-- Default panel contents -->
-                            <div class="panel-heading">@row["Titulo"]</div>
-                            <div class="panel-body">
-                                <p>@row["Mensaje"]</p>
-                            </div>
-                            <!-- List group -->
-                            <ul class="list-group">
-                                <li class="list-group-item">Publicado el @row["Fecha"]</li>
-                            </ul>
-                            <div class="list-group">
-                                <br />
-                                <center>
-                                    <a href="@Url.Action("DatosDeNoticias", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Editar Noticia</a>
-                                    <a href="@Url.Action("EliminarNoticia", "Administracion")/@row["Id"]" type="button" class="btn btn-danger">Eliminar noticia</a><br />
-                                </center>
-                                <br />
-                            </div>
+                    <div class="panel panel-info">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">@row["Titulo"]</div>
+                        <div class="panel-body">
+                            <p>@row["Mensaje"]</p>
                         </div>
-                    }
+                        <!-- List group -->
+                        <ul class="list-group">
+                            <li class="list-group-item">Publicado el @row["Fecha"]</li>
+                        </ul>
+                        <div class="list-group">
+                            <br />
+                            <center>
+                                <a href="@Url.Action("DatosDeNoticias", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Editar Noticia</a>
+                                <a href="@Url.Action("EliminarNoticia", "Administracion")/@row["Id"]" type="button" class="btn btn-danger">Eliminar noticia</a><br />
+                            </center>
+                            <br />
+                        </div>
+                    </div>
                 }
 
                 <div class="footer">

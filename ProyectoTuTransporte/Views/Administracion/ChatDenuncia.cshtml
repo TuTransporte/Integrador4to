@@ -34,21 +34,19 @@
                     </div>
                     <div>
                         <ul class="messages margen">
-                            @using (Html.BeginForm("Chat", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            @foreach (DataRow row in Model.Rows)
                             {
-                                foreach (DataRow row in Model.Rows)
-                                {
-                                    <div class="panel panel-success">
-                                        <div class="panel-heading">
-                                            @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
-                                            <p><em>Enviado por @row["Correo"]</em></p>
-                                        </div>
-                                        <div class="panel-body">
-                                            <label class="panel-body" Width="60%">@row["Mensaje"]</label>
-                                        </div>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
+                                        <p><em>Enviado por @row["Correo"]</em></p>
                                     </div>
-                                }
+                                    <div class="panel-body">
+                                        <label class="panel-body" Width="60%">@row["Mensaje"]</label>
+                                    </div>
+                                </div>
                             }
+
                         </ul>
                     </div>
                     <div class="bottom_wrapper clearfix">

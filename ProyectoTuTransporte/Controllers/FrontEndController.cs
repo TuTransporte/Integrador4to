@@ -15,6 +15,7 @@ namespace ProyectoTuTransporte.Controllers
         LoginDAO LoginDAO = new LoginDAO();
         GestionPerfilDAO PerfilDAO = new GestionPerfilDAO();
         GestionNoticiasDAO NotiDAO = new GestionNoticiasDAO();
+        GestionDenunciasDAO DenunciasDAO = new GestionDenunciasDAO();
 
         // GET: FrontEnd        
         public ActionResult Index()
@@ -123,6 +124,7 @@ namespace ProyectoTuTransporte.Controllers
             }
             catch (Exception)
             {
+
             }
             return Redirect(link);
         }
@@ -138,7 +140,7 @@ namespace ProyectoTuTransporte.Controllers
             Session["Telefono"] = "";
             Session["Tipo"] = "";
             Session["Contraseña"] = "";
-            return Redirect("~/FrontEnd/Index");
+            return Redirect("~/FrontEnd/Login");
         }
 
         //Ejecuta el registro de usuario
@@ -177,7 +179,7 @@ namespace ProyectoTuTransporte.Controllers
             PerfilBO.RazonSocial = Request.Form["txtRazon"];
             PerfilDAO.ModificarPerfilConcesionaria(PerfilBO);
             Session["Correo"] = Request.Form["txtCorreo"];
-            Session["Contraseña"] = Request.Form["txtContraseña"];            
+            Session["Contraseña"] = Request.Form["txtContraseña"];
             string contrasena = Session["Contraseña"].ToString();
             return Redirect("~/FrontEnd/PanelUsuario");
         }
@@ -189,6 +191,40 @@ namespace ProyectoTuTransporte.Controllers
             if (log == true)
             {
                 return View(NotiDAO.MostarNoticias());
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
+        public ActionResult Pendientes()
+        {
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            if (log == true)
+            {
+                return View(DenunciasDAO.ListDenunciasPendConcesionaria(Session["Nombres"].ToString()));
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
+        }
+
+        public ActionResult PendientesDatos(GestionDenunciasBO oDenuncias)
+        {
+            int idUn = oDenuncias.Id;
+            Session["Id"] = oDenuncias.Id;
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                //string correo = Session["Correo"].ToString();
+                return View(DenunciasDAO.LlenarCamposBtnDenConcesionaria(idUn));
             }
             else
             {

@@ -34,14 +34,19 @@
                                     <div class="panel-body">
                                         <h5>Fecha y hora</h5>
                                         <input value="@row["FechaHora"]" id="txtFechaHora" name="txtFechaHora" type="text" class="form-control" placeholder="Fecha y hora">
+                                        <br />
                                         <h5>Descripción</h5>
                                         <textarea id="txtSerie" name="txtDescripcion" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
+                                        <br />
                                         <h5>Operador</h5>
                                         <input value="@row["Operador"]" id="txtOperador" name="txtOperador" type="text" class="form-control" placeholder="Operador">
+                                        <br />
                                         <h5>Unidad</h5>
                                         <input value="@row["Unidad"]" id="txtUnidad" name="txtUnidad" type="text" class="form-control" placeholder="Unidad">
+                                        <br />
                                         <h5>Motivo</h5>
                                         <input value="@row["Motivo"]" id="txtMotivo" name="txtMotivo" type="text" class="form-control" placeholder="Motivo">
+                                        <br />
                                         <h5>Ruta</h5>
                                         <input value="@row["Ruta"]" id="txtRuta" name="txtRuta" type="text" class="form-control" placeholder="Ruta">
 
@@ -86,7 +91,7 @@
                     <div class="panel panel-info">
                         <br />
                         <center>
-                            @Html.ActionLink("Abrir seguimiento de disputa", "Administracion/ChatDenuncia", new { Id = row["Id"], Ruta = row["Ruta"] })
+                            <a href="@Url.Action( "ChatDenuncia", "Administracion", new { Id = row["Id"], Ruta = row["Ruta"] })" type="button" class="btn btn-info">Abrir seguimiento de disputa</a>
                         </center>
                         <br />
                     </div>

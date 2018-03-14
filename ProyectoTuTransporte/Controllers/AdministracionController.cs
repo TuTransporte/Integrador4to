@@ -666,9 +666,17 @@ namespace ProyectoTuTransporte.Controllers
         {
             string valor = "";
             bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
             if (log == true)
             {
-                return View(DenunciasDAO.ListDenunciasPend());
+                if (tipo == 4)
+                {
+                    return View(DenunciasDAO.ListDenunciasPend());
+                }
+                else
+                {
+                    return Redirect("/FrontEnd/Pendientes");
+                }
             }
             else
             {
@@ -686,8 +694,8 @@ namespace ProyectoTuTransporte.Controllers
             int tipo = Convert.ToInt32(Session["Tipo"]);
             if (log == true)
             {
-                //string correo = Session["Correo"].ToString();
                 return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+                //string correo = Session["Correo"].ToString();                
             }
             else
             {

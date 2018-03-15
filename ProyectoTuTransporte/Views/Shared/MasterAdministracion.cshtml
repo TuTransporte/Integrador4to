@@ -42,6 +42,12 @@
                 </div>
                 <ul class="nav">
                     <li>
+                        <a href="/Administracion/EstadisticasCharts">
+                            <i class="pe-7s-graph3"></i>
+                            <p>Estadísticas</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/Administracion/Index">
                             <i class="pe-7s-speaker"></i>
                             <p>Noticias</p>
@@ -344,6 +350,9 @@
     <script src="/Content/MasterResources/assets/js/light-bootstrap-dashboard.js"></script>
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="/Content/MasterResources/assets/js/demo.js"></script>
+    <!--   Plugin para Gráficas -Montalvo-   -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!--   jsPDF   -->
     <script type="text/javascript" src="/Content/MasterResources/assets/js/jspdf.min.js"></script>
@@ -353,6 +362,63 @@
     <script type="text/javascript" src="~/Content/MasterResources/assets/js/html2canvas.js"></script>
 
 
+    <!-- SCRPIT DE LA GRÁFICA -->
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      var arraychart = @Html.Raw(ViewBag.Markers);
+
+      function drawChart() {
+
+          var data = google.visualization.arrayToDataTable(arraychart);
+
+        var options = {
+            title: 'Gráfica de Denuncias/Rutas',
+            is3D: true,
+            pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- TERMINA SCRIPT -->
+
+    <!-- SCRPIT DE LA GRÁFICA -->
+    <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      var arraychart2 = @Html.Raw(ViewBag.Markers2);
+
+      function drawChart() {
+
+          var data = google.visualization.arrayToDataTable(arraychart2);
+
+        var options = {
+            title: 'Gráfica de Motivos de Denuncias/Rutas',
+            is3D: true,
+            pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('motivosChart'));
+
+        chart.draw(data, options);
+
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- TERMINA SCRIPT -->
     
             
 

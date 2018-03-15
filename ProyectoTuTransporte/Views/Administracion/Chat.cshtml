@@ -34,27 +34,28 @@
                     </div>
                     <div>
                         <ul class="messages margen">
-
-                            @foreach (DataRow row in Model.Rows)
+                            @using (Html.BeginForm("Chat", "Administracion", FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
-                                <div class="panel panel-success">
-                                    <div class="panel-heading">
-                                        @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
-                                        <p><em>Enviado por @row["Correo"]</em></p>
+                                foreach (DataRow row in Model.Rows)
+                                {
+                                    <div class="panel panel-success">
+                                        <div class="panel-heading">
+                                            @*<label class="panel-title" Width="60%" id="txtEnvia" name="txtEnvia">@row["PersonaEnvia"]</label>*@
+                                            <p><em>Enviado por @row["Correo"]</em></p>
+                                        </div>
+                                        <div class="panel-body">
+                                            <label class="panel-body" Width="60%">@row["Mensaje"]</label>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <label class="panel-body" Width="60%">@row["Mensaje"]</label>
-                                    </div>
-                                </div>
+                                }
                             }
-
                         </ul>
                     </div>
                     <div class="bottom_wrapper clearfix">
                         @using (Html.BeginForm("PublicarMensaje", "Administracion", FormMethod.Post))
                         {
                             <div class="message_input_wrapper">
-                                <input value="" type="text" class="message_input" placeholder="Escribe tu mensaje aquí..." id="txtMensaje" name="txtMensaje">
+                                <input value="" type="text" class="message_input" placeholder="Escribe tu mensaje aquí..." id="txtMensaje" name="txtMensaje" required>
                                 <input type="text" class="form-control" value="@Session["Recibe"]" id="txtRecibe" name="txtRecibe">
                                 <br />
                             </div>

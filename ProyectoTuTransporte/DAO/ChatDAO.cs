@@ -52,7 +52,7 @@ namespace ProyectoTuTransporte.DAO
             cmd.Parameters.Add("@PersonaEnvia", SqlDbType.VarChar).Value = oChat.PersonaEnvia;
             cmd.Parameters.Add("@PersonaRecibe", SqlDbType.VarChar).Value = oChat.PersonaRecibe;
             cmd.Parameters.Add("@Fecha", SqlDbType.VarChar).Value = Convert.ToString(DateTime.Now);
-            cmd.Parameters.Add("@IdDenuncia", SqlDbType.Int).Value = oChat.PersonaEnvia;
+            cmd.Parameters.Add("@IdDenuncia", SqlDbType.Int).Value = oChat.IdDenuncia;
             cmd.CommandType = CommandType.Text;
             return obj.EjecutarComando(cmd);
         }

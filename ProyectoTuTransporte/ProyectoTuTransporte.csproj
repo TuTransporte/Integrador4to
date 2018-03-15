@@ -190,6 +190,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="DAO\ConexionDAO.cs" />
+    <Compile Include="DAO\EstadisticasDAO.cs" />
     <Compile Include="DAO\GestionConcesionarias.cs" />
     <Compile Include="DAO\GestionDenunciasDAO.cs" />
     <Compile Include="DAO\GestionNoticiasDAO.cs" />
@@ -595,6 +596,7 @@
     <Content Include="Views\Administracion\ChatDenuncia.cshtml" />
     <Content Include="Views\FrontEnd\Pendientes.cshtml" />
     <Content Include="Views\FrontEnd\PendientesDatos.cshtml" />
+    <Content Include="Views\Administracion\EstadisticasCharts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

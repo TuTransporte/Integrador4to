@@ -8,6 +8,7 @@ using ProyectoTuTransporte.BO;
 using ProyectoTuTransporte.Models;
 using System.Collections;
 using System.Data.SqlClient;
+using System.Data;
 using ReportViewerForMvc;
 using System.Web.UI.WebControls;
 using Microsoft.Reporting.WebForms;
@@ -28,6 +29,7 @@ namespace ProyectoTuTransporte.Controllers
         HorariosDAO HorariosDAO = new HorariosDAO();
         GestionDenunciasDAO DenunciasDAO = new GestionDenunciasDAO();
         ds_Reports1 ds = new ds_Reports1();
+        EstadisticasDAO EstadisticasDAO = new EstadisticasDAO();
 
         // GET: Administracion
         public ActionResult Index()
@@ -770,5 +772,104 @@ namespace ProyectoTuTransporte.Controllers
             ViewBag.ReporteEmps = rp;
             return View();
         }
-    }
+
+
+        public ActionResult EstadisticasCharts()
+        {
+            obtenerDatosDenuncias();
+            obtenerDatosMotivos();
+            return View();
+        }
+
+        public string obtenerDatosDenuncias()
+        {
+            SqlConnection conex = new SqlConnection("Data Source = SQL5035.site4now.net; Initial Catalog = DB_A3402F_TuTransporte; User Id = DB_A3402F_TuTransporte_admin; Password = baba131998.13;");
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "DenunciaChart";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Connection = conex;
+            conex.Open();
+
+            DataTable Datos = new DataTable();
+            Datos.Load(cmd.ExecuteReader());
+            conex.Close();
+
+            string strDatos;
+            strDatos= "[['Rutas', 'Denuncias Relacionadas'],";
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[";
+                strDatos = strDatos + "'" + dr[1] + "'" + "," + dr[0];
+                strDatos = strDatos + "],";
+            }
+
+            strDatos = strDatos + "]";
+            ViewBag.Markers = strDatos;
+
+            return strDatos;
+
+            //-----------------------------------------------//
+
+            //string markers = "[['Rutas', 'Denuncias Relacionadas'],";
+            //string conex = "Data Source=SQL5035.site4now.net;Initial Catalog=DB_A3402F_TuTransporte;User Id=DB_A3402F_TuTransporte_admin;Password=baba131998.13;";
+
+            //SqlCommand cmd = new SqlCommand("DenunciaChart");
+
+            //using (SqlConnection con = new SqlConnection(conex))
+            //{
+            //    cmd.CommandType = CommandType.StoredProcedure;
+            //    cmd.Connection = con;
+            //    con.Open();
+            //    using (SqlDataReader sdr = cmd.ExecuteReader())
+            //    {
+            //        while (sdr.Read())
+            //        {
+            //            markers += "[";
+            //            markers += string.Format("'{0}',", sdr["Ruta"]);
+            //            markers += string.Format("{0},", sdr["Denuncias"]);
+            //            markers += "],";
+            //        }
+            //    }
+            //    con.Close();
+            //}
+            //markers = markers.TrimEnd(',');
+            //markers += "]";
+            //ViewBag.Markers = markers;
+
+
+            //return markers;
+        }
+
+        public string obtenerDatosMotivos()
+        {
+            SqlConnection conex = new SqlConnection("Data Source = SQL5035.site4now.net; Initial Catalog = DB_A3402F_TuTransporte; User Id = DB_A3402F_TuTransporte_admin; Password = baba131998.13;");
+
+            
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "MotivoChart"; //Se selecciona el stored procedure a ejecutar
+            cmd.CommandType = CommandType.StoredProcedure;//En caso de trabajar con una sentenci se cambia a CommandType.Text;
+            cmd.Connection = conex;
+            conex.Open();
+
+            DataTable Datos = new DataTable();
+            Datos.Load(cmd.ExecuteReader());
+            conex.Close();
+
+            string strDatos;
+            strDatos = "[['Motivos', 'Denuncias Relacionadas'],"; //Títulos a Trabajar en la Gráfica
+            foreach (DataRow dr in Datos.Rows)
+            {
+                strDatos = strDatos + "[";
+                strDatos = strDatos + "'" + dr[1] + "'" + "," + dr[0];
+                strDatos = strDatos + "],";
+            }
+
+            strDatos = strDatos + "]";
+            ViewBag.Markers2 = strDatos;
+
+            return strDatos;
+        }
+
+ }
 }

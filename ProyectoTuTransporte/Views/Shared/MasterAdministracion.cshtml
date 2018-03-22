@@ -42,12 +42,6 @@
                 </div>
                 <ul class="nav">
                     <li>
-                        <a href="/Administracion/EstadisticasCharts">
-                            <i class="pe-7s-graph3"></i>
-                            <p>Estadísticas</p>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/Administracion/Index">
                             <i class="pe-7s-speaker"></i>
                             <p>Noticias</p>
@@ -101,36 +95,42 @@
                             <p>Gestión concesionarias</p>
                         </a>
                     </li>
-                    @*<li>
-                        <a href="/Administracion/GestionUnidades">
-                            <i class="pe-7s-car"></i>
-                            <p>Gestión de unidades</p>
+                    <li>
+                        <a href="/Administracion/EstadisticasCharts">
+                            <i class="pe-7s-graph3"></i>
+                            <p>Estadísticas</p>
                         </a>
                     </li>
-                    <li>
-                        <a data-toggle="collapse" href="#tablesmaps">
-                            <i class="pe-7s-map"></i>
-                            <p>
-                                Gestion de Mapas<b class="caret"></b>
-                            </p>
-                        </a>
-                        <div class="collapse" id="tablesmaps">
-                            <ul class="nav">
-                                <li>
-                                    <a href="/Administracion/MapaAdmin">
-                                        <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
-                                        <span class="sidebar-normal">Puntos de interés</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/Administracion/DibujaMapa">
-                                        <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
-                                        <span class="sidebar-normal">Rutas</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>*@
+                    @*<li>
+                            <a href="/Administracion/GestionUnidades">
+                                <i class="pe-7s-car"></i>
+                                <p>Gestión de unidades</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="collapse" href="#tablesmaps">
+                                <i class="pe-7s-map"></i>
+                                <p>
+                                    Gestion de Mapas<b class="caret"></b>
+                                </p>
+                            </a>
+                            <div class="collapse" id="tablesmaps">
+                                <ul class="nav">
+                                    <li>
+                                        <a href="/Administracion/MapaAdmin">
+                                            <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
+                                            <span class="sidebar-normal">Puntos de interés</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Administracion/DibujaMapa">
+                                            <span class="sidebar-mini"><i class="pe-7s-map"></i></span>
+                                            <span class="sidebar-normal">Rutas</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>*@
                 </ul>
             </div>
         </div>
@@ -233,7 +233,7 @@
 
     @using (Html.BeginForm("PublicarNoticia", "Administracion", FormMethod.Post))
     {
-    <!-- Modal agregar publicación-->
+        <!-- Modal agregar publicación-->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -391,7 +391,6 @@
     </script>
 
     <!-- TERMINA SCRIPT -->
-
     <!-- SCRPIT DE LA GRÁFICA -->
     <script type="text/javascript">
      google.charts.load('current', {'packages':['corechart']});
@@ -419,8 +418,8 @@
     </script>
 
     <!-- TERMINA SCRIPT -->
-    
-            
+
+
 
 
     <script type="text/javascript">
@@ -433,9 +432,9 @@
                 message: "Bienvedio a <b>TuTransporte</b> - un hermoso lugar para mejorar el día a día."
 
             }, {
-                type: 'info',
-                timer: 4000
-            });
+                    type: 'info',
+                    timer: 4000
+                });
 
         });
     </script>
@@ -616,7 +615,7 @@
         }
     </script>
 
-    
+
     <script>
         //Validar contraseñas
         document.getElementById("txtContraseña").onblur = function () { myFunction() };

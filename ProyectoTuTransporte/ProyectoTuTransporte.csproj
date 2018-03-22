@@ -326,7 +326,7 @@
     <Content Include="Content\MasterResources\assets\css\pe-icon-7-stroke.css" />
     <Content Include="Content\MasterResources\assets\fonts\Pe-icon-7-stroke.svg" />
     <Content Include="Content\MasterResources\assets\img\default-avatar.png" />
-    <Content Include="Content\MasterResources\assets\img\faces\default.jpg" />
+    <Content Include="Content\MasterResources\assets\img\faces\default.png" />
     <Content Include="Content\MasterResources\assets\img\faces\face-0.jpg" />
     <Content Include="Content\MasterResources\assets\img\faces\face-1.jpg" />
     <Content Include="Content\MasterResources\assets\img\faces\face-2.jpg" />

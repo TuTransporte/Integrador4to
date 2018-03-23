@@ -23,6 +23,7 @@
                             <tr>
                                 <th>Motivo</th>
                                 <th>Fecha</th>
+                                <th>Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,6 +35,9 @@
                                     </td>
                                     <td>
                                         <input type="text" class="form-control" value="@row["FechaHora"]">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" value="@row["Denuncia"]">
                                     </td>
                                     <td>
                                         <a href="@Url.Action("PendientesDatos", "FrontEnd")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>

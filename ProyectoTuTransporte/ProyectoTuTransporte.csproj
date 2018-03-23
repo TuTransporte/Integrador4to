@@ -584,13 +584,13 @@
     <Content Include="Views\Administracion\Chat.cshtml" />
     <Content Include="Views\Administracion\VerChat.cshtml" />
     <Content Include="Views\Administracion\DibujaMapa.cshtml" />
-    <Content Include="Views\Administracion\Aprobadas.cshtml" />
-    <Content Include="Views\Administracion\Rechazadas.cshtml" />
+    <Content Include="Views\Administracion\Finalizadas.cshtml" />
+    <Content Include="Views\Administracion\EnProceso.cshtml" />
     <Content Include="Views\Administracion\Pendientes.cshtml" />
     <Content Include="Views\Administracion\ReporteEmpleados.cshtml" />
     <Content Include="Views\Administracion\PendientesDatos.cshtml" />
-    <Content Include="Views\Administracion\AprobadasDatos.cshtml" />
-    <Content Include="Views\Administracion\RechazadasDatos.cshtml" />
+    <Content Include="Views\Administracion\FinalizadasDatos.cshtml" />
+    <Content Include="Views\Administracion\EnProcesoDatos.cshtml" />
     <Content Include="Views\Administracion\ReportesEmp.cshtml" />
     <None Include="Service References\ServiceReferenceTuTransporte\ServiceTuTransporte.wsdl" />
     <Content Include="Views\Administracion\ChatDenuncia.cshtml" />

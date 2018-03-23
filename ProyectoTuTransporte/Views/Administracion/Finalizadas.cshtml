@@ -1,19 +1,18 @@
 ﻿@using System.Data;
 @model DataTable
 @{
-    ViewBag.Title = "Aprobadas";
+    ViewBag.Title = "Pendientes | TuTransporte";
     Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
-<center><h2 class="category">Gestión de denuncias aprobadas</h2></center>
+<center><h2 class="to-animate">Gestión de denuncias finalizadas</h2></center>
 <br />
 <table table class="table table-hover table-striped">
     <thead>
         <tr>
-            <th>Denuncia</th>
+            <th>Motivo</th>
             <th>Fecha</th>
-            <th></th>
-            <th></th>
+            <th>Descripcion</th>
         </tr>
     </thead>
     <tbody>
@@ -21,13 +20,16 @@
         {
             <tr>
                 <td>
-                    <input type="text" class="form-control" value="@row["Denuncia"]">
+                    <input type="text" class="form-control" value="@row["Motivo"]">
                 </td>
                 <td>
                     <input type="text" class="form-control" value="@row["FechaHora"]">
                 </td>
                 <td>
-                    <a href="@Url.Action("AprobadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
+                    <input type="text" class="form-control" value="@row["Denuncia"]">
+                </td>
+                <td>
+                    <a href="@Url.Action("FinalizadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
                 </td>
             </tr>
         }

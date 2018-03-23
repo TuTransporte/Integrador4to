@@ -144,12 +144,13 @@ namespace ProyectoTuTransporte.Controllers
                 if (tipo == 4)
                 {
                     oChatBO.PersonaEnvia = "admin@hotmail.com";
+                    oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
                 }
                 else
                 {
-                    oChatBO.PersonaEnvia = Session["Correo"].ToString();
+                    oChatBO.PersonaEnvia = Session["personaenvia"].ToString();
+                    oChatBO.PersonaRecibe = "admin@hotmail.com";
                 }
-                oChatBO.PersonaRecibe = Session["personaenvia"].ToString();
                 oChatBO.Correo = Session["Correo"].ToString();
                 oChatBO.IdDenuncia = IdDenuncia;
                 ChatDAO.AgregarMensajeDenuncia(oChatBO);
@@ -181,16 +182,8 @@ namespace ProyectoTuTransporte.Controllers
                 {
                     Session["personaenvia"] = Ruta;
                 }
-                int tipo = Convert.ToInt32(Session["Tipo"]);
-                if (tipo == 4)
-                {
-                    valor = Session["personaenvia"].ToString();
-                }
-                else
-                {
-                    valor = Session["Correo"].ToString();
-                }
-
+                //int tipo = Convert.ToInt32(Session["Tipo"]);
+                valor = Ruta;
                 return View(ChatDAO.AbrirMensajeDenuncia(valor, Convert.ToInt32(Session["IdDenuncia"])));
             }
             else
@@ -645,28 +638,88 @@ namespace ProyectoTuTransporte.Controllers
             return Redirect("~/Administracion/Index");
         }
 
-        public ActionResult Aprobadas()
+        public ActionResult EnProceso()
         {
-            return View(DenunciasDAO.ListDenunciasApro());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                if (tipo == 4)
+                {
+                    return View(DenunciasDAO.ListDenunciasEnProceso());
+                }
+                else
+                {
+                    return Redirect("/FrontEnd/Pendientes");
+                }
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
-        public ActionResult AprobadasDatos(GestionDenunciasBO oDenuncias)
+        public ActionResult EnProcesoDatos(GestionDenunciasBO oDenuncias)
         {
             int idUn = oDenuncias.Id;
             Session["Id"] = oDenuncias.Id;
-            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+                //string correo = Session["Correo"].ToString();                
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
-        public ActionResult Rechazadas()
+        public ActionResult Finalizadas()
         {
-            return View(DenunciasDAO.ListDenunciasRech());
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                if (tipo == 4)
+                {
+                    return View(DenunciasDAO.ListDenunciasFinalizadas());
+                }
+                else
+                {
+                    return Redirect("/FrontEnd/Pendientes");
+                }
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
-        public ActionResult RechazadasDatos(GestionDenunciasBO oDenuncias)
+        public ActionResult FinalizadasDatos(GestionDenunciasBO oDenuncias)
         {
             int idUn = oDenuncias.Id;
             Session["Id"] = oDenuncias.Id;
-            return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+            string valor = "";
+            bool log = Convert.ToBoolean(Session["LogOK"]);
+            int tipo = Convert.ToInt32(Session["Tipo"]);
+            if (log == true)
+            {
+                return View(DenunciasDAO.LlenarCamposBtnDen(idUn));
+                //string correo = Session["Correo"].ToString();                
+            }
+            else
+            {
+                valor = "/FrontEnd/Login";
+                return Redirect(valor);
+            }
         }
 
         public ActionResult Pendientes()
@@ -711,37 +764,37 @@ namespace ProyectoTuTransporte.Controllers
             }
         }
 
-        public ActionResult ApDenuncia(GestionDenunciasBO oDenuncias)
+        public ActionResult ModificarEnProceso(GestionDenunciasBO oDenuncias)
         {
-            oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
-            oDenuncias.Estado = Convert.ToInt32(Request.Form["txtEst"]);
-            DenunciasDAO.ModificarAprovado(oDenuncias);
-            return Redirect("~/Administracion/Pendientes");
+            oDenuncias.Id = Convert.ToInt32(Session["Id"]);
+            oDenuncias.Dictamen = Request.Form["message-textDic"];
+            DenunciasDAO.ModificarEnProceso(oDenuncias);
+            return Redirect("~/Administracion/EnProceso");
         }
 
         public ActionResult ApDenuncia2(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Request.Form["txtId"]);
             oDenuncias.Estado = Convert.ToInt32(Request.Form["txtEst"]);
-            DenunciasDAO.ModificarAprovado(oDenuncias);
+            //DenunciasDAO.ModificarAprovado(oDenuncias);
             return Redirect("~/Administracion/Rechazadas");
         }
 
         public ActionResult RechDenuncia(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Session["Id"]);
-            DenunciasDAO.ModificarRechazado(oDenuncias);
+            //DenunciasDAO.ModificarRechazado(oDenuncias);
             Session["Id"] = null;
-            DenunciasDAO.ModificarRechazado(oDenuncias);
+            //DenunciasDAO.ModificarRechazado(oDenuncias);
             return Redirect("~/Administracion/Pendientes");
         }
 
         public ActionResult RechDenuncia2(GestionDenunciasBO oDenuncias)
         {
             oDenuncias.Id = Convert.ToInt32(Session["Id"]);
-            DenunciasDAO.ModificarRechazado(oDenuncias);
+            //DenunciasDAO.ModificarRechazado(oDenuncias);
             Session["Id"] = null;
-            DenunciasDAO.ModificarRechazado(oDenuncias);
+            //DenunciasDAO.ModificarRechazado(oDenuncias);
             return Redirect("~/Administracion/Aprobadas");
         }
 
@@ -796,7 +849,7 @@ namespace ProyectoTuTransporte.Controllers
             conex.Close();
 
             string strDatos;
-            strDatos= "[['Rutas', 'Denuncias Relacionadas'],";
+            strDatos = "[['Rutas', 'Denuncias Relacionadas'],";
             foreach (DataRow dr in Datos.Rows)
             {
                 strDatos = strDatos + "[";
@@ -845,7 +898,7 @@ namespace ProyectoTuTransporte.Controllers
         {
             SqlConnection conex = new SqlConnection("Data Source = SQL5035.site4now.net; Initial Catalog = DB_A3402F_TuTransporte; User Id = DB_A3402F_TuTransporte_admin; Password = baba131998.13;");
 
-            
+
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "MotivoChart"; //Se selecciona el stored procedure a ejecutar
             cmd.CommandType = CommandType.StoredProcedure;//En caso de trabajar con una sentenci se cambia a CommandType.Text;
@@ -871,5 +924,5 @@ namespace ProyectoTuTransporte.Controllers
             return strDatos;
         }
 
- }
+    }
 }

@@ -55,7 +55,7 @@
                         @using (Html.BeginForm("PublicarMensajeDenuncia", "Administracion", FormMethod.Post))
                         {
                             <div class="message_input_wrapper">
-                                <input value="" type="text" class="message_input" placeholder="Escribe tu mensaje aquí..." id="txtMensaje" name="txtMensaje" required>
+                                <input value="" type="text" class="message_input" placeholder="Escribe tu mensaje aquí..." id="txtMensaje" name="txtMensaje" required autocomplete="off>
                                 <input type="text" class="form-control" value="@Session["Recibe"]" id="txtRecibe" name="txtRecibe">
                                 <br />
                             </div>

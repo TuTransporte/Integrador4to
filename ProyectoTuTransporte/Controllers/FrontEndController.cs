@@ -65,8 +65,8 @@ namespace ProyectoTuTransporte.Controllers
                     Session["Tipo"] = datos[6].ToString();
                     Session["Contraseña"] = datos[7].ToString();
                     Session["Direccion"] = datos[8].ToString();
-                    Session["Horario"] = datos[9].ToString();
-                    Session["RFC"] = datos[10].ToString();
+                    Session["RFC"] = datos[9].ToString();
+                    Session["Horario"] = datos[10].ToString();
                     Session["Razon"] = datos[11].ToString();
                 }
                 catch (Exception)

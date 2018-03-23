@@ -15,5 +15,6 @@ namespace ProyectoTuTransporte.BO
         public int FK_Usuario { get; set; }
         public int FK_Chofer { get; set; }
         public int FK_Camion { get; set; }
+        public string Dictamen { get; set; }
     }
 }

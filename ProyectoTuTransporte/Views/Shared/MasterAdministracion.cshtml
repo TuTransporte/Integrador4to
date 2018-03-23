@@ -42,6 +42,12 @@
                 </div>
                 <ul class="nav">
                     <li>
+                        <a href="/Administracion/EstadisticasCharts">
+                            <i class="pe-7s-graph3"></i>
+                            <p>Estadísticas</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/Administracion/Index">
                             <i class="pe-7s-speaker"></i>
                             <p>Noticias</p>
@@ -69,13 +75,13 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/Administracion/Aprobadas">
+                                    <a href="/Administracion/EnProceso">
                                         <span class="sidebar-mini"><i class="pe-7s-check"></i></span>
                                         <span class="sidebar-normal">En proceso</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/Administracion/Rechazadas">
+                                    <a href="/Administracion/Finalizadas">
                                         <span class="sidebar-mini"><i class="pe-7s-close-circle"></i></span>
                                         <span class="sidebar-normal">Finalizadas</span>
                                     </a>
@@ -93,12 +99,6 @@
                         <a href="/Administracion/GestionEmpleados">
                             <i class="pe-7s-id"></i>
                             <p>Gestión concesionarias</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/Administracion/EstadisticasCharts">
-                            <i class="pe-7s-graph3"></i>
-                            <p>Estadísticas</p>
                         </a>
                     </li>
                     @*<li>
@@ -251,7 +251,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label" id="cuerponoticia"></label>
-                                <textarea class="form-control" id="message-text" name="message-text" required></textarea>
+                                <textarea class="form-control" id="message-textDic" name="message-text" required></textarea>
                             </div>
                         </form>
                     </div>
@@ -286,6 +286,36 @@
             </div>
         </div>
     }
+
+    @using (Html.BeginForm("ModificarEnProceso", "Administracion", FormMethod.Post))
+    {
+        <!-- Modal agregar publicación-->
+        <div class="modal fade" id="exampleModalPendiente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Dictamen final</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label" id="cuerponoticiaenpro"></label>
+                                <textarea class="form-control" id="message-textDic" name="message-textDic" required></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Finalizar denuncia</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
     @using (Html.BeginForm("RechDenuncia", "Administracion", FormMethod.Post))
     {
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -582,6 +612,15 @@
         function Noticia() {
             $('#titulonoticia').html('Título de la noticia')
             $('#cuerponoticia').html('Mensaje de la noticia \n ')
+        }
+    </script>
+    <script>
+        $('#exampleModalPendiente').on('shown.bs.modal', function () {
+            $('#myInput').focus()
+        })
+
+        function Dictamen() {
+            $('#cuerponoticiaenpro').html('Dictamen final de la denuncia \n ')
         }
     </script>
     <script>

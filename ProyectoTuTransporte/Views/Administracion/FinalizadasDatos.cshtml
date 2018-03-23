@@ -2,12 +2,12 @@
 @model DataTable
 @{
     ViewBag.Title = "PendientesDatos";
-    Layout = "~/Views/Shared/MasterFrontLog.cshtml";
+    Layout = "~/Views/Shared/MasterAdministracion.cshtml";
 }
 
 @foreach (DataRow row in Model.Rows)
 {
-    <center><h2 class="category">Gestión de denuncias pendientes</h2></center>
+    <center><h2 class="category">Gestión de denuncias finalizadas</h2></center>
 
     <div class="row">
         <div class="col-md-1"></div>
@@ -34,19 +34,14 @@
                                     <div class="panel-body">
                                         <h5>Fecha y hora</h5>
                                         <input value="@row["FechaHora"]" id="txtFechaHora" name="txtFechaHora" type="text" class="form-control" placeholder="Fecha y hora">
-                                        <br />
                                         <h5>Descripción</h5>
                                         <textarea id="txtSerie" name="txtDescripcion" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
-                                        <br />
                                         <h5>Operador</h5>
                                         <input value="@row["Operador"]" id="txtOperador" name="txtOperador" type="text" class="form-control" placeholder="Operador">
-                                        <br />
                                         <h5>Unidad</h5>
                                         <input value="@row["Unidad"]" id="txtUnidad" name="txtUnidad" type="text" class="form-control" placeholder="Unidad">
-                                        <br />
                                         <h5>Motivo</h5>
                                         <input value="@row["Motivo"]" id="txtMotivo" name="txtMotivo" type="text" class="form-control" placeholder="Motivo">
-                                        <br />
                                         <h5>Ruta</h5>
                                         <input value="@row["Ruta"]" id="txtRuta" name="txtRuta" type="text" class="form-control" placeholder="Ruta">
 
@@ -92,11 +87,10 @@
                     <div class="panel panel-info">
                         <br />
                         <center>
-                            <a href="@Url.Action( "ChatDenuncia", "Administracion", new { Id = row["Id"], Ruta = row["Correo"] })" type="button" class="btn btn-info">Abrir seguimiento de disputa</a>
+                            @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Correo"] })
                         </center>
                         <br />
                     </div>
-
                     <div class="footer">
                         <center><a id="hide1" class="btn-link" href="javascript:genPDF()" role="button">Descargar PDF</a></center>
                         <div class="legend">

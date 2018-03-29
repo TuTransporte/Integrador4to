@@ -7,31 +7,22 @@
 
 <center><h2 class="to-animate">Gestión de denuncias finalizadas</h2></center>
 <br />
-<table table class="table table-hover table-striped">
-    <thead>
-        <tr>
-            <th>Motivo</th>
-            <th>Fecha</th>
-            <th>Descripcion</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (DataRow row in Model.Rows)
-        {
-            <tr>
-                <td>
-                    <input type="text" class="form-control" value="@row["Motivo"]">
-                </td>
-                <td>
-                    <input type="text" class="form-control" value="@row["FechaHora"]">
-                </td>
-                <td>
-                    <input type="text" class="form-control" value="@row["Denuncia"]">
-                </td>
-                <td>
-                    <a href="@Url.Action("FinalizadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (DataRow row in Model.Rows)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img src="@row["Imagen"]" onerror="this.src = '/Content/MasterResources/assets/img/faces/default.png';" width="120" class="thumbnail" />
+                <div class="caption">
+                    <center><h3>@row["Motivo"]</h3></center>
+                    <br />
+                    <p>@row["FechaHora"]</p>
+                    <br />
+                    <p>@row["Denuncia"]</p>
+                    <br />
+                    <center><a href="@Url.Action("FinalizadasDatos", "Administracion")/@row["Id"]" type="button" class="btn btn-info">Ver más</a></center>
+                </div>
+            </div>
+        </div>
+    }
+</div>

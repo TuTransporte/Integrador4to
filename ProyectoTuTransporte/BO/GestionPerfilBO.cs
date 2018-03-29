@@ -18,5 +18,6 @@ namespace ProyectoTuTransporte.BO
         public string RFC { get; set; }
         public string Horario { get; set; }
         public string RazonSocial { get; set; }
+        public string Imagen { get; set; }
     }
 }

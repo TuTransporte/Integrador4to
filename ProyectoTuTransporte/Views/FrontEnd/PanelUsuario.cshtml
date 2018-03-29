@@ -9,99 +9,142 @@
     <br />
     @using (Html.BeginForm("ActualizarInfoU", "FrontEnd", FormMethod.Post))
     {
-        <div class="container">
-            <div class="">
-                <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <div class="row">
-                        <input type="text" class="form-control" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" name="txtNombres" value="@Session["Nombres"]">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Horario</label>
-                                <input type="text" class="form-control" placeholder="Horario" name="txtHorario" value="@Session["Horario"]">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="tel" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6    ">
-                            <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección" name="txtDireccion" value="@Session["Direccion"]">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Razón social</label>
-                                <input type="text" class="form-control" placeholder="Razón social" name="txtRazon" value="@Session["Razon"]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6    ">
-                            <div class="form-group">
-                                <label>RFC</label>
-                                <input type="text" class="form-control" placeholder="RFC" name="txtRFC" value="@Session["RFC"]">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Correo</label>
-                                <input type="email" class="form-control" placeholder="Correo" name="txtCorreo" value="@Session["Correo"]">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6    ">
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]" id="txtContrasena">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Confirmar contraseña</label>
-                                <input type="password" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]" id="txtContraseña">
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-fill pull-right" id="btnenviar">Actualizar perfil</button>
-                </div>
-                <div class="col-md-1"></div>
-                <div class="clearfix"></div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="@Session["Imagen"]">
+                </a>
             </div>
+            <div class="col-md-4"></div>
         </div>
+
+        <div class="row">
+            <div class="col-md-3"></div>
+
+            <div class="col-md-6">
+                <input id="inp" type='file'>
+                <label id="b64" name="b64"></label>
+                <img id="img" height="150">
+            </div>
+
+            <div class="col-md-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <input type="text" class="form-control" name="txtId" style="visibility:hidden;" value="@Session["Id"]">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre" name="txtNombres" value="@Session["Nombres"]">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Horario</label>
+                            <input type="text" class="form-control" placeholder="Horario" name="txtHorario" value="@Session["Horario"]">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" class="form-control" placeholder="Teléfono" name="txtTelefono" value="@Session["Telefono"]">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6    ">
+                        <div class="form-group">
+                            <label>Dirección</label>
+                            <input type="text" class="form-control" placeholder="Dirección" name="txtDireccion" value="@Session["Direccion"]">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Razón social</label>
+                            <input type="text" class="form-control" placeholder="Razón social" name="txtRazon" value="@Session["Razon"]">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6    ">
+                        <div class="form-group">
+                            <label>RFC</label>
+                            <input type="text" class="form-control" placeholder="RFC" name="txtRFC" value="@Session["RFC"]">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Correo</label>
+                            <input type="email" class="form-control" placeholder="Correo" name="txtCorreo" value="@Session["Correo"]">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6    ">
+                        <div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña" name="txtContraseña" value="@Session["Contraseña"]" id="txtContrasena">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Confirmar contraseña</label>
+                            <input type="password" class="form-control" placeholder="Confirmar contraseña" name="txtContrasena" value="@Session["Contraseña"]" id="txtContraseña">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-fill pull-right" id="btnenviar">Actualizar perfil</button>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
     }
 </section>
 
 <script>
-        //Validar contraseñas
-        document.getElementById("txtContrasena").onblur = function () { myFunction() };
-        document.getElementById("txtContraseña").onblur = function () { myFunction() };
-        function myFunction() {
-            var clave1 = txtContrasena.value;
-            var clave2 = txtContraseña.value;
-            if (clave1 != clave2) {
-                txtContrasena.style.border = "1px solid red";
-                txtContraseña.style.border = "1px solid red";
-                $('#btnenviar').attr("disabled", true);
-                console.log("Bien");
-            } else {
-                txtContrasena.style.border = "";
-                txtContraseña.style.border = "";
-                $('#btnenviar').attr("disabled", false);
-                console.log("MAl");
-            }
+    //Validar contraseñas
+    document.getElementById("txtContrasena").onblur = function () { myFunction() };
+    document.getElementById("txtContraseña").onblur = function () { myFunction() };
+    function myFunction() {
+        var clave1 = txtContrasena.value;
+        var clave2 = txtContraseña.value;
+        if (clave1 != clave2) {
+            txtContrasena.style.border = "1px solid red";
+            txtContraseña.style.border = "1px solid red";
+            $('#btnenviar').attr("disabled", true);
+            console.log("Bien");
+        } else {
+            txtContrasena.style.border = "";
+            txtContraseña.style.border = "";
+            $('#btnenviar').attr("disabled", false);
+            console.log("MAl");
         }
+    }
+</script>
+
+<script>
+    function readFile() {
+
+        if (this.files && this.files[0]) {
+
+            var FR = new FileReader();
+
+            FR.addEventListener("load", function (e) {
+                document.getElementById("img").src = e.target.result;
+                document.getElementById("b64").innerHTML = e.target.result;
+            });
+
+            FR.readAsDataURL(this.files[0]);
+        }
+
+    }
+
+    document.getElementById("inp").addEventListener("change", readFile);
 </script>

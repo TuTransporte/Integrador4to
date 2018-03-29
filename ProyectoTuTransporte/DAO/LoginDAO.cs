@@ -35,6 +35,7 @@ namespace ProyectoTuTransporte.DAO
                 tipous.Add(lectura["RFC"].ToString());
                 tipous.Add(lectura["Horario"].ToString());
                 tipous.Add(lectura["RazonSocial"].ToString());
+                tipous.Add(lectura["Imagen"].ToString());
             }
             CerrarConexion();
             return tipous;

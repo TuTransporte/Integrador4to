@@ -8,101 +8,120 @@
 @foreach (DataRow row in Model.Rows)
 {
     <center><h2 class="category">Gestión de denuncias finalizadas</h2></center>
-
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div class="card">
-                <div class="header">
-                    <h4 class="title">Información de denuncia</h4>
-                    <p class="category"></p>
-                </div>
-                <div class="content" id="pdfdiv">
-                    @using (Html.BeginForm("ApDenuncia", "Administracion", FormMethod.Post))
-                    {
-
-                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingOne">
-                                    <h4 class="panel-title">
-                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            Datos
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                    <div class="panel-body">
-                                        <h5>Fecha y hora</h5>
-                                        <input value="@row["FechaHora"]" id="txtFechaHora" name="txtFechaHora" type="text" class="form-control" placeholder="Fecha y hora">
-                                        <h5>Descripción</h5>
-                                        <textarea id="txtSerie" name="txtDescripcion" type="text" class="form-control" style="resize:unset;">@row["Denuncia"]</textarea>
-                                        <h5>Operador</h5>
-                                        <input value="@row["Operador"]" id="txtOperador" name="txtOperador" type="text" class="form-control" placeholder="Operador">
-                                        <h5>Unidad</h5>
-                                        <input value="@row["Unidad"]" id="txtUnidad" name="txtUnidad" type="text" class="form-control" placeholder="Unidad">
-                                        <h5>Motivo</h5>
-                                        <input value="@row["Motivo"]" id="txtMotivo" name="txtMotivo" type="text" class="form-control" placeholder="Motivo">
-                                        <h5>Ruta</h5>
-                                        <input value="@row["Ruta"]" id="txtRuta" name="txtRuta" type="text" class="form-control" placeholder="Ruta">
-
-                                        <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
-                                        <input value="@row["Estado"]" id="txtEst" name="txtEst" type="text" class="form-control" style="visibility:hidden;" />
-                                        <input value="@row["Correo"]" id="txtCorreo" name="txtCorreo" type="text" class="form-control" style="visibility:hidden;" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingTwo">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                            Ubicación
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                    <div class="panel-body">
-                                        <input value="@row["Latitud"]" id="txtLatitud" name="txtLatitud" type="text" class="form-control" style="visibility:hidden;" />
-                                        <div id="map" style="height: 500px"></div>
-                                        <input value="@row["Longitud"]" id="txtLongitud" name="txtLongitud" type="text" class="form-control" style="visibility:hidden;" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel panel-default">
-                                <div class="panel-heading" role="tab" id="headingThree">
-                                    <h4 class="panel-title">
-                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                            Imagen
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                    <div class="panel-body">
-                                        <center><img src="@row["Imagen"]" width="250px" class="thumbnail" onerror="this.src = '/Content/MasterResources/assets/img/faces/default.png';" /></center>
-                                    </div>
-                                </div>
-                            </div>
+    <br />
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                @using (Html.BeginForm("ApDenuncia", "Administracion", FormMethod.Post))
+            {
+                <div class="col-md-6" id="pdfdiv">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Información denuncia</h4>
                         </div>
-                    }
+                        <div class="content">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Fecha y hora</label>
+                                            <input type="text" class="form-control" placeholder="" value="@row["FechaHora"]">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Operador</label>
+                                            <input type="text" class="form-control" placeholder="" value="@row["Operador"]">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Unidad</label>
+                                            <input type="text" class="form-control" placeholder="" value="@row["Unidad"]">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Motivo</label>
+                                            <input type="text" class="form-control" placeholder="" value="@row["Motivo"]">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Ruta</label>
+                                            <input type="text" class="form-control" placeholder="" value="@row["Ruta"]">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Descripción</label>
+                                            <textarea rows="5" class="form-control" placeholder="" value="">@row["Denuncia"]</textarea>
+                                            <input value="@row["Id"]" id="txtId" name="txtId" type="text" class="form-control" style="visibility:hidden;" />
+                                            <input value="@row["Estado"]" id="txtEst" name="txtEst" type="text" class="form-control" style="visibility:hidden;" />
+                                            <input value="@row["Correo"]" id="txtCorreo" name="txtCorreo" type="text" class="form-control" style="visibility:hidden;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-info">
+                                    <br />
+                                    <center>
+                                        @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Correo"] })
+                                    </center>
+                                    <br />
+                                </div>
+                                <div class="panel panel-success">
 
-                    <div class="panel panel-info">
-                        <br />
-                        <center>
-                            @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Correo"] })
-                        </center>
-                        <br />
-                    </div>
-                    <div class="footer">
-                        <center><a id="hide1" class="btn-link" href="javascript:genPDF()" role="button">Descargar PDF</a></center>
-                        <div class="legend">
-                        </div>
-                        <hr>
-                        <div class="stats">
+                                    <br />
+                                    <center><a id="hide1" class="btn-link" href="javascript:genPDF()" role="button">Descargar PDF</a></center>
+                                    <br />
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Ubicación</h4>
+                        </div>
+                        <div class="content">
+                            <form>
+                                <div class="panel-body">
+                                    <input value="@row["Latitud"]" id="txtLatitud" name="txtLatitud" type="text" class="form-control" style="visibility:hidden;" />
+                                    <div id="map" style="height: 480px"></div>
+                                    <input value="@row["Longitud"]" id="txtLongitud" name="txtLongitud" type="text" class="form-control" style="visibility:hidden;" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Información denuncia</h4>
+                        </div>
+                        <div class="content">
+                            <form>
+                                <div class="panel-body">
+                                    <center><img src="@row["Imagen"]" width="250px" class="thumbnail" onerror="this.src = '/Content/MasterResources/assets/img/faces/default.png';" /></center>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        }
             </div>
         </div>
-        <div class="col-md-1"></div>
     </div>
 
     <script type="text/javascript">

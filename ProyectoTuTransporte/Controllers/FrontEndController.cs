@@ -68,6 +68,7 @@ namespace ProyectoTuTransporte.Controllers
                     Session["RFC"] = datos[9].ToString();
                     Session["Horario"] = datos[10].ToString();
                     Session["Razon"] = datos[11].ToString();
+                    Session["Imagen"] = datos[12].ToString();
                 }
                 catch (Exception)
                 {
@@ -177,6 +178,7 @@ namespace ProyectoTuTransporte.Controllers
             PerfilBO.RFC = Request.Form["txtRFC"];
             PerfilBO.Horario = Request.Form["txtHorario"];
             PerfilBO.RazonSocial = Request.Form["txtRazon"];
+            PerfilBO.Imagen = Request.Form["b64"];
             PerfilDAO.ModificarPerfilConcesionaria(PerfilBO);
             Session["Correo"] = Request.Form["txtCorreo"];
             Session["Contraseña"] = Request.Form["txtContraseña"];

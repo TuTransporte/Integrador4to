@@ -836,7 +836,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosDenuncias()
         {
-            SqlConnection conex = new SqlConnection("Data Source = SQL5035.site4now.net; Initial Catalog = DB_A3402F_TuTransporte; User Id = DB_A3402F_TuTransporte_admin; Password = baba131998.13;");
+            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "DenunciaChart";
@@ -896,7 +896,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosMotivos()
         {
-            SqlConnection conex = new SqlConnection("Data Source = SQL5035.site4now.net; Initial Catalog = DB_A3402F_TuTransporte; User Id = DB_A3402F_TuTransporte_admin; Password = baba131998.13;");
+            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
 
 
             SqlCommand cmd = new SqlCommand();

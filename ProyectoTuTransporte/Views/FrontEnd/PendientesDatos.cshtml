@@ -82,9 +82,7 @@
                                             </div>
                                             <div class="panel panel-info">
                                                 <br />
-                                                <center>
-                                                    @Html.ActionLink("Abrir seguimiento de disputa", "ChatDenuncia", new { Id = row["Id"], Ruta = row["Correo"] })
-                                                </center>
+                                                <center><a href="@Url.Action("ChatDenuncia", "Administracion", new { Id = row["Id"], Ruta = row["Correo"] })" type="button" class="btn btn-info">Ver más</a></center>
                                                 <br />
                                             </div>
                                             <div class="panel panel-success">

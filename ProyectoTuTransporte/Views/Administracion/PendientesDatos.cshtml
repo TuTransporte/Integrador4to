@@ -148,7 +148,7 @@
         var long = txtLongitud.value;
         var mapProp = {
             center: new google.maps.LatLng(lat, long),
-            zoom: 15,
+            zoom: 12,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -170,7 +170,7 @@
             map: map,
             position: new google.maps.LatLng(lat, long),
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-            draggable: true,
+           // draggable: true,
             customInfo: "Marker A"
         });
 

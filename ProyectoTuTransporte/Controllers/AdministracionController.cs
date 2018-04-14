@@ -836,6 +836,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosDenuncias()
         {
+            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             SqlConnection conex = new SqlConnection("Data Source=.;Initial Catalog=DB_A3402F_TuTransporte;Integrated Security=True;");
 
             SqlCommand cmd = new SqlCommand();
@@ -896,6 +897,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosMotivos()
         {
+            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             SqlConnection conex = new SqlConnection("Data Source = .; Initial Catalog = DB_A3402F_TuTransporte; Integrated Security = True;");
 
 

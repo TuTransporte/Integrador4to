@@ -74,15 +74,15 @@
                 <div id="" class="navbar-collapse collapse">
                     @using (Html.BeginForm("Cerrarsesion", "FrontEnd", FormMethod.Post))
                     {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/FrontEnd/Inicio"><span>Inicio</span></a></li>
-                        <li><a href="/FrontEnd/PanelUsuario"><span>Datos del usuario</span></a></li>
-                        <li><a href="/FrontEnd/Noticias"><span>Noticias</span></a></li>
-                        @*<li><a href="#"><span>Rutas</span></a></li>*@
-                        <li><a href="/Administracion/Chat"><span>Mensajes</span></a></li>
-                        <li><a href="/FrontEnd/Pendientes"><span>Denuncias</span></a></li>
-                        <li><button type="submit" class="button btn-link">Cerrar sesión</button></li>
-                    </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/FrontEnd/Inicio"><span>Inicio</span></a></li>
+                            <li><a href="/FrontEnd/PanelUsuario"><span>Datos del usuario</span></a></li>
+                            <li><a href="/FrontEnd/Noticias"><span>Noticias</span></a></li>
+                            @*<li><a href="#"><span>Rutas</span></a></li>*@
+                            <li><a href="/Administracion/Chat"><span>Mensajes</span></a></li>
+                            <li><a href="/FrontEnd/Pendientes"><span>Denuncias</span></a></li>
+                            <li><button type="submit" class="button btn-link">Cerrar sesión</button></li>
+                        </ul>
                     }
                 </div>
             </nav>
@@ -133,12 +133,10 @@
     <!-- Owl Carousel -->
     <script src="/Content/MasterFrontEnd/js/owl.carousel.min.js"></script>
     <!-- Google Map -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfyDDJAmflpCHz6luQoOTPsn38JinRq3w&sensor=false"></script>*@
     <script src="/Content/MasterFrontEnd/js/google_map.js"></script>
     <!-- Main JS (Do not remove) -->
     <script src="/Content/MasterFrontEnd/js/main.js"></script>
-
-
 
     <!--modal lectura de noticias FE-->
     <script>
@@ -151,9 +149,6 @@
             $('#cuerponoticia').html('Mensaje de la noticia \n ')
         }
     </script>
+
 </body>
 </html>
-
-
-
-

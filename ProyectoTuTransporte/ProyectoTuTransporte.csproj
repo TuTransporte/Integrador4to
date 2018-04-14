@@ -516,6 +516,7 @@
       <DependentUpon>ds_Reports1.xsd</DependentUpon>
     </Content>
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="BDTuTransporte\BDTuTransporte.bak" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Reportes\ds_Reports1.xsd">
       <SubType>Designer</SubType>
@@ -641,7 +642,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6284</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -41,13 +41,13 @@ namespace ProyectoTuTransporte.DAO
         {
             cmd = new SqlCommand("INSERT INTO Denuncias (Denuncia, FechaHora, FK_Ubicacion, FK_Usuario, FK_Chofer, FK_Camion, Estado) VALUES ('" + oDenuncias.Denuncia + "', GETDATE(), '" + oDenuncias.FK_Ubicacion + "', '" + oDenuncias.FK_Usuario + "', '" + oDenuncias.FK_Chofer + "', '" + oDenuncias.FK_Camion + "', '0')");
             return conex.EjecutarComando(cmd);
-        }
+        }*/
 
         public int ModificarAprovado(GestionDenunciasBO oDenuncias)
         {
             cmd = new SqlCommand("UPDATE Denuncias SET Estado = 1 WHERE Id='" + oDenuncias.Id + "'");
             return conex.EjecutarComando(cmd);
-        }*/
+        }
 
         public int ModificarEnProceso(GestionDenunciasBO oDenuncias)
         {

@@ -57,7 +57,7 @@ namespace ProyectoTuTransporte.DAO
 
         public DataTable ListDenunciasPendConcesionaria(string Concesionaria)
         {
-            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = '0' Or Estado = 1 And Ruta = '" + Concesionaria + "' Order By FechaHora Asc");
+            String cadena = string.Format("SELECT * FROM Denuncias WHERE Estado = 1 Or Estado = 0 And Ruta = '" + Concesionaria + "' Order By FechaHora Asc");
             return conex.EjercutarSentenciaBusqueda(cadena);
         }
 

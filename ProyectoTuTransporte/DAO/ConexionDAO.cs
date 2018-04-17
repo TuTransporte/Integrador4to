@@ -29,7 +29,7 @@ namespace ProyectoTuTransporte.DAO
         public SqlConnection EstablecerConexion()
         {
             Conexiones();
-            con = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
+            //con = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             //con = new SqlConnection("Data Source=SQL5035.site4now.net;Initial Catalog=DB_A3402F_TuTransporte;User Id=DB_A3402F_TuTransporte_admin;Password=baba131998.13;");
             con = new SqlConnection("Data Source=.;Initial Catalog=DB_A3402F_TuTransporte;Integrated Security=True;");
             //con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
@@ -64,7 +64,7 @@ namespace ProyectoTuTransporte.DAO
         {
             Conexiones();
             con = new SqlConnection("Data Source=.;Initial Catalog=DB_A3402F_TuTransporte;Integrated Security=True;");
-            con = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
+            //con = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             //con = new SqlConnection("Data Source='" + cadena + "';Initial Catalog=ProyectoTuTransporte;Integrated Security=True");
             exec = new SqlCommand();
         }

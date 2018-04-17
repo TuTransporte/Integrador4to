@@ -184,7 +184,12 @@ namespace ProyectoTuTransporte.Controllers
                 }
                 //int tipo = Convert.ToInt32(Session["Tipo"]);
                 valor = Ruta;
-                return View(ChatDAO.AbrirMensajeDenuncia(valor, Convert.ToInt32(Session["IdDenuncia"])));
+
+                SqlCommand cmd;
+                cmd = new SqlCommand("UPDATE Denuncias SET Estado = 1 WHERE Id='" + Id + "'");
+                conex.EjecutarComando(cmd);
+
+                return View(ChatDAO.AbrirMensajeDenuncia(valor, Convert.ToInt32(Session["IdDenuncia"])));                
             }
             else
             {
@@ -192,6 +197,7 @@ namespace ProyectoTuTransporte.Controllers
                 return Redirect(link);
             }
         }
+
 
         public ActionResult GestionEmpleados()
         {
@@ -770,6 +776,7 @@ namespace ProyectoTuTransporte.Controllers
             oDenuncias.Dictamen = Request.Form["message-textDic"];
             DenunciasDAO.ModificarEnProceso(oDenuncias);
             return Redirect("~/Administracion/EnProceso");
+
         }
 
         public ActionResult ApDenuncia2(GestionDenunciasBO oDenuncias)
@@ -836,7 +843,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosDenuncias()
         {
-            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
+            //SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             SqlConnection conex = new SqlConnection("Data Source=.;Initial Catalog=DB_A3402F_TuTransporte;Integrated Security=True;");
 
             SqlCommand cmd = new SqlCommand();
@@ -897,7 +904,7 @@ namespace ProyectoTuTransporte.Controllers
 
         public string obtenerDatosMotivos()
         {
-            SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
+            //SqlConnection conex = new SqlConnection("workstation id=TuTransporte.mssql.somee.com;packet size=4096;user id=BryanBasulto_SQLLogin_1;pwd=yogpxy36gt;data source=TuTransporte.mssql.somee.com;persist security info=False;initial catalog=TuTransporte");
             SqlConnection conex = new SqlConnection("Data Source = .; Initial Catalog = DB_A3402F_TuTransporte; Integrated Security = True;");
 
 
